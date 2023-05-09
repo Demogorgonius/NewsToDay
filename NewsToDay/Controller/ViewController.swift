@@ -14,10 +14,11 @@ class ViewController: UIViewController, NewsManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         newsManager.delegate = self
-        newsManager.getNews(for: "us")
-        // Do any additional setup after loading the view.
+        newsManager.getNews(for: "sports")
+        view.backgroundColor = .red
     }
     func updateNews(model: NewsModel) {
+        print(model)
 //        DispatchQueue.main.async {
 //            self.descriptionLabel.text = model.description
 //            self.authorLabel.text = model.author
