@@ -13,8 +13,9 @@ struct NewsManager {
     var delegate: NewsManagerDelegate?
     
     func getNews(for category: String) {
-        let request = baseURLWithCategory + "apiKey=\(apiKey)" + "&country=\(category)"
+        let request = baseURLWithCategory + "apiKey=\(apiKey)" + "&category=\(category)"
         performRequest(with: request)
+        print(request)
     }
     
     func performRequest(with urlString: String) {
@@ -33,6 +34,7 @@ struct NewsManager {
                 
                 if let safeData = data {
                     parseJSON(safeData)
+                   
                 }
             })
             //4. Start the task
