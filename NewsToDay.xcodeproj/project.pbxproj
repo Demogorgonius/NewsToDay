@@ -14,6 +14,19 @@
 		A5DF44392A08193F00491528 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44382A08193F00491528 /* ViewController.swift */; };
 		A5DF443E2A08194000491528 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DF443D2A08194000491528 /* Assets.xcassets */; };
 		A5DF44412A08194000491528 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5DF443F2A08194000491528 /* LaunchScreen.storyboard */; };
+		A5FAADF62A0AD0DA00499B78 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAADF52A0AD0DA00499B78 /* CustomView.swift */; };
+		A5FAADF82A0AD0E800499B78 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAADF72A0AD0E800499B78 /* CustomViewController.swift */; };
+		A5FAADFA2A0AD12200499B78 /* Localizable_RU.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5FAADF92A0AD12200499B78 /* Localizable_RU.strings */; };
+		A5FAADFC2A0AD21500499B78 /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAADFB2A0AD21500499B78 /* CustomTabBar.swift */; };
+		A5FAADFF2A0ADEFC00499B78 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAADFE2A0ADEFC00499B78 /* HomeView.swift */; };
+		A5FAAE012A0ADF1000499B78 /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAAE002A0ADF1000499B78 /* CategoriesView.swift */; };
+		A5FAAE032A0ADF4100499B78 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAAE022A0ADF4100499B78 /* BookmarksView.swift */; };
+		A5FAAE052A0ADF5300499B78 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAAE042A0ADF5300499B78 /* ProfileView.swift */; };
+		A5FAAE072A0ADF6F00499B78 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAAE062A0ADF6F00499B78 /* HomeViewController.swift */; };
+		A5FAAE092A0ADF8200499B78 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAAE082A0ADF8200499B78 /* CategoriesViewController.swift */; };
+		A5FAAE0B2A0ADF9300499B78 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAAE0A2A0ADF9300499B78 /* BookmarksViewController.swift */; };
+		A5FAAE0D2A0ADFA100499B78 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FAAE0C2A0ADFA100499B78 /* ProfileViewController.swift */; };
+		A5FAAE1D2A0AE57600499B78 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A5FAAE1C2A0AE57600499B78 /* SnapKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +39,18 @@
 		A5DF443D2A08194000491528 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5DF44402A08194000491528 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A5DF44422A08194000491528 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5FAADF52A0AD0DA00499B78 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		A5FAADF72A0AD0E800499B78 /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		A5FAADF92A0AD12200499B78 /* Localizable_RU.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable_RU.strings; sourceTree = "<group>"; };
+		A5FAADFB2A0AD21500499B78 /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
+		A5FAADFE2A0ADEFC00499B78 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A5FAAE002A0ADF1000499B78 /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
+		A5FAAE022A0ADF4100499B78 /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
+		A5FAAE042A0ADF5300499B78 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		A5FAAE062A0ADF6F00499B78 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A5FAAE082A0ADF8200499B78 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		A5FAAE0A2A0ADF9300499B78 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		A5FAAE0C2A0ADFA100499B78 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FAAE1D2A0AE57600499B78 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +78,10 @@
 			children = (
 				A5DF44382A08193F00491528 /* ViewController.swift */,
 				0D037C562A0AA191002F7EE3 /* NewsViewConroller.swift */,
+				A5FAAE0F2A0AE0B500499B78 /* HomeController */,
+				A5FAAE122A0AE0E500499B78 /* CategoriesController */,
+				A5FAAE152A0AE10B00499B78 /* BookmarksController */,
+				A5FAAE182A0AE1F000499B78 /* ProfileController */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -75,6 +105,7 @@
 		A5DF44332A08193F00491528 /* NewsToDay */ = {
 			isa = PBXGroup;
 			children = (
+				A5FAADF42A0AD0C200499B78 /* Services */,
 				A5DF44342A08193F00491528 /* AppDelegate.swift */,
 				A5DF44362A08193F00491528 /* SceneDelegate.swift */,
 				94A2A1972A0A8A79001DCEC0 /* Model */,
@@ -84,6 +115,117 @@
 				A5DF44422A08194000491528 /* Info.plist */,
 			);
 			path = NewsToDay;
+			sourceTree = "<group>";
+		};
+		A5FAADF42A0AD0C200499B78 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAADF52A0AD0DA00499B78 /* CustomView.swift */,
+				A5FAADF92A0AD12200499B78 /* Localizable_RU.strings */,
+				A5FAADF72A0AD0E800499B78 /* CustomViewController.swift */,
+				A5FAADFB2A0AD21500499B78 /* CustomTabBar.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A5FAAE0F2A0AE0B500499B78 /* HomeController */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE112A0AE0D400499B78 /* View */,
+				A5FAAE102A0AE0CC00499B78 /* Controller */,
+			);
+			path = HomeController;
+			sourceTree = "<group>";
+		};
+		A5FAAE102A0AE0CC00499B78 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE062A0ADF6F00499B78 /* HomeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A5FAAE112A0AE0D400499B78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAADFE2A0ADEFC00499B78 /* HomeView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A5FAAE122A0AE0E500499B78 /* CategoriesController */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE142A0AE0FE00499B78 /* View */,
+				A5FAAE132A0AE0F600499B78 /* Controller */,
+			);
+			path = CategoriesController;
+			sourceTree = "<group>";
+		};
+		A5FAAE132A0AE0F600499B78 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE082A0ADF8200499B78 /* CategoriesViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A5FAAE142A0AE0FE00499B78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE002A0ADF1000499B78 /* CategoriesView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A5FAAE152A0AE10B00499B78 /* BookmarksController */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE172A0AE12400499B78 /* View */,
+				A5FAAE162A0AE11D00499B78 /* Controller */,
+			);
+			path = BookmarksController;
+			sourceTree = "<group>";
+		};
+		A5FAAE162A0AE11D00499B78 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE0A2A0ADF9300499B78 /* BookmarksViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A5FAAE172A0AE12400499B78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE022A0ADF4100499B78 /* BookmarksView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A5FAAE182A0AE1F000499B78 /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE1A2A0AE20800499B78 /* View */,
+				A5FAAE192A0AE20000499B78 /* Controller */,
+			);
+			path = ProfileController;
+			sourceTree = "<group>";
+		};
+		A5FAAE192A0AE20000499B78 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE0C2A0ADFA100499B78 /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		A5FAAE1A2A0AE20800499B78 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A5FAAE042A0ADF5300499B78 /* ProfileView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +244,9 @@
 			dependencies = (
 			);
 			name = NewsToDay;
+			packageProductDependencies = (
+				A5FAAE1C2A0AE57600499B78 /* SnapKit */,
+			);
 			productName = NewsToDay;
 			productReference = A5DF44312A08193F00491528 /* NewsToDay.app */;
 			productType = "com.apple.product-type.application";
@@ -130,6 +275,9 @@
 				Base,
 			);
 			mainGroup = A5DF44282A08193F00491528;
+			packageReferences = (
+				A5FAAE1B2A0AE57600499B78 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = A5DF44322A08193F00491528 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -145,6 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5DF44412A08194000491528 /* LaunchScreen.storyboard in Resources */,
+				A5FAADFA2A0AD12200499B78 /* Localizable_RU.strings in Resources */,
 				A5DF443E2A08194000491528 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,10 +305,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5FAAE0B2A0ADF9300499B78 /* BookmarksViewController.swift in Sources */,
+				A5FAADFF2A0ADEFC00499B78 /* HomeView.swift in Sources */,
+				A5FAAE032A0ADF4100499B78 /* BookmarksView.swift in Sources */,
 				94A2A1962A0A8A67001DCEC0 /* NewsManager.swift in Sources */,
+				A5FAADF82A0AD0E800499B78 /* CustomViewController.swift in Sources */,
+				A5FAAE052A0ADF5300499B78 /* ProfileView.swift in Sources */,
+				A5FAAE0D2A0ADFA100499B78 /* ProfileViewController.swift in Sources */,
 				A5DF44392A08193F00491528 /* ViewController.swift in Sources */,
 				0D037C572A0AA191002F7EE3 /* NewsViewConroller.swift in Sources */,
+				A5FAADFC2A0AD21500499B78 /* CustomTabBar.swift in Sources */,
+				A5FAADF62A0AD0DA00499B78 /* CustomView.swift in Sources */,
 				A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */,
+				A5FAAE012A0ADF1000499B78 /* CategoriesView.swift in Sources */,
+				A5FAAE072A0ADF6F00499B78 /* HomeViewController.swift in Sources */,
+				A5FAAE092A0ADF8200499B78 /* CategoriesViewController.swift in Sources */,
 				A5DF44372A08193F00491528 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +528,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A5FAAE1B2A0AE57600499B78 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A5FAAE1C2A0AE57600499B78 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A5FAAE1B2A0AE57600499B78 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A5DF44292A08193F00491528 /* Project object */;
 }
