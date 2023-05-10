@@ -21,7 +21,7 @@
 	</dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Inter.ttf</string>
+		<string>Inter-Regular.ttf</string>
 		<string>Inter-Bold.ttf</string>
 	</array>
 </dict>

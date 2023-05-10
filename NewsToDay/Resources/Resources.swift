@@ -25,7 +25,4 @@ enum Resources {
         static let white = "White"
     }
     
-    
-    
-    
 }

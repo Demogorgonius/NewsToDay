@@ -44,7 +44,7 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: "Inter-Bold", size: 24)
+        text.font = UIFont(name: Fonts.interBold, size: 24)
         text.textColor = UIColor(named: Resources.Colors.white)
 //        text.setLineHeight(30)
         text.text = "The latest situation in the presidential election"
@@ -56,7 +56,7 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: "Inter-Bold", size: 24)
+        text.font = UIFont(name: Fonts.interRegular, size: 24)
         text.textColor = UIColor(named: Resources.Colors.white)
         text.setLineHeight(24)
         text.text = "John Doe"
@@ -67,7 +67,7 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: "Inter", size: 18)
+        text.font = UIFont(name: Fonts.interRegular, size: 18)
         text.textColor = UIColor(named: Resources.Colors.greyLight)
 //        text.setLineHeight(20)
         text.text = "Author"
@@ -78,7 +78,7 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: "Inter", size: 14)
+        text.font = UIFont(name: Fonts.interRegular, size: 14)
         text.textColor = UIColor(named: Resources.Colors.greyLight)
 //        text.setLineHeight(20)
         text.text = "Politics"
@@ -94,7 +94,7 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: "Inter", size: 20)
+        text.font = UIFont(name: Fonts.interRegular, size: 20)
         text.textColor = UIColor(named: Resources.Colors.greyDarker)
         text.setLineHeight(24)
         text.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
@@ -130,7 +130,7 @@ extension NewsViewConroller {
             pictureNews.topAnchor.constraint(equalTo: contentView.topAnchor),
             pictureNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pictureNews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            pictureNews.heightAnchor.constraint(equalToConstant: 360),
+//            pictureNews.heightAnchor.constraint(equalToConstant: 380),
             
             category.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
             category.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
