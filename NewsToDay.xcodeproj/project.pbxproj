@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0D037C572A0AA191002F7EE3 /* NewsViewConroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D037C562A0AA191002F7EE3 /* NewsViewConroller.swift */; };
+		0D037C592A0BCCEA002F7EE3 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D037C582A0BCCEA002F7EE3 /* Resources.swift */; };
 		94A2A1962A0A8A67001DCEC0 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2A1952A0A8A67001DCEC0 /* NewsManager.swift */; };
 		A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44342A08193F00491528 /* AppDelegate.swift */; };
 		A5DF44372A08193F00491528 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44362A08193F00491528 /* SceneDelegate.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		0D037C562A0AA191002F7EE3 /* NewsViewConroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewConroller.swift; sourceTree = "<group>"; };
+		0D037C582A0BCCEA002F7EE3 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		94A2A1952A0A8A67001DCEC0 /* NewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		A5DF44312A08193F00491528 /* NewsToDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsToDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DF44342A08193F00491528 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D037C5A2A0BCCF0002F7EE3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0D037C582A0BCCEA002F7EE3 /* Resources.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		94A2A1972A0A8A79001DCEC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,8 +120,9 @@
 				A5DF44362A08193F00491528 /* SceneDelegate.swift */,
 				94A2A1972A0A8A79001DCEC0 /* Model */,
 				94A2A1982A0A8A80001DCEC0 /* Controller */,
-				A5DF443D2A08194000491528 /* Assets.xcassets */,
+				0D037C5A2A0BCCF0002F7EE3 /* Resources */,
 				A5DF443F2A08194000491528 /* LaunchScreen.storyboard */,
+				A5DF443D2A08194000491528 /* Assets.xcassets */,
 				A5DF44422A08194000491528 /* Info.plist */,
 			);
 			path = NewsToDay;
@@ -314,6 +325,7 @@
 				A5FAAE0D2A0ADFA100499B78 /* ProfileViewController.swift in Sources */,
 				A5DF44392A08193F00491528 /* ViewController.swift in Sources */,
 				0D037C572A0AA191002F7EE3 /* NewsViewConroller.swift in Sources */,
+				0D037C592A0BCCEA002F7EE3 /* Resources.swift in Sources */,
 				A5FAADFC2A0AD21500499B78 /* CustomTabBar.swift in Sources */,
 				A5FAADF62A0AD0DA00499B78 /* CustomView.swift in Sources */,
 				A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */,
