@@ -42,8 +42,9 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = .systemFont(ofSize: 22, weight: .regular)
-        text.text = "/* Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. */"
+        text.font = UIFont(name: "Inter", size: 18)
+//        text.font = .systemFont(ofSize: 22, weight: .regular)
+        text.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
         return text
     }()
 }
