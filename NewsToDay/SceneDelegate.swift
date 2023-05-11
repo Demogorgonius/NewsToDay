@@ -17,8 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                window = UIWindow(windowScene: scene)
                //let vc = ViewController()
                let vcNews = OnboardingViewController()
+            let bookmarks = BookmarksViewController()
             let vc = CustomTabBarController()
-            window!.rootViewController = vcNews
+            window!.rootViewController = bookmarks
             window!.makeKeyAndVisible()
     }
 
