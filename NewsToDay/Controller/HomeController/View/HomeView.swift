@@ -7,34 +7,36 @@
 
 import Foundation
 import UIKit
-import SnapKit
 
-
-protocol HomeViewDelegate: AnyObject {
+class HomeView {
     
-}
-
-class HomeView: CustomView {
+    lazy var descriptionNewsLabel: UILabel = {
+        let element = UILabel()
+        element.text = "Discover things of this world"
+        element.font = .systemFont(ofSize: 16)
+        element.textColor = UIColor(hexString: "#7C82A1")
+        return element
+    }()
     
-    weak var delegate: HomeViewDelegate?
+    lazy var searchTextField: UITextField = {
+        let element = UITextField()
+        element.borderStyle = .roundedRect
+        element.placeholder = "Search"
+        element.backgroundColor = .tertiarySystemFill
+        element.textAlignment = .left
+        element.font = .systemFont(ofSize: 16)
+        element.autocapitalizationType = .words
+        element.returnKeyType = .search
+        return element
+    }()
     
-    //MARK: - setViews
-    
-    override func setViews() {
-         super.setViews()
-        
-        // add subviews to view
-        
-    }
-    
-    //MARK: - layoutView
-    
-    override func layoutViews() {
-        super.layoutViews()
-        
-        // setup constraints
-        
-    }
-    
-    
+    lazy var collectionView: UICollectionView = {
+        let collectViewLayout = UICollectionViewLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectViewLayout)
+        collectionView.backgroundColor = .none
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
+        return collectionView
+    }()
 }
