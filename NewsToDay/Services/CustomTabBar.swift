@@ -20,9 +20,9 @@ class CustomTabBarController: UITabBarController {
         let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
         setViewControllers([homeNavigationController, categoriesNavigationController, bookmarksNavigationController, profileNavigationController], animated: false)
         
-        customizeTabBar(homeNavigationController, name: "Browse")
+        customizeTabBar(homeNavigationController, name: NSLocalizedString("Browse", comment: ""))
         customizeTabBar(categoriesNavigationController, name: "Categories")
-        customizeTabBar(bookmarksNavigationController, name: "Bookmarks")
+        customizeTabBar(bookmarksNavigationController, name: NSLocalizedString("bookmarks_title", comment: ""))
         customizeTabBar(profileNavigationController, name: "Profile")
     }
 }
