@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                //let vc = ViewController()
                let vcNews = NewsViewConroller()
             let vc = CustomTabBarController()
-            window!.rootViewController = vcNews
+            window!.rootViewController = vc
             window!.makeKeyAndVisible()
     }
 
