@@ -17,7 +17,8 @@ class HomeViewController : CustomViewController<HomeView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.delegate = self
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.title = NSLocalizedString("Browse", comment: "")
     }
     
 }
