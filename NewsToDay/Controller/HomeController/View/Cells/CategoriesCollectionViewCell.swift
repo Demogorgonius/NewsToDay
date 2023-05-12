@@ -19,7 +19,6 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         element.backgroundColor = UIColor(hexString: "#F3F4F6")
         element.font = .systemFont(ofSize: 12)
         element.textColor = UIColor(hexString: "#7C82A1")
-        element.tintColor = UIColor(hexString: "#475AD7")
         return element
     }()
     
@@ -28,6 +27,18 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         
         setupView()
         setConstraints()
+    }
+    
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                categoryLabel.backgroundColor = UIColor(hexString: "#475AD7")
+                categoryLabel.textColor = .white
+            } else {
+                categoryLabel.backgroundColor = UIColor(hexString: "#F3F4F6")
+                categoryLabel.textColor = UIColor(hexString: "#7C82A1")
+            }
+        }
     }
     
     required init?(coder: NSCoder) {

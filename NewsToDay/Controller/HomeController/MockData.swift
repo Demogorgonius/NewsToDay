@@ -11,28 +11,32 @@ struct MockData {
     
     static let shared = MockData()
     
+    private let textField: ListSection = {
+        .textField([.init(image: "", categories: "", newsTopic: "", news: "")])
+    }()
+    
     private let topics: ListSection = {
-        .topics([.init(rightTitle: "", leftTitle: "", image: "", categories: "Random", newsTopic: "", news: ""),
-                 .init(rightTitle: "", leftTitle: "", image: "", categories: "Sports", newsTopic: "", news: ""),
-                 .init(rightTitle: "", leftTitle: "", image: "", categories: "Gaming", newsTopic: "", news: ""),
-                 .init(rightTitle: "", leftTitle: "", image: "", categories: "Politics", newsTopic: "", news: "")])
+        .topics([.init(image: "", categories: "Random", newsTopic: "", news: ""),
+                 .init(image: "", categories: "Sports", newsTopic: "", news: ""),
+                 .init(image: "", categories: "Gaming", newsTopic: "", news: ""),
+                 .init(image: "", categories: "Politics", newsTopic: "", news: "")])
     }()
     
     private let news: ListSection = {
-        .news([.init(rightTitle: "", leftTitle: "", image: "0", categories: "", newsTopic: "", news: ""),
-               .init(rightTitle: "", leftTitle: "", image: "1", categories: "", newsTopic: "", news: ""),
-               .init(rightTitle: "", leftTitle: "", image: "2", categories: "", newsTopic: "", news: ""),
-               .init(rightTitle: "", leftTitle: "", image: "3", categories: "", newsTopic: "", news: "")])
+        .news([.init(image: "0", categories: "", newsTopic: "", news: ""),
+               .init(image: "1", categories: "", newsTopic: "", news: ""),
+               .init(image: "2", categories: "", newsTopic: "", news: ""),
+               .init(image: "3", categories: "", newsTopic: "", news: "")])
     }()
     
     private let recommended: ListSection = {
-        .recommended([.init(rightTitle: "", leftTitle: "", image: "0", categories: "", newsTopic: "UI/UX Design", news: "A Simple Trick For Creating Color Palettes Quickly"),
-                      .init(rightTitle: "", leftTitle: "", image: "1", categories: "", newsTopic: "Art", news: "Six steps to creating a color palette"),
-                      .init(rightTitle: "", leftTitle: "", image: "2", categories: "", newsTopic: "Colors", news: "Creating Color Palette from world around you"),
-                      .init(rightTitle: "", leftTitle: "", image: "3", categories: "", newsTopic: "", news: "")])
+        .recommended([.init(image: "0", categories: "", newsTopic: "UI/UX Design", news: "A Simple Trick For Creating Color Palettes Quickly"),
+                      .init(image: "1", categories: "", newsTopic: "Art", news: "Six steps to creating a color palette"),
+                      .init(image: "2", categories: "", newsTopic: "Colors", news: "Creating Color Palette from world around you"),
+                      .init(image: "3", categories: "", newsTopic: "Politics", news: "The latest situation in the presidential election")])
     }()
     
     var pageData: [ListSection] {
-        [topics, news, recommended]
+        [textField, topics, news, recommended]
     }
 }

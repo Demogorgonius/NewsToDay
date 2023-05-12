@@ -14,7 +14,6 @@ final class HeaderSupplemetaryView: UICollectionReusableView {
         element.text = "Recommended for you"
         element.textColor = UIColor(hexString: "#333647")
         element.font = .boldSystemFont(ofSize: 20)
-        element.backgroundColor = .blue
         return element
     }()
     
@@ -40,8 +39,7 @@ final class HeaderSupplemetaryView: UICollectionReusableView {
     private func setConstraints() {
         headerLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview().offset(10)
-            make.height.equalTo(100)
+            make.leading.equalToSuperview().offset(20)
         }
     }
 }

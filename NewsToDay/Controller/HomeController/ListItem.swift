@@ -8,8 +8,6 @@
 import Foundation
 
 struct ListItem {
-    let rightTitle: String
-    let leftTitle: String
     let image: String
     let categories: String
     let newsTopic: String
