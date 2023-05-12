@@ -7,5 +7,7 @@
 */
 
 "title" = "Title";
-"bookmarks_title" = "Bookmarks";
-"Browse" = "Browse";
+"TabBar_Bookmarks" = "Bookmarks";
+"TabBar_Browse" = "Browse";
+"TabBar_Categories" = "Categories";
+"TabBar_Profile" = "Profile";

@@ -7,5 +7,7 @@
 */
 
 "title" = "Заголовок";
-"bookmarks_title" = "Закладки";
-"Browse" = "Обзор";
+"TabBar_Bookmarks" = "Закладки";
+"TabBar_Browse" = "Обзор";
+"TabBar_Categories" = "Категории";
+"TabBar_Profile" = "Профиль";
