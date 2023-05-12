@@ -17,6 +17,13 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
+    private lazy var bookMarkButton: UIButton = {
+        let element = UIButton(type: .system)
+        element.tintColor = .white
+        element.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+        return element
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -34,11 +41,17 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
     
     private func setupView() {
         addSubview(latestNewsImage)
+        addSubview(bookMarkButton)
     }
     
     private func setConstraints() {
         latestNewsImage.snp.makeConstraints { make in
             make.top.bottom.leading.trailing.equalToSuperview()
+        }
+        
+        bookMarkButton.snp.makeConstraints { make in
+            make.height.width.equalTo(24)
+            make.top.trailing.equalToSuperview().inset(24)
         }
     }
     

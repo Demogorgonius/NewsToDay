@@ -8,13 +8,15 @@
 import Foundation
 
 enum ListSection {
+    case textField([ListItem])
     case topics([ListItem])
     case news([ListItem])
     case recommended([ListItem])
     
     var items: [ListItem] {
         switch self {
-        case .topics(let items),
+        case .textField(let items),
+                .topics(let items),
                 .news(let items),
                 .recommended(let items):
             return items
@@ -27,6 +29,8 @@ enum ListSection {
     
     var title: String {
         switch self {
+        case .textField(_):
+            return ""
         case .topics(_):
             return ""
         case .news(_):

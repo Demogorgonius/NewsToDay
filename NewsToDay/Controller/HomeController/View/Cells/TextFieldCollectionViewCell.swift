@@ -9,7 +9,15 @@ import UIKit
 import SnapKit
 
 final class TextFieldCollectionViewCell: UICollectionViewCell {
-    lazy var searchTextField: UITextField = {
+    private lazy var descriptionNewsLabel: UILabel = {
+        let element = UILabel()
+        element.text = "Discover things of this world"
+        element.font = .systemFont(ofSize: 16)
+        element.textColor = UIColor(hexString: "#7C82A1")
+        return element
+    }()
+    
+    private lazy var searchTextField: UITextField = {
         let element = UITextField()
         element.borderStyle = .roundedRect
         element.placeholder = "Search"
@@ -33,15 +41,21 @@ final class TextFieldCollectionViewCell: UICollectionViewCell {
     }
     
     func setupView() {
+        addSubview(descriptionNewsLabel)
         addSubview(searchTextField)
     }
     
     func setConstraints() {
+        descriptionNewsLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(8)
+            make.leading.trailing.equalToSuperview()
+            make.height.equalTo(24)
+        }
+        
         searchTextField.snp.makeConstraints { make in
-//            make.leading.trailing.equalToSuperview().inset(20)
-//            make.bottom.equalTo(descriptionNewsLabel.snp.bottom).offset(32)
-//            make.height.equalTo(56)
-            make.top.bottom.leading.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
+            make.top.equalTo(descriptionNewsLabel.snp.bottom).offset(32)
+            make.height.equalTo(56)
         }
     }
     

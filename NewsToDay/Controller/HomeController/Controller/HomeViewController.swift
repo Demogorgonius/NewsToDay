@@ -42,6 +42,8 @@ class HomeViewController: UIViewController {
             guard let self = self else { return nil }
             let section = self.sections[sectionIndex]
             switch section {
+            case .textField(_):
+                return self.createTextFieldSection()
             case .topics(_):
                 return self.createTopicSection()
             case .news(_):
@@ -65,6 +67,18 @@ class HomeViewController: UIViewController {
         return section
     }
     
+    private func createTextFieldSection() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(112)), subitems: [item])
+        let section = createLayoutSection(group: group,
+                                          behavior: .none,
+                                          interGroupSpacing: 16,
+                                          supplementaryItems: [],
+                                          contentInsets: false)
+        section.contentInsets = .init(top: 0, leading: 20, bottom: 32, trailing: 20)
+        return section
+    }
+    
     private func createTopicSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(80), heightDimension: .absolute(32)), subitems: [item])
@@ -73,7 +87,7 @@ class HomeViewController: UIViewController {
                                           interGroupSpacing: 16,
                                           supplementaryItems: [],
                                           contentInsets: false)
-        section.contentInsets = .init(top: 0, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = .init(top: 0, leading: 20, bottom: 24, trailing: 20)
         return section
     }
     
@@ -85,24 +99,23 @@ class HomeViewController: UIViewController {
                                           interGroupSpacing: 16,
                                           supplementaryItems: [],
                                           contentInsets: false)
-        section.contentInsets = .init(top: 24, leading: 20, bottom: 0, trailing: 20)
+        section.contentInsets = .init(top: 0, leading: 20, bottom: 48, trailing: 20)
         return section
     }
     
     private func createRecommendedNewsSection() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(96)), subitems: [item])
-        let section = createLayoutSection(group: group,
-                                          behavior: .groupPaging,
-                                          interGroupSpacing: 40,
-                                          supplementaryItems: [supplementaryHeaderItem()],
-                                          contentInsets: false)
-        section.contentInsets = .init(top: 48, leading: 20, bottom: 0, trailing: 20)
+        let section = NSCollectionLayoutSection(group: group)
+        section.supplementariesFollowContentInsets = false
+        section.interGroupSpacing = 16
+        section.boundarySupplementaryItems = [supplementaryHeaderItem()]
+        section.contentInsets = .init(top: 24, leading: 20, bottom: 16, trailing: 20)
         return section
     }
     
     private func supplementaryHeaderItem() -> NSCollectionLayoutBoundarySupplementaryItem {
-        .init(layoutSize: .init(widthDimension: .fractionalWidth(0.45), heightDimension: .estimated(30)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(30)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
     }
 }
 
@@ -122,6 +135,9 @@ extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch sections[indexPath.section] {
+        case .textField(_):
+            guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "TextFieldCollectionViewCell", for: indexPath) as? TextFieldCollectionViewCell else { return UICollectionViewCell() }
+            return cell
         case .topics(let topic):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
             cell.configureCell(topicName: topic[indexPath.row].categories)
@@ -142,7 +158,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case UICollectionView.elementKindSectionHeader:
             let header = homeView.collectionView.dequeueReusableSupplementaryView(ofKind: kind,
                                                                                   withReuseIdentifier: "HeaderSupplemetaryView", for: indexPath) as! HeaderSupplemetaryView
-            header.configureHeader(labelName: sections[indexPath.row].title)
+            header.configureHeader(labelName: sections[indexPath.section].title)
             return header
         default:
             return UICollectionReusableView()
@@ -154,30 +170,15 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController {
     private func addViews() {
         view.addSubview(homeView.collectionView)
-        view.addSubview(homeView.descriptionNewsLabel)
-        view.addSubview(homeView.searchTextField)
         addConstraints()
     }
     
     private func addConstraints() {
-        homeView.descriptionNewsLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(8)
-        }
-
-        homeView.searchTextField.snp.makeConstraints { make in
-            make.leading.trailing.equalToSuperview().inset(20)
-            make.top.equalTo(homeView.descriptionNewsLabel.snp.bottom).offset(32)
-            make.height.equalTo(56)
-        }
-        
         homeView.collectionView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            make.top.equalTo(homeView.searchTextField.snp.bottom).offset(24)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-        
-        
     }
 }
 
