@@ -20,10 +20,10 @@ class CustomTabBarController: UITabBarController {
         let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
         setViewControllers([homeNavigationController, categoriesNavigationController, bookmarksNavigationController, profileNavigationController], animated: false)
         
-        customizeTabBar(homeNavigationController, name: NSLocalizedString("Browse", comment: ""))
-        customizeTabBar(categoriesNavigationController, name: "Categories")
-        customizeTabBar(bookmarksNavigationController, name: NSLocalizedString("bookmarks_title", comment: ""))
-        customizeTabBar(profileNavigationController, name: "Profile")
+        customizeTabBar(homeNavigationController, name: NSLocalizedString("TabBar_Browse", comment: ""))
+        customizeTabBar(categoriesNavigationController, name: NSLocalizedString("TabBar_Categories", comment: ""))
+        customizeTabBar(bookmarksNavigationController, name: NSLocalizedString("TabBar_Bookmarks", comment: ""))
+        customizeTabBar(profileNavigationController, name: NSLocalizedString("TabBar_Profile", comment: ""))
     }
 }
 
@@ -32,7 +32,7 @@ private extension CustomTabBarController {
         controller.viewControllers[0].title = name
         
         switch name {
-        case "Browse":
+        case NSLocalizedString("TabBar_Browse", comment: ""):
             controller.tabBarItem.image = UIImage(systemName: "house.circle")
             controller.tabBarItem.selectedImage = UIImage(systemName: "house.circle.fill")
             
@@ -65,16 +65,16 @@ private extension CustomTabBarController {
                 }
             }
             
-        case "Categories":
+        case NSLocalizedString("TabBar_Categories", comment: ""):
             controller.tabBarItem.image = UIImage(systemName: "square.grid.2x2")
             controller.tabBarItem.selectedImage = UIImage(systemName: "square.grid.2x2.fill")
             
-        case "Bookmarks":
+        case NSLocalizedString("TabBar_Bookmarks", comment: ""):
             controller.tabBarItem.image = UIImage(systemName: "bookmark")
             controller.tabBarItem.selectedImage = UIImage(systemName: "bookmark.fill")
             controller.navigationBar.prefersLargeTitles = true
             controller.navigationItem.largeTitleDisplayMode = .automatic
-        case "Profile":
+        case NSLocalizedString("TabBar_Profile", comment: ""):
             controller.tabBarItem.image = UIImage(systemName: "person")
             controller.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         default:

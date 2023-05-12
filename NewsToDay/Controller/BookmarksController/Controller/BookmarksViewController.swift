@@ -18,7 +18,7 @@ class BookmarksViewController : CustomViewController<BookmarksView> {
         super.viewDidLoad()
         customView.delegate = self
         navigationController?.navigationBar.prefersLargeTitles = true
-        navigationController?.title = NSLocalizedString("bookmarks_title", comment: "")
+        navigationController?.title = NSLocalizedString("TabBar_Bookmarks", comment: "")
     }
     
 }

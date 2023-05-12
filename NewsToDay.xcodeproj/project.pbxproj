@@ -176,6 +176,15 @@
 			path = OnboardingController;
 			sourceTree = "<group>";
 		};
+		A5A5290F2A0ED0B00006C03D /* Apps */ = {
+			isa = PBXGroup;
+			children = (
+				A5DF44362A08193F00491528 /* SceneDelegate.swift */,
+				A5DF44342A08193F00491528 /* AppDelegate.swift */,
+			);
+			path = Apps;
+			sourceTree = "<group>";
+		};
 		A5DF44282A08193F00491528 = {
 			isa = PBXGroup;
 			children = (
@@ -195,10 +204,9 @@
 		A5DF44332A08193F00491528 /* NewsToDay */ = {
 			isa = PBXGroup;
 			children = (
+				A5A5290F2A0ED0B00006C03D /* Apps */,
 				A5FAAE2B2A0EBB9300499B78 /* Helpers */,
 				A5FAADF42A0AD0C200499B78 /* Services */,
-				A5DF44342A08193F00491528 /* AppDelegate.swift */,
-				A5DF44362A08193F00491528 /* SceneDelegate.swift */,
 				94A2A1972A0A8A79001DCEC0 /* Model */,
 				94A2A1982A0A8A80001DCEC0 /* Controller */,
 				0D037C5A2A0BCCF0002F7EE3 /* Resources */,
