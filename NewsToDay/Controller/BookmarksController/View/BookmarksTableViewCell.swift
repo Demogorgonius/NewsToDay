@@ -79,13 +79,13 @@ class BookmarksTableViewCell: UITableViewCell {
             imageNews.bottomAnchor.constraint(equalTo: contentWhiteView.bottomAnchor),
             imageNews.widthAnchor.constraint(equalToConstant: 96),
 
-            newsTitleLabel.leadingAnchor.constraint(equalTo: imageNews.rightAnchor, constant: 16),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: contentWhiteView.leadingAnchor, constant: 90),
             newsTitleLabel.topAnchor.constraint(equalTo: contentWhiteView.topAnchor, constant: 10),
             newsTitleLabel.trailingAnchor.constraint(equalTo: contentWhiteView.trailingAnchor, constant: -19),
             newsTitleLabel.heightAnchor.constraint(equalToConstant: 70),
 
             descriptionLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 8),
-            descriptionLabel.leadingAnchor.constraint(equalTo: imageNews.rightAnchor, constant: 16),
+            descriptionLabel.leadingAnchor.constraint(equalTo: contentWhiteView.leadingAnchor, constant: 190),
             descriptionLabel.trailingAnchor.constraint(equalTo: contentWhiteView.trailingAnchor, constant: -19),
 
             ])

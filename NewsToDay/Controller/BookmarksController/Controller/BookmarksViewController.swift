@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BookmarksViewController : CustomViewController<BookmarksView> {
+class BookmarksViewController : UIViewController {
     
     private var viewModels = [TestForBookmarks]()
     private let testPosts = testPost
@@ -29,25 +29,22 @@ class BookmarksViewController : CustomViewController<BookmarksView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        customView.delegate = self
+//        customView.delegate = self
         view.backgroundColor = .red
-//        layoutTableView()
+        layoutTableView()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+   
+    private func layoutTableView() {
+        view.addSubview(tableView)
         
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
+            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
-//    private func layoutTableView() {
-//        view.addSubview(tableView)
-//
-//        NSLayoutConstraint.activate([
-//            tableView.topAnchor.constraint(equalTo: view.topAnchor),
-//            tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-//            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-//        ])
     }
     
 
@@ -67,7 +64,6 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
         }
     
         cell.updateNews(model: testPosts[indexPath.row])
-        cell.textLabel?.text = "Some text"
         return cell
     }
     
@@ -78,6 +74,8 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150
     }
+    
+   
     
 }
 
