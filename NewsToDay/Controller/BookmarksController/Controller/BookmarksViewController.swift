@@ -17,7 +17,8 @@ class BookmarksViewController : CustomViewController<BookmarksView> {
     override func viewDidLoad() {
         super.viewDidLoad()
         customView.delegate = self
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.title = NSLocalizedString("bookmarks_title", comment: "")
     }
     
 }
