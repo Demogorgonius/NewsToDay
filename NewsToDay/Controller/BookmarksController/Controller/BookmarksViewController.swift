@@ -18,6 +18,8 @@ class BookmarksViewController : UIViewController {
         table.delegate = self
         table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
+        table.separatorStyle = .singleLine
+        table.separatorInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         table.register(BookmarksTableViewCell.self,
                        forCellReuseIdentifier: BookmarksTableViewCell.identifier)
        return table
@@ -55,7 +57,29 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
         return testPosts.count
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 110
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let footerView = UIView()
+        footerView.backgroundColor = .clear
+        return footerView
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksTableViewCell.identifier, for: indexPath)
@@ -70,12 +94,6 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
-    }
-    
-   
     
 }
 

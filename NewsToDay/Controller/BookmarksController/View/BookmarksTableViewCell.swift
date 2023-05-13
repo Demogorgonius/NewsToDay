@@ -10,25 +10,19 @@ import UIKit
 class BookmarksTableViewCell: UITableViewCell {
     static let identifier = "BookmarksTableViewCell"
     
-    private let contentWhiteView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderColor = UIColor.black.cgColor
-        return view
-    }()
-    
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = UIFont(name: Fonts.interLight, size: 20)
+        label.textColor = UIColor(named: Resources.Colors.greyPrimary)
         return label
     }()
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 24, weight: .medium)
+        label.font = UIFont(name: Fonts.interMedium, size: 20)
+        label.numberOfLines = 2
         return label
     }()
     
@@ -38,6 +32,8 @@ class BookmarksTableViewCell: UITableViewCell {
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .blue
         image.image = UIImage(named: "default")
+        image.layer.cornerRadius = 12
+        image.layer.masksToBounds = true
         return image
     }()
     
@@ -57,7 +53,8 @@ class BookmarksTableViewCell: UITableViewCell {
     func updateNews(model: TestForBookmarks) {
         print(model)
  
-            self.descriptionLabel.text = model.description
+            self.descriptionLabel.text = "A Simple Trick For Creating Color Palettes Quickly"
+
             //            self.authorLabel.text = model.author
             //            self.contentLabel.text = model.content
             self.newsTitleLabel.text = model.title
@@ -65,29 +62,29 @@ class BookmarksTableViewCell: UITableViewCell {
         
     }
     
+    
+    
     func layout() {
-        [contentWhiteView, newsTitleLabel,descriptionLabel,imageNews].forEach { contentView.addSubview($0) }
+        [newsTitleLabel,descriptionLabel,imageNews].forEach { contentView.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            contentWhiteView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            contentWhiteView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            contentWhiteView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            contentWhiteView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             
-            imageNews.topAnchor.constraint(equalTo: contentWhiteView.topAnchor),
-            imageNews.leadingAnchor.constraint(equalTo: contentWhiteView.leadingAnchor, constant: 20),
-            imageNews.bottomAnchor.constraint(equalTo: contentWhiteView.bottomAnchor),
+            
+            imageNews.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            imageNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            imageNews.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             imageNews.widthAnchor.constraint(equalToConstant: 96),
+            imageNews.heightAnchor.constraint(equalToConstant: 96),
 
-            newsTitleLabel.leadingAnchor.constraint(equalTo: contentWhiteView.leadingAnchor, constant: 90),
-            newsTitleLabel.topAnchor.constraint(equalTo: contentWhiteView.topAnchor, constant: 10),
-            newsTitleLabel.trailingAnchor.constraint(equalTo: contentWhiteView.trailingAnchor, constant: -19),
-            newsTitleLabel.heightAnchor.constraint(equalToConstant: 70),
+            newsTitleLabel.leadingAnchor.constraint(equalTo: imageNews.trailingAnchor, constant: 16),
+            newsTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            newsTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19),
 
             descriptionLabel.topAnchor.constraint(equalTo: newsTitleLabel.bottomAnchor, constant: 8),
-            descriptionLabel.leadingAnchor.constraint(equalTo: contentWhiteView.leadingAnchor, constant: 190),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentWhiteView.trailingAnchor, constant: -19),
-
+            descriptionLabel.leadingAnchor.constraint(equalTo: imageNews.trailingAnchor, constant: 16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -19),
+            descriptionLabel.heightAnchor.constraint(equalToConstant: 50)
+    
             ])
 
     }

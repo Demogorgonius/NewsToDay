@@ -10,4 +10,6 @@ import Foundation
 enum Fonts {
     static let interRegular = "Inter-Regular"
     static let interBold = "Inter-Bold"
+    static let interLight = "Inter-Light"
+    static let interMedium = "Inter-Medium"
 }
