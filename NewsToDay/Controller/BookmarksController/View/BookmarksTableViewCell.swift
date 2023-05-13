@@ -13,7 +13,7 @@ class BookmarksTableViewCell: UITableViewCell {
     private let newsTitleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: Fonts.interLight, size: 20)
+        label.font = UIFont(name: Fonts.interLight, size: 14)
         label.textColor = UIColor(named: Resources.Colors.greyPrimary)
         return label
     }()
@@ -21,7 +21,7 @@ class BookmarksTableViewCell: UITableViewCell {
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont(name: Fonts.interMedium, size: 20)
+        label.font = UIFont(name: Fonts.interRegular, size: 16)
         label.numberOfLines = 2
         return label
     }()
@@ -68,7 +68,6 @@ class BookmarksTableViewCell: UITableViewCell {
         [newsTitleLabel,descriptionLabel,imageNews].forEach { contentView.addSubview($0) }
 
         NSLayoutConstraint.activate([
-            
             
             imageNews.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
             imageNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),

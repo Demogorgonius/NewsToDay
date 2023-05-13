@@ -11,15 +11,14 @@ import UIKit
 class BookmarksViewController : UIViewController {
     
     private var viewModels = [TestForBookmarks]()
-    private let testPosts = testPost
+    private var testPosts = testPost
     
     private lazy var tableView: UITableView = {
-       let table = UITableView()
+       let table = UITableView(frame: .zero, style: .grouped)
         table.delegate = self
         table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
         table.separatorStyle = .singleLine
-        table.separatorInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
         table.register(BookmarksTableViewCell.self,
                        forCellReuseIdentifier: BookmarksTableViewCell.identifier)
        return table
@@ -62,18 +61,9 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 40
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 10
-    }
+
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
@@ -91,10 +81,39 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .white
+        
+        let headerLabel = UILabel()
+        headerLabel.text = "Saved articles to the library"
+        headerLabel.textColor = UIColor(named: Resources.Colors.greyPrimary)
+        headerLabel.font = UIFont(name: Fonts.interRegular, size: 16)
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        headerView.addSubview(headerLabel)
+        headerLabel.leadingAnchor.constraint(equalTo: headerView.leadingAnchor, constant: 20).isActive = true
+        headerLabel.bottomAnchor.constraint(equalTo: headerView.bottomAnchor, constant: -10).isActive = true
+        headerLabel.centerYAnchor.constraint(equalTo: headerView.centerYAnchor).isActive = true
+        return headerView
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Удаляем содержимое ячейки
+            testPosts.remove(at: indexPath.row)
+            // Удаляем ячейку из таблицы
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
 
 
