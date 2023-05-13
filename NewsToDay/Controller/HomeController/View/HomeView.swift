@@ -7,34 +7,16 @@
 
 import Foundation
 import UIKit
-import SnapKit
 
-
-protocol HomeViewDelegate: AnyObject {
+class HomeView {
     
-}
-
-class HomeView: CustomView {
-    
-    weak var delegate: HomeViewDelegate?
-    
-    //MARK: - setViews
-    
-    override func setViews() {
-         super.setViews()
-        
-        // add subviews to view
-        
-    }
-    
-    //MARK: - layoutView
-    
-    override func layoutViews() {
-        super.layoutViews()
-        
-        // setup constraints
-        
-    }
-    
-    
+    lazy var collectionView: UICollectionView = {
+        let collectViewLayout = UICollectionViewLayout()
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectViewLayout)
+        collectionView.backgroundColor = .none
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+//        collectionView.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "CategoriesCollectionViewCell")
+        return collectionView
+    }()
 }

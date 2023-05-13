@@ -13,14 +13,6 @@ class OnboardingViewController: UIViewController {
     let arrayUI = OnboardingModel()
     var index = 0
     
-    //MARK: - Lifecycle
-    override func viewDidLoad() {
-        view.backgroundColor = .systemBackground
-        
-        setConstraints()
-        updateUI()
-    }
-    
     //MARK: - Views
     /// image
     private let cityImageView: UIImageView = {
@@ -92,6 +84,14 @@ class OnboardingViewController: UIViewController {
         textView.font = .systemFont(ofSize: 16, weight: .regular)
         return textView
     }()
+    
+    //MARK: - Lifecycle
+    override func viewDidLoad() {
+        view.backgroundColor = .systemBackground
+        
+        setConstraints()
+        updateUI()
+    }
     
     //MARK: - Methods
     func updateUI() {

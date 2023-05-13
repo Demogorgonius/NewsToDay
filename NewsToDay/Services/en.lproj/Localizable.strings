@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  NewsToDay
+
+  Created by Sergey Zvontsov on 11.05.2023.
+  
+*/
+
+"title" = "Title";
+"TabBar_Bookmarks" = "Bookmarks";
+"TabBar_Browse" = "Browse";
+"TabBar_Categories" = "Categories";
+"TabBar_Profile" = "Profile";
