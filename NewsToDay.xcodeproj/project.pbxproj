@@ -11,6 +11,8 @@
 		0D037C592A0BCCEA002F7EE3 /* Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D037C582A0BCCEA002F7EE3 /* Resources.swift */; };
 		0D037C652A0BED28002F7EE3 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D037C642A0BED28002F7EE3 /* Extensions.swift */; };
 		0D037C802A0C0A3F002F7EE3 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D037C7F2A0C0A3F002F7EE3 /* Fonts.swift */; };
+		0D037C822A0D8C1F002F7EE3 /* BookmarksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D037C812A0D8C1F002F7EE3 /* BookmarksTableViewCell.swift */; };
+		0D037C842A0ED75D002F7EE3 /* TestForBookmarks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D037C832A0ED75D002F7EE3 /* TestForBookmarks.swift */; };
 		94A2A1962A0A8A67001DCEC0 /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A2A1952A0A8A67001DCEC0 /* NewsManager.swift */; };
 		A21DF62B2A0D6A4500FD1154 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = A21DF62A2A0D6A4500FD1154 /* SnapKit */; };
 		A21DF6412A0D80DF00FD1154 /* OnboardingPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A21DF6402A0D80DF00FD1154 /* OnboardingPageModel.swift */; };
@@ -57,6 +59,8 @@
 		0D037C582A0BCCEA002F7EE3 /* Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resources.swift; sourceTree = "<group>"; };
 		0D037C642A0BED28002F7EE3 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0D037C7F2A0C0A3F002F7EE3 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		0D037C812A0D8C1F002F7EE3 /* BookmarksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksTableViewCell.swift; sourceTree = "<group>"; };
+		0D037C832A0ED75D002F7EE3 /* TestForBookmarks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestForBookmarks.swift; sourceTree = "<group>"; };
 		94A2A1952A0A8A67001DCEC0 /* NewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		A21DF6402A0D80DF00FD1154 /* OnboardingPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageModel.swift; sourceTree = "<group>"; };
 		A21DF6422A0D820B00FD1154 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				94A2A1952A0A8A67001DCEC0 /* NewsManager.swift */,
+				0D037C832A0ED75D002F7EE3 /* TestForBookmarks.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -305,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				A5FAAE022A0ADF4100499B78 /* BookmarksView.swift */,
+				0D037C812A0D8C1F002F7EE3 /* BookmarksTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,6 +456,7 @@
 				A5FAAE272A0EBB1C00499B78 /* HeaderSupplemetaryView.swift in Sources */,
 				A21DF6432A0D820B00FD1154 /* OnboardingViewController.swift in Sources */,
 				94A2A1962A0A8A67001DCEC0 /* NewsManager.swift in Sources */,
+				0D037C842A0ED75D002F7EE3 /* TestForBookmarks.swift in Sources */,
 				A21DF6412A0D80DF00FD1154 /* OnboardingPageModel.swift in Sources */,
 				A5FAAE322A0EBBC500499B78 /* ListItem.swift in Sources */,
 				A5FAADF82A0AD0E800499B78 /* CustomViewController.swift in Sources */,
@@ -460,6 +467,7 @@
 				A5FAAE0D2A0ADFA100499B78 /* ProfileViewController.swift in Sources */,
 				A5FAAE292A0EBB1C00499B78 /* TextFieldCollectionViewCell.swift in Sources */,
 				A5DF44392A08193F00491528 /* ViewController.swift in Sources */,
+				0D037C822A0D8C1F002F7EE3 /* BookmarksTableViewCell.swift in Sources */,
 				0D037C572A0AA191002F7EE3 /* NewsViewConroller.swift in Sources */,
 				0D037C592A0BCCEA002F7EE3 /* Resources.swift in Sources */,
 				A5FAADFC2A0AD21500499B78 /* CustomTabBar.swift in Sources */,
