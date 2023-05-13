@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class BookmarksViewController : UIViewController {
+class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     private var viewModels = [TestForBookmarks]()
     private var testPosts = testPost
@@ -32,6 +32,8 @@ class BookmarksViewController : UIViewController {
         super.viewDidLoad()
 //        customView.delegate = self
         view.backgroundColor = .red
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.title = NSLocalizedString("TabBar_Bookmarks", comment: "")
         layoutTableView()
     }
     
