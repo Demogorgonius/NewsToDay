@@ -1,4 +1,4 @@
-/* 
+/*
   Localizable.strings
   NewsToDay
 
@@ -11,3 +11,18 @@
 "TabBar_Browse" = "Обзор";
 "TabBar_Categories" = "Категории";
 "TabBar_Profile" = "Профиль";
+"textFieldPlaceholder" = "Поиск";
+"headerRecommendedNews" = "Рекомендованные для вас";
+"randomTopic" = "Все";
+"sportTopic" = "Спорт";
+"gamingTopic" = "Игры";
+"politicsTopic" = "Политика";
+"descriptionHomeVC" = "Открой для себя этот мир";
+"UI/UX DESIGN" = "UI/UX ДИЗАЙН";
+"ui/ux design" = "UI/UX Дизайн";
+"ART" = "ИСКУССТВО";
+"art" = "Искусство";
+"POLITICS" = "ПОЛИТИКА";
+"politics" = "Политика";
+"COLORS" = "ЦВЕТА";
+"colors" = "Цвета";

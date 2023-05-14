@@ -36,7 +36,7 @@ enum ListSection {
         case .news(_):
             return ""
         case .recommended(_):
-            return "Recommended for you"
+            return NSLocalizedString("headerRecommendedNews", comment: "")
         }
     }
 }
