@@ -11,8 +11,7 @@ import SnapKit
 final class HeaderSupplemetaryView: UICollectionReusableView {
     private lazy var headerLabel: UILabel = {
         let element = UILabel()
-        element.text = "Recommended for you"
-        element.textColor = UIColor(hexString: "#333647")
+        element.textColor = .blackPrimary
         element.font = .boldSystemFont(ofSize: 20)
         return element
     }()

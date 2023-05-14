@@ -14,13 +14,14 @@ final class RecomendedNewsCollectionViewCell: UICollectionViewCell {
         let element = UIImageView()
         element.layer.cornerRadius = 12
         element.layer.masksToBounds = true
+        element.contentMode = .scaleAspectFill
         return element
     }()
     
     private lazy var newsTopicLabel: UILabel = {
         let element = UILabel()
         element.font = .systemFont(ofSize: 14, weight: .light)
-        element.textColor = UIColor(hexString: "#7C82A1")
+        element.textColor = .greyPrimary
         element.numberOfLines = 1
         return element
     }()
@@ -28,7 +29,7 @@ final class RecomendedNewsCollectionViewCell: UICollectionViewCell {
     private lazy var newsLabel: UILabel = {
         let element = UILabel()
         element.font = .boldSystemFont(ofSize: 16)
-        element.textColor = UIColor(hexString: "#333647")
+        element.textColor = .blackPrimary
         element.numberOfLines = 0
         return element
     }()

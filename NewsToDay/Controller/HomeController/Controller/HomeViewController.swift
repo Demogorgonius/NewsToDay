@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 import SnapKit
-import SwiftUI
 
 class HomeViewController: UIViewController {
     
@@ -144,7 +143,7 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         case .news(let news):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "LatestNewsCollectionViewCell", for: indexPath) as? LatestNewsCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(image: news[indexPath.row].image)
+            cell.configureCell(image: news[indexPath.row].image, topic: news[indexPath.row].newsTopic, news: news[indexPath.row].news)
             return cell
         case .recommended(let recommendedNews):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "RecomendedNewsCollectionViewCell", for: indexPath) as? RecomendedNewsCollectionViewCell else { return UICollectionViewCell() }
@@ -179,24 +178,5 @@ extension HomeViewController {
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
-    }
-}
-
-struct ContentViewController: UIViewControllerRepresentable {
-
-    typealias UIViewControllerType = HomeViewController
-
-    func makeUIViewController(context: Context) -> UIViewControllerType {
-        return HomeViewController()
-    }
-
-    func updateUIViewController(_ uiViewController: HomeViewController, context: Context) {}
-}
-
-struct ContentViewController_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentViewController()
-            .edgesIgnoringSafeArea(.all)
-            .colorScheme(.light) // or .dark
     }
 }

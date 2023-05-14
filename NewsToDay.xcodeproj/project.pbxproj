@@ -343,11 +343,11 @@
 		A5FAAE202A0EBB1C00499B78 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				A5FAAE242A0EBB1C00499B78 /* TextFieldCollectionViewCell.swift */,
 				A5FAAE212A0EBB1C00499B78 /* CategoriesCollectionViewCell.swift */,
+				A5FAAE252A0EBB1C00499B78 /* LatestNewsCollectionViewCell.swift */,
 				A5FAAE222A0EBB1C00499B78 /* HeaderSupplemetaryView.swift */,
 				A5FAAE232A0EBB1C00499B78 /* RecomendedNewsCollectionViewCell.swift */,
-				A5FAAE242A0EBB1C00499B78 /* TextFieldCollectionViewCell.swift */,
-				A5FAAE252A0EBB1C00499B78 /* LatestNewsCollectionViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
