@@ -13,7 +13,7 @@ class OnboardingViewController: UIViewController {
     let arrayUI = OnboardingModel()
     var index = 0
     
-    //MARK: - Views
+    //MARK: - UI components
     /// image
     private let cityImageView: UIImageView = {
         let image = UIImageView()
@@ -28,8 +28,8 @@ class OnboardingViewController: UIViewController {
         let pageControl = UIPageControl()
         pageControl.numberOfPages = 6
         pageControl.currentPage = 0
-        pageControl.pageIndicatorTintColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        pageControl.currentPageIndicatorTintColor = #colorLiteral(red: 0.2799836993, green: 0.3524911404, blue: 0.8440649509, alpha: 1)
+        pageControl.pageIndicatorTintColor = UIColor(named: Colors.greyLighter)
+        pageControl.currentPageIndicatorTintColor = UIColor(named: Colors.purpleDarker)
         return pageControl
     }()
     
@@ -41,7 +41,7 @@ class OnboardingViewController: UIViewController {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         button.titleLabel?.textAlignment = .center
         button.configuration?.baseForegroundColor = .white
-        button.configuration?.baseBackgroundColor = #colorLiteral(red: 0.2799836993, green: 0.3524911404, blue: 0.8440649509, alpha: 1)
+        button.configuration?.baseBackgroundColor = UIColor(named: Colors.purpleDarker)
         button.configuration?.cornerStyle = .medium
         button.addTarget(self, action: #selector(updatingUIButton(_:)), for: .touchUpInside)
         return button
@@ -89,7 +89,7 @@ class OnboardingViewController: UIViewController {
     override func viewDidLoad() {
         view.backgroundColor = .systemBackground
         
-        setConstraints()
+        setupUI()
         updateUI()
     }
     
@@ -104,10 +104,10 @@ class OnboardingViewController: UIViewController {
     }
 }
 
-//MARK: - Extensions
 extension OnboardingViewController {
     
-    private func setConstraints() {
+    //MARK: - setupUI
+    private func setupUI() {
         
         /// ADDING SUBVIEWS
         lazy var subView: [UIView] = [self.cityImageView, self.pageControl, self.nextButton, self.titleTextView, self.descriptionTextView]

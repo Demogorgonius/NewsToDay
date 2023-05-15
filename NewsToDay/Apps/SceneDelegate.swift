@@ -15,12 +15,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
                window = UIWindow(windowScene: scene)
-               //let vc = ViewController()
-
-           // let vcNews = NewsViewConroller()
-
-            let vcNews = OnboardingViewController()
-
+        
+        #warning("Поменять при завершении проекта")
+//            let vc = OnboardingViewController()
             let vc = CustomTabBarController()
         
             window!.rootViewController = vc

@@ -89,7 +89,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
         
         let headerLabel = UILabel()
         headerLabel.text = "Saved articles to the library"
-        headerLabel.textColor = UIColor(named: Resources.Colors.greyPrimary)
+        headerLabel.textColor = UIColor(named: Colors.greyPrimary)
         headerLabel.font = UIFont(name: Fonts.interRegular, size: 16)
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         
