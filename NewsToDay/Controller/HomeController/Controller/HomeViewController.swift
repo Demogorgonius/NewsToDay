@@ -10,9 +10,12 @@ import UIKit
 import SnapKit
 
 class HomeViewController: UIViewController {
+
     
     private let homeView = HomeView()
     private let sections = MockData.shared.pageData
+    var newsManager = NewsManager()
+    var newsData: [Article]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +23,24 @@ class HomeViewController: UIViewController {
         addViews()
         setupViews()
         setDelegates()
+        getFetchDataNews()
+        //        let error: () = newsManager.getNews()
+        //        print(error)
+    }
+    
+    private func getFetchDataNews() {
+        newsManager.performRequest { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.newsData = data
+                    self.homeView.collectionView.reloadData()
+                    print(self.newsData)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
     }
     
     private func setupViews() {
@@ -116,6 +137,11 @@ class HomeViewController: UIViewController {
     private func supplementaryHeaderItem() -> NSCollectionLayoutBoundarySupplementaryItem {
         .init(layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(30)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
     }
+    
+    //    func configureCell(cell: LatestNewsCollectionViewCell, indexPath: IndexPath) {
+    //        cell.topicNewsLabel.text = newsManager.newsData[indexPath.row].title
+    //        cell.newsLabel.text = newsManager.newsData[indexPath.row].description
+    //    }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -129,7 +155,17 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        sections[section].count
+        //        print(newsData.count)
+        switch sections[section] {
+        case .textField(_):
+            return 1
+        case .topics(_):
+            return 10
+        case .news(_):
+            return 10
+        case .recommended(_):
+            return 4
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -141,16 +177,28 @@ extension HomeViewController: UICollectionViewDataSource {
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
             cell.configureCell(topicName: topic[indexPath.row].categories)
             return cell
-        case .news(let news):
+        case .news(_):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "LatestNewsCollectionViewCell", for: indexPath) as? LatestNewsCollectionViewCell else { return UICollectionViewCell() }
-            cell.configureCell(image: news[indexPath.row].image, topic: news[indexPath.row].newsTopic, news: news[indexPath.row].news)
+                        
+            if let newsDataNew = newsData {
+                cell.configureCell(image: nil, topic: newsDataNew[indexPath.row].title ?? "", news: newsDataNew[indexPath.row].description ?? "")
+//                cell.newsLabel.text = newsDataNew[indexPath.row].title
+//                cell.topicNewsLabel.text = newsDataNew[indexPath.row].description
+                
+            } else {
+                cell.newsLabel.text = "some text"
+                cell.topicNewsLabel.text = ""
+            
+            }
             return cell
+            
         case .recommended(let recommendedNews):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "RecomendedNewsCollectionViewCell", for: indexPath) as? RecomendedNewsCollectionViewCell else { return UICollectionViewCell() }
             cell.configureCell(image: recommendedNews[indexPath.row].image, newTopic: recommendedNews[indexPath.row].newsTopic, news: recommendedNews[indexPath.row].news)
             return cell
         }
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {

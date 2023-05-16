@@ -9,10 +9,12 @@ import UIKit
 import SnapKit
 
 final class LatestNewsCollectionViewCell: UICollectionViewCell {
+ 
     
     var bookMarkChangeColor: Bool = false
+    var newsManager = NewsManager()
     
-    private lazy var latestNewsImage: UIImageView = {
+     var latestNewsImage: UIImageView = {
         let element = UIImageView()
         element.layer.cornerRadius = 12
         element.layer.masksToBounds = true
@@ -20,7 +22,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-    private lazy var topicNewsLabel: UILabel = {
+     var topicNewsLabel: UILabel = {
         let element = UILabel()
         element.textColor = .greyLighter
         element.font = .systemFont(ofSize: 12)
@@ -29,7 +31,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-    private lazy var newsLabel: UILabel = {
+    var newsLabel: UILabel = {
         let element = UILabel()
         element.textColor = .white
         element.font = .boldSystemFont(ofSize: 16)
@@ -61,7 +63,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+//        newsManager.getNews(for: "general")
         setupView()
         setConstraints()
     }
@@ -70,11 +72,26 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(image: String, topic: String, news: String) {
-        latestNewsImage.image = UIImage(named: image)
+    func configureCell(image: String?, topic: String, news: String) {
+        latestNewsImage.image = UIImage(named: image ?? "default") 
         topicNewsLabel.text = topic
         newsLabel.text = news
     }
+    
+    func updateNews(model: NewsModel) {
+        DispatchQueue.main.async {
+            self.topicNewsLabel.text = model.title
+            self.newsLabel.text = model.description
+            
+            guard let imageUrl = URL(string: model.urlToImage) else { return }
+            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
+            
+            DispatchQueue.main.async {
+                self.latestNewsImage.image =  UIImage(data: imageData)
+                }
+        }
+    }
+    
     
     private func setupView() {
         addSubview(latestNewsImage)

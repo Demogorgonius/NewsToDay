@@ -50,8 +50,8 @@ class BookmarksTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    func updateNews(model: TestForBookmarks) {
-        print(model)
+    func updateNewsBookmarks(model: TestForBookmarks) {
+//        print(model)
  
             self.descriptionLabel.text = "A Simple Trick For Creating Color Palettes Quickly"
 

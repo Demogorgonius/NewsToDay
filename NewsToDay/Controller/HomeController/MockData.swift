@@ -10,6 +10,7 @@ import Foundation
 struct MockData {
     
     static let shared = MockData()
+    static let data = NewsManager().newsData
     
     private let textField: ListSection = {
         .textField([.init(image: "", categories: "", newsTopic: "", news: "")])
