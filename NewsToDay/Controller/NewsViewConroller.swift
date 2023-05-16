@@ -45,7 +45,7 @@ class NewsViewConroller: UIViewController {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
         text.font = UIFont(name: Fonts.interBold, size: 24)
-        text.textColor = UIColor(named: Resources.Colors.white)
+        text.textColor = UIColor(named: Colors.white)
 //        text.setLineHeight(30)
         text.text = "The latest situation in the presidential election"
         text.textAlignment = .left
@@ -57,7 +57,7 @@ class NewsViewConroller: UIViewController {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
         text.font = UIFont(name: Fonts.interRegular, size: 24)
-        text.textColor = UIColor(named: Resources.Colors.white)
+        text.textColor = UIColor(named: Colors.white)
         text.setLineHeight(24)
         text.text = "John Doe"
         return text
@@ -68,7 +68,7 @@ class NewsViewConroller: UIViewController {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
         text.font = UIFont(name: Fonts.interRegular, size: 18)
-        text.textColor = UIColor(named: Resources.Colors.greyLight)
+        text.textColor = UIColor(named: Colors.greyLight)
 //        text.setLineHeight(20)
         text.text = "Author"
         return text
@@ -79,12 +79,12 @@ class NewsViewConroller: UIViewController {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
         text.font = UIFont(name: Fonts.interRegular, size: 14)
-        text.textColor = UIColor(named: Resources.Colors.greyLight)
+        text.textColor = UIColor(named: Colors.greyLight)
 //        text.setLineHeight(20)
         text.text = "Politics"
         text.textColor = .white
         text.textAlignment = .center
-        text.backgroundColor = UIColor(named: Resources.Colors.purplePrimary)
+        text.backgroundColor = UIColor(named: Colors.purplePrimary)
         text.layer.cornerRadius = 16
         text.layer.masksToBounds = true
         return text
@@ -95,7 +95,7 @@ class NewsViewConroller: UIViewController {
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
         text.font = UIFont(name: Fonts.interRegular, size: 20)
-        text.textColor = UIColor(named: Resources.Colors.greyDarker)
+        text.textColor = UIColor(named: Colors.greyDarker)
         text.setLineHeight(24)
         text.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
         return text

@@ -14,7 +14,7 @@ class BookmarksTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: Fonts.interLight, size: 14)
-        label.textColor = UIColor(named: Resources.Colors.greyPrimary)
+        label.textColor = UIColor(named: Colors.greyPrimary)
         return label
     }()
     
