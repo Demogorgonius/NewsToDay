@@ -18,6 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         #warning("Поменять при завершении проекта")
 //            let vc = OnboardingViewController()
+//            let testVC = ViewController()
             let vc = CustomTabBarController()
         
             window!.rootViewController = vc
