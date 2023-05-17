@@ -17,9 +17,12 @@
 "sportTopic" = "Sport";
 "healthTopic" = "Health";
 "businessTopic" = "Business";
+"foodTopic" = "Food";
 "scienceTopic" = "Science";
 "technologyTopic" = "Technology";
 "entertainmentTopic" = "Entertainment";
+"environmentTopic" = "Environment";
+"tourismTopic" = "Tourism";
 "descriptionHomeVC" = "Discover things of this world";
 "UI/UX DESIGN" = "UI/UX DESIGN";
 "ui/ux design" = "ui/ux design";

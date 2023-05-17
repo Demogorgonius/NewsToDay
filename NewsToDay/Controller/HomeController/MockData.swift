@@ -20,9 +20,12 @@ struct MockData {
                  .init(image: "", categories: NSLocalizedString("sportTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("healthTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("businessTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("foodTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("scienceTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("technologyTopic", comment: ""), newsTopic: "", news: ""),
-                 .init(image: "", categories: NSLocalizedString("entertainmentTopic", comment: ""), newsTopic: "", news: "")])
+                 .init(image: "", categories: NSLocalizedString("entertainmentTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("tourismTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("environmentTopic", comment: ""), newsTopic: "", news: "")])
     }()
     
     private let news: ListSection = {
