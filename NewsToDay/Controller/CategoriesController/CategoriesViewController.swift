@@ -1,19 +1,11 @@
-//
-//  CategoriesViewController.swift
-//  NewsToDay
-//
-//  Created by Sergey on 09.05.2023.
-//
-
 import Foundation
 import UIKit
 
 class CategoriesViewController : UIViewController {
     
-    var defaults = UserDefaults.standard
+    var categoriesManager = CategoriesManager()
     var nextButton = UIButton()
     let source: [Category] = Source.allCategories()
-    var setOfCategories: [String] = ["Random"]
     var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -21,7 +13,10 @@ class CategoriesViewController : UIViewController {
         setupNextButton()
         super.viewDidLoad()
         view.backgroundColor = .white
-        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
     
     func setupNextButton() {
@@ -35,18 +30,13 @@ class CategoriesViewController : UIViewController {
             nextButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor,constant: -20),
             nextButton.heightAnchor.constraint(equalToConstant: 64)
         ])
-        nextButton.setTitle("Next", for: .normal)
+        nextButton.setTitle(NSLocalizedString("Categories_NextButton", comment: ""), for: .normal)
         nextButton.setTitleColor(.black, for: .normal)
         nextButton.backgroundColor = UIColor(named: "Purple Primary")
-        nextButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+        nextButton.addTarget(categoriesManager, action: #selector(categoriesManager.setUserDefaults), for: .touchUpInside)
         nextButton.layer.cornerRadius = 20
     }
-    
-    @objc func buttonAction() {
-        UserDefaults.resetStandardUserDefaults()
-        defaults.set(setOfCategories, forKey: "categories")
 
-    }
     func setup() {
         collectionView = UICollectionView(frame: .zero , collectionViewLayout: setupFlowLayout())
         view.addSubview(collectionView)
@@ -108,30 +98,11 @@ extension CategoriesViewController: UICollectionViewDataSource {
         return cell
     }
     @objc func addToCollection(button: UIButton) {
-        let category = getRightCategory(buttonTitle: (button.titleLabel?.text)!)
-        if setOfCategories.contains(category){
-            setOfCategories = setOfCategories.filter({ $0 != category})
+        let category = categoriesManager.getRightCategory(buttonTitle: (button.titleLabel?.text)!)
+        if categoriesManager.setOfCategories.contains(category){
+            categoriesManager.setOfCategories = categoriesManager.setOfCategories.filter({ $0 != category})
         }else {
-            setOfCategories.append(category)
-        }
-    }
-    
-    func getRightCategory(buttonTitle: String) -> String{
-        switch buttonTitle {
-        case "🖥️  Technology":
-            return "technology"
-        case "📚  Science":
-            return "science"
-        case "🎭  Entertainment":
-            return "entertaiment"
-        case "🎰  Business":
-            return "business"
-        case "🏥  Health":
-            return "health"
-        case "⚽️  Sports":
-            return "sports"
-        default:
-            return "unexpected case"
+            categoriesManager.setOfCategories.append(category)
         }
     }
     
