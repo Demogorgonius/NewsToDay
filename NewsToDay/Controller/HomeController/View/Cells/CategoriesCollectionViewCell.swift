@@ -57,7 +57,7 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
     func setConstraints() {
         categoryLabel.snp.makeConstraints { make in
             make.height.equalTo(32)
-            make.width.equalTo(80)
+            make.width.equalTo(100)
         }
     }
 }

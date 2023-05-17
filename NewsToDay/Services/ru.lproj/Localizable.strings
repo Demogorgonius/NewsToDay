@@ -15,8 +15,11 @@
 "headerRecommendedNews" = "Рекомендованные для вас";
 "randomTopic" = "Все";
 "sportTopic" = "Спорт";
-"gamingTopic" = "Игры";
-"politicsTopic" = "Политика";
+"healthTopic" = "Здоровье";
+"businessTopic" = "Бизнес";
+"scienceTopic" = "Наука";
+"technologyTopic" = "Технологии";
+"entertainmentTopic" = "Развлечения";
 "descriptionHomeVC" = "Открой для себя этот мир";
 "UI/UX DESIGN" = "UI/UX ДИЗАЙН";
 "ui/ux design" = "UI/UX Дизайн";
@@ -25,4 +28,4 @@
 "POLITICS" = "ПОЛИТИКА";
 "politics" = "Политика";
 "COLORS" = "ЦВЕТА";
-"colors" = "Цвета";
+"Colors" = "Цвета";

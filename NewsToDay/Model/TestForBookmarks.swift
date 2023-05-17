@@ -14,8 +14,7 @@ struct TestForBookmarks {
 }
 
 let testPost: [TestForBookmarks] = [TestForBookmarks(image: "defaultCell", title: "UI/UX Design", description: "A Simple Trick For Creating Color Palettes Quickly"),
-                                TestForBookmarks(image: "defaultCell", title: "UI/UX Design", description: "Six steps to creating a color palette"),
-                                TestForBookmarks(image: "defaultCell", title: "UI/UX Design", description: "Creating Color Palette from world around you"),
-                                TestForBookmarks(image: "defaultCell", title: "UI/UX Design", description: "A Simple Trick For Creating Color Palettes Quickly")
-
+                                    TestForBookmarks(image: "defaultCell", title: "UI/UX Design", description: "Six steps to creating a color palette"),
+                                    TestForBookmarks(image: "defaultCell", title: "UI/UX Design", description: "Creating Color Palette from world around you"),
+                                    TestForBookmarks(image: "defaultCell", title: "UI/UX Design", description: "A Simple Trick For Creating Color Palettes Quickly")
 ]

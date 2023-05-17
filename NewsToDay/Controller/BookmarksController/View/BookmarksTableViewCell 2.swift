@@ -14,7 +14,7 @@ class BookmarksTableViewCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont(name: Fonts.interLight, size: 14)
-        label.textColor = UIColor(named: Colors.greyPrimary)
+        label.textColor = UIColor(named: Resources.Colors.greyPrimary)
         return label
     }()
     
@@ -50,15 +50,15 @@ class BookmarksTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    func updateNewsBookmarks(image: String, title: String, description: String) {
-//        print(model)
+    func updateNews(model: TestForBookmarks) {
+        print(model)
  
-            self.descriptionLabel.text = description
+            self.descriptionLabel.text = "A Simple Trick For Creating Color Palettes Quickly"
 
             //            self.authorLabel.text = model.author
             //            self.contentLabel.text = model.content
-            self.newsTitleLabel.text = title
-            self.imageNews.image = UIImage(named: image)
+            self.newsTitleLabel.text = model.title
+            self.imageNews.image = UIImage(named: model.image)
         
     }
     
