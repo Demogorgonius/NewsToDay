@@ -15,20 +15,26 @@ class HomeViewController: UIViewController {
     private let sections = MockData.shared.pageData
     var newsManager = NewsManager()
     var newsData: [Results]?
-    var selectedCategory = ["Все" : "general",
-                     "Развлечения" : "entertainment",
-                     "Бизнес" : "business",
-                     "Здоровье" : "health",
-                     "Наука" : "science",
-                     "Спорт" : "sports",
-                     "Технологии" : "technology",
-                     "Random" : "general",
-                     "Entertainment" : "entertainment",
-                     "Business" : "business",
-                     "Health" : "health",
-                     "Science" : "science",
-                     "Sport" : "sports",
-                     "Technology" : "technology"]
+    var selectedCategory = ["Все" : "top",
+                            "Развлечения" : "entertainment",
+                            "Природа" : "environment",
+                            "Бизнес" : "business",
+                            "Еда" : "food",
+                            "Здоровье" : "health",
+                            "Наука" : "science",
+                            "Спорт" : "sports",
+                            "Технологии" : "technology",
+                            "Туризм" : "tourism",
+                            "Random" : "top",
+                            "Entertainment" : "entertainment",
+                            "Environment" : "environment",
+                            "Business" : "business",
+                            "Food" : "food",
+                            "Health" : "health",
+                            "Science" : "science",
+                            "Sport" : "sports",
+                            "Technology" : "technology",
+                            "Tourism" : "tourism"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +46,7 @@ class HomeViewController: UIViewController {
     }
     
     private func fetchDataNews() {
-        newsManager.performRequest(category: "top") { result in
+        newsManager.performRequest(category: "world") { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
@@ -57,7 +63,7 @@ class HomeViewController: UIViewController {
     private func getNewsFromTopic(category: String) {
         if let index = MockData.shared.topics.items.firstIndex(where: { $0.categories == category }) {
             let selected = MockData.shared.topics.items[index].categories
-            newsManager.performRequest(category: selectedCategory[selected] ?? "general") { result in
+            newsManager.performRequest(category: selectedCategory[selected] ?? "top") { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let news):
@@ -180,7 +186,7 @@ extension HomeViewController: UICollectionViewDelegate {
             getNewsFromTopic(category: selectedCategory)
             if let latestNewsCell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell {
                 if let newDone = newsData {
-                    latestNewsCell.configureCell(image: nil, topic: newDone[indexPath.row].title ?? "", news: newDone[indexPath.row].title ?? "")
+                    latestNewsCell.configureCell(image: nil, topic: newDone[indexPath.row].creator?[0] ?? "", news: newDone[indexPath.row].title ?? "")
                 } else {
                     latestNewsCell.latestNewsImage.image = UIImage(named: "default")
                     latestNewsCell.topicNewsLabel.text = ""
@@ -206,7 +212,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case .textField(_):
             return 1
         case .topics(_):
-            return 7
+            return 10
         case .news(_):
             return 10
         case .recommended(_):
@@ -227,7 +233,7 @@ extension HomeViewController: UICollectionViewDataSource {
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "LatestNewsCollectionViewCell", for: indexPath) as? LatestNewsCollectionViewCell else { return UICollectionViewCell() }
                         
             if let newsDataNew = newsData {
-                cell.configureCell(image: nil, topic: newsDataNew[indexPath.row].title ?? "", news: newsDataNew[indexPath.row].description ?? "")
+                cell.configureCell(image: URL(string: newsDataNew[indexPath.row].image_url ?? ""), topic: newsDataNew[indexPath.row].creator?[0] ?? "", news: newsDataNew[indexPath.row].description ?? "")
             } else {
                 cell.newsLabel.text = "some text"
                 cell.topicNewsLabel.text = ""

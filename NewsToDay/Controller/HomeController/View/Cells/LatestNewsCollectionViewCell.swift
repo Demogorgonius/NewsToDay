@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 final class LatestNewsCollectionViewCell: UICollectionViewCell {
  
@@ -71,8 +72,8 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(image: String?, topic: String, news: String) {
-        latestNewsImage.image = UIImage(named: image ?? "default") 
+    func configureCell(image: URL?, topic: String, news: String) {
+        latestNewsImage.kf.setImage(with: image)
         topicNewsLabel.text = topic
         newsLabel.text = news
     }

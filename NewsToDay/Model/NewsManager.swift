@@ -15,7 +15,7 @@ class NewsManager {
     
     func performRequest(category: String, completion: @escaping (Result <[Results], Error> ) -> ()) {
         
-        let urlString = baseURLWithCategory + "apikey=\(apiKey)" + "&category=\(category)"
+        let urlString = baseURLWithCategory + "apikey=\(apiKey)" + "&category=\(category)" + "&language=en"
         
         if let url = URL(string: urlString) {
             let task = session.dataTask(with: url, completionHandler: { data, response, error in

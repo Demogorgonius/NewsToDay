@@ -17,9 +17,12 @@
 "sportTopic" = "Спорт";
 "healthTopic" = "Здоровье";
 "businessTopic" = "Бизнес";
+"foodTopic" = "Еда";
 "scienceTopic" = "Наука";
 "technologyTopic" = "Технологии";
 "entertainmentTopic" = "Развлечения";
+"environmentTopic" = "Природа";
+"tourismTopic" = "Туризм";
 "descriptionHomeVC" = "Открой для себя этот мир";
 "UI/UX DESIGN" = "UI/UX ДИЗАЙН";
 "ui/ux design" = "UI/UX Дизайн";
