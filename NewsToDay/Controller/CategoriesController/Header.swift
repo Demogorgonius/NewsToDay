@@ -5,7 +5,7 @@ class HeaderReusableView: UICollectionReusableView {
     let titleLabel: UILabel = {
         let title = UILabel()
         title.textColor = .black
-        title.text = "Categories"
+        title.text = NSLocalizedString("Categories_Title", comment: "")
         title.textAlignment = .left
         title.numberOfLines = 1
         title.translatesAutoresizingMaskIntoConstraints = false
@@ -17,7 +17,7 @@ class HeaderReusableView: UICollectionReusableView {
     let descriptionLabel: UILabel = {
         let title = UILabel()
         title.textColor = .lightGray
-        title.text = "Thousands of articles in each category"
+        title.text = NSLocalizedString("Categories_Title2", comment: "")
         title.textAlignment = .left
         title.numberOfLines = 0
         title.translatesAutoresizingMaskIntoConstraints = false

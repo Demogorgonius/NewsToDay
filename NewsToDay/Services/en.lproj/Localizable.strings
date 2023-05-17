@@ -32,3 +32,16 @@
 "politics" = "Politics";
 "COLORS" = "COLORS";
 "Colors" = "Colors";
+"Categories_cell1" = "Business";
+"Categories_cell2" = "Entertainment";
+"Categories_cell3" = "Health";
+"Categories_cell4" = "Science";
+"Categories_cell5" = "Sports";
+"Categories_cell6" = "Technology";
+"Categories_cell7" = "Environment";
+"Categories_cell8" = "Food";
+"Categories_cell9" = "Politics";
+"Categories_cell10" = "Tourism";
+"Categories_Title" = "Categories";
+"Categories_Title2" = "Thousands of articles in each category";
+"Categories_NextButton" = "Next";

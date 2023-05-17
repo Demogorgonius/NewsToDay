@@ -32,3 +32,17 @@
 "politics" = "Политика";
 "COLORS" = "ЦВЕТА";
 "Colors" = "Цвета";
+"Categories_cell1" = "Бизнес";
+"Categories_cell2" = "Развлечения";
+"Categories_cell3" = "Здоровье";
+"Categories_cell4" = "Наука";
+"Categories_cell5" = "Спорт";
+"Categories_cell6" = "Технологии";
+"Categories_cell7" = "Природа";
+"Categories_cell8" = "Еда";
+"Categories_cell9" = "Политика";
+"Categories_cell10" = "Туризм";
+"Categories_Title" = "Categories";
+"Categories_Title" = "Категории";
+"Categories_Title2" = "Тысячи статей в каждой категории";
+"Categories_NextButton" = "Далее";
