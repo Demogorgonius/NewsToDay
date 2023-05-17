@@ -51,20 +51,6 @@ final class RecomendedNewsCollectionViewCell: UICollectionViewCell {
         newsLabel.text = news
     }
     
-    func configureCellApi(model: NewsModel) {
-        DispatchQueue.main.async {
-            self.newsTopicLabel.text = model.title
-            self.newsLabel.text = model.description
-            
-            guard let imageUrl = URL(string: model.urlToImage) else { return }
-            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-            
-            DispatchQueue.main.async {
-                self.cellImage.image =  UIImage(data: imageData)
-                }
-        }
-    }
-    
     private func setupView() {
         addSubview(cellImage)
         addSubview(newsTopicLabel)

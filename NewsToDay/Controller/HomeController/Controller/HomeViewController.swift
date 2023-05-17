@@ -14,7 +14,7 @@ class HomeViewController: UIViewController {
     private let homeView = HomeView()
     private let sections = MockData.shared.pageData
     var newsManager = NewsManager()
-    var newsData: [Article]?
+    var newsData: [Results]?
     var selectedCategory = ["Все" : "general",
                      "Развлечения" : "entertainment",
                      "Бизнес" : "business",
@@ -40,12 +40,13 @@ class HomeViewController: UIViewController {
     }
     
     private func fetchDataNews() {
-        newsManager.performRequest(category: "general") { result in
+        newsManager.performRequest(category: "top") { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let data):
                     self.newsData = data
                     self.homeView.collectionView.reloadData()
+                    print(self.newsData)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -179,7 +180,7 @@ extension HomeViewController: UICollectionViewDelegate {
             getNewsFromTopic(category: selectedCategory)
             if let latestNewsCell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell {
                 if let newDone = newsData {
-                    latestNewsCell.configureCell(image: nil, topic: newDone[indexPath.row].author ?? "", news: newDone[indexPath.row].title ?? "")
+                    latestNewsCell.configureCell(image: nil, topic: newDone[indexPath.row].title ?? "", news: newDone[indexPath.row].title ?? "")
                 } else {
                     latestNewsCell.latestNewsImage.image = UIImage(named: "default")
                     latestNewsCell.topicNewsLabel.text = ""
@@ -226,7 +227,7 @@ extension HomeViewController: UICollectionViewDataSource {
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "LatestNewsCollectionViewCell", for: indexPath) as? LatestNewsCollectionViewCell else { return UICollectionViewCell() }
                         
             if let newsDataNew = newsData {
-                cell.configureCell(image: nil, topic: newsDataNew[indexPath.row].author ?? "", news: newsDataNew[indexPath.row].title ?? "")
+                cell.configureCell(image: nil, topic: newsDataNew[indexPath.row].title ?? "", news: newsDataNew[indexPath.row].description ?? "")
             } else {
                 cell.newsLabel.text = "some text"
                 cell.topicNewsLabel.text = ""
