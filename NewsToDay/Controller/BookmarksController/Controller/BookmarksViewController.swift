@@ -79,7 +79,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError()
         }
     
-        cell.updateNewsBookmarks(model: testPosts[indexPath.row])
+        cell.updateNewsBookmarks(image: testPosts[indexPath.row].image, title: testPosts[indexPath.row].title, description: testPosts[indexPath.row].description)
         return cell
     }
     

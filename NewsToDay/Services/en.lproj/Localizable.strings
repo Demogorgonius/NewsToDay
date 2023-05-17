@@ -15,8 +15,11 @@
 "headerRecommendedNews" = "Recommended for you";
 "randomTopic" = "Random";
 "sportTopic" = "Sport";
-"gamingTopic" = "Gaming";
-"politicsTopic" = "Politics";
+"healthTopic" = "Health";
+"businessTopic" = "Business";
+"scienceTopic" = "Science";
+"technologyTopic" = "Technology";
+"entertainmentTopic" = "Entertainment";
 "descriptionHomeVC" = "Discover things of this world";
 "UI/UX DESIGN" = "UI/UX DESIGN";
 "ui/ux design" = "ui/ux design";

@@ -10,17 +10,19 @@ import Foundation
 struct MockData {
     
     static let shared = MockData()
-    static let data = NewsManager().newsData
     
     private let textField: ListSection = {
         .textField([.init(image: "", categories: "", newsTopic: "", news: "")])
     }()
     
-    private let topics: ListSection = {
+    let topics: ListSection = {
         .topics([.init(image: "", categories: NSLocalizedString("randomTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("sportTopic", comment: ""), newsTopic: "", news: ""),
-                 .init(image: "", categories: NSLocalizedString("gamingTopic", comment: ""), newsTopic: "", news: ""),
-                 .init(image: "", categories: NSLocalizedString("politicsTopic", comment: ""), newsTopic: "", news: "")])
+                 .init(image: "", categories: NSLocalizedString("healthTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("businessTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("scienceTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("technologyTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("entertainmentTopic", comment: ""), newsTopic: "", news: "")])
     }()
     
     private let news: ListSection = {

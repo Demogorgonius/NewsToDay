@@ -63,7 +63,6 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        newsManager.getNews(for: "general")
         setupView()
         setConstraints()
     }
@@ -77,21 +76,6 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         topicNewsLabel.text = topic
         newsLabel.text = news
     }
-    
-    func updateNews(model: NewsModel) {
-        DispatchQueue.main.async {
-            self.topicNewsLabel.text = model.title
-            self.newsLabel.text = model.description
-            
-            guard let imageUrl = URL(string: model.urlToImage) else { return }
-            guard let imageData = try? Data(contentsOf: imageUrl) else { return }
-            
-            DispatchQueue.main.async {
-                self.latestNewsImage.image =  UIImage(data: imageData)
-                }
-        }
-    }
-    
     
     private func setupView() {
         addSubview(latestNewsImage)
@@ -119,7 +103,6 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         
         topicNewsLabel.snp.makeConstraints { make in
             make.height.equalTo(16)
-            make.width.equalTo(100)
             make.leading.equalToSuperview().offset(24)
             make.bottom.equalTo(newsLabel.snp.top).offset(-8)
         }
