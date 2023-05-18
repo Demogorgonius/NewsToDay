@@ -4,6 +4,7 @@ class CategoriesManager {
     
     let defaults = UserDefaults.standard
     var setOfCategories = [String]()
+    var selectedCategories = 0
     
     @objc public func setUserDefaults(){
         UserDefaults.resetStandardUserDefaults()
@@ -12,7 +13,6 @@ class CategoriesManager {
     
     func getCategories() -> [Any] {
         if let result = defaults.array(forKey: "categories"){
-            print(result)
             return result
         }
         return [""]
@@ -40,6 +40,33 @@ class CategoriesManager {
             return "health"
         case "⚽️  \(NSLocalizedString("Categories_cell5", comment: ""))":
             return "sports"
+        default:
+            return "unexpected case"
+        }
+    }
+    
+    func getRightTitle(category: String) -> String {
+        switch category {
+        case "tourism":
+            return "🥾  \(NSLocalizedString("Categories_cell10", comment: ""))"
+        case "environment":
+            return "🐿️  \(NSLocalizedString("Categories_cell7", comment: ""))"
+        case "food":
+            return "🍗  \(NSLocalizedString("Categories_cell8", comment: ""))"
+        case "politics":
+            return "🏛️  \(NSLocalizedString("Categories_cell9", comment: ""))"
+        case "technology":
+            return "🖥️  \(NSLocalizedString("Categories_cell6", comment: ""))"
+        case "science":
+            return "📚  \(NSLocalizedString("Categories_cell4", comment: ""))"
+        case "entertaiment":
+            return "🎭  \(NSLocalizedString("Categories_cell2", comment: ""))"
+        case "business":
+            return "🎰  \(NSLocalizedString("Categories_cell1", comment: ""))"
+        case "health":
+            return "🏥  \(NSLocalizedString("Categories_cell3", comment: ""))"
+        case "sports":
+            return "⚽️  \(NSLocalizedString("Categories_cell5", comment: ""))"
         default:
             return "unexpected case"
         }

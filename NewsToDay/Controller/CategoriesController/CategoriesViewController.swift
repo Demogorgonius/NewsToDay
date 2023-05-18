@@ -7,6 +7,7 @@ class CategoriesViewController : UIViewController {
     var nextButton = UIButton()
     let source: [Category] = Source.allCategories()
     var collectionView: UICollectionView!
+    var selectedButtons = 0
     
     override func viewDidLoad() {
         setup()
@@ -95,14 +96,32 @@ extension CategoriesViewController: UICollectionViewDataSource {
         
         cell.button.setTitle("\(source[indexPath.item].emojiString)  \(source[indexPath.item].categoryName)", for: .normal)
         cell.button.addTarget(self, action: #selector(addToCollection), for: .touchUpInside)
+        // активирует кнопки если userDefaults уже есть
+        let category = categoriesManager.getCategories()
+        if !category.isEmpty {
+            for element in category {
+                if cell.button.titleLabel!.text == categoriesManager.getRightTitle(category: "\(element)"){
+                    addToCollection(button: cell.button)
+                }
+            }
+        }
         return cell
     }
     @objc func addToCollection(button: UIButton) {
+        if selectedButtons == 5 && !button.isSelected {
+            return
+        }
         let category = categoriesManager.getRightCategory(buttonTitle: (button.titleLabel?.text)!)
         if categoriesManager.setOfCategories.contains(category){
+            button.isSelected = false
+            button.backgroundColor = .systemBackground
             categoriesManager.setOfCategories = categoriesManager.setOfCategories.filter({ $0 != category})
+            selectedButtons -= 1
         }else {
+            button.isSelected = true
+            button.backgroundColor = UIColor(named: "Purple Primary")
             categoriesManager.setOfCategories.append(category)
+            selectedButtons += 1
         }
     }
     
