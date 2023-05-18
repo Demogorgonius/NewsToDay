@@ -12,4 +12,5 @@ enum Fonts {
     static let interBold = "Inter-Bold"
     static let interLight = "Inter-Light"
     static let interMedium = "Inter-Medium"
+    static let semiBold = "Inter-SemiBold"
 }

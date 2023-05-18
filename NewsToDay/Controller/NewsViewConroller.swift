@@ -9,16 +9,16 @@ import UIKit
 
 class NewsViewConroller: UIViewController {
     
+    var bookMarkChangeColor: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        newsManager.delegate = self
-//        newsManager.getNews(for: "sports")
         view.backgroundColor = .white
         layout()
     }
     
     lazy var pictureNews: UIImageView = {
-       let image = UIImageView()
+        let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .blue
         image.image = UIImage(named: "default")
@@ -47,7 +47,7 @@ class NewsViewConroller: UIViewController {
         text.numberOfLines = 0
         text.font = UIFont(name: Fonts.interBold, size: 24)
         text.textColor = UIColor(named: Colors.white)
-//        text.setLineHeight(30)
+        //        text.setLineHeight(30)
         text.text = "The latest situation in the presidential election"
         text.textAlignment = .left
         return text
@@ -57,7 +57,7 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: Fonts.interRegular, size: 24)
+        text.font = UIFont(name: Fonts.semiBold, size: 18)
         text.textColor = UIColor(named: Colors.white)
         text.setLineHeight(24)
         text.text = "John Doe"
@@ -68,20 +68,68 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: Fonts.interRegular, size: 18)
+        text.font = UIFont(name: Fonts.interRegular, size: 16)
         text.textColor = UIColor(named: Colors.greyLight)
-//        text.setLineHeight(20)
+        //        text.setLineHeight(20)
         text.text = "Author"
         return text
     }()
+    
+    private lazy var bookMarkButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+        button.addTarget(self, action: #selector(addToBookmarks), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc private func addToBookmarks() {
+        if bookMarkChangeColor == false {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            bookMarkButton.tintColor = .systemYellow
+            bookMarkChangeColor = true
+        } else {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+            bookMarkButton.tintColor = .white
+            bookMarkChangeColor = false
+        }
+    }
+    
+    private lazy var shareButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(systemName: "arrowshape.turn.up.right"), for: .normal)
+        button.addTarget(self, action: #selector(sharedAction), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func sharedAction() {
+        print("Shared")
+    }
+    
+    private lazy var backButton: UIButton = {
+        let button = UIButton()
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(systemName: "arrow.backward"), for: .normal)
+        button.addTarget(self, action: #selector(goBackAction), for: .touchUpInside)
+        return button
+    }()
+    
+    @objc func goBackAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     
     lazy var category: UILabel = {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: Fonts.interRegular, size: 14)
+        text.font = UIFont(name: Fonts.semiBold, size: 14)
         text.textColor = UIColor(named: Colors.greyLight)
-//        text.setLineHeight(20)
+        //        text.setLineHeight(20)
         text.text = "Politics"
         text.textColor = .white
         text.textAlignment = .center
@@ -95,7 +143,7 @@ class NewsViewConroller: UIViewController {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
-        text.font = UIFont(name: Fonts.interRegular, size: 20)
+        text.font = UIFont(name: Fonts.interRegular, size: 19)
         text.textColor = UIColor(named: Colors.greyDarker)
         text.setLineHeight(24)
         text.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
@@ -109,11 +157,13 @@ extension NewsViewConroller {
         scrollView.addSubview(contentView)
         contentView.addSubview(pictureNews)
         contentView.addSubview(category)
+        contentView.addSubview(bookMarkButton)
+        contentView.addSubview(shareButton)
+        contentView.addSubview(backButton)
         contentView.addSubview(titleLabel)
         contentView.addSubview(autorName)
         contentView.addSubview(autor)
         contentView.addSubview(textDiscription)
-        
         
         NSLayoutConstraint.activate([
             
@@ -132,12 +182,27 @@ extension NewsViewConroller {
             pictureNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pictureNews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             pictureNews.heightAnchor.constraint(equalToConstant: 384),
-//            pictureNews.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            //            pictureNews.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             
             category.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
             category.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             category.widthAnchor.constraint(equalToConstant: 75),
             category.heightAnchor.constraint(equalToConstant: 35),
+            
+            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            backButton.widthAnchor.constraint(equalToConstant: 24),
+            backButton.heightAnchor.constraint(equalToConstant: 24),
+            
+            bookMarkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            bookMarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            bookMarkButton.widthAnchor.constraint(equalToConstant: 24),
+            bookMarkButton.heightAnchor.constraint(equalToConstant: 24),
+            
+            shareButton.topAnchor.constraint(equalTo: bookMarkButton.bottomAnchor, constant: 29),
+            shareButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            shareButton.widthAnchor.constraint(equalToConstant: 24),
+            shareButton.heightAnchor.constraint(equalToConstant: 24),
             
             titleLabel.bottomAnchor.constraint(equalTo: autorName.topAnchor, constant: -24),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
@@ -157,7 +222,7 @@ extension NewsViewConroller {
             textDiscription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             textDiscription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
         ])
-
+        
     }
-
+    
 }
