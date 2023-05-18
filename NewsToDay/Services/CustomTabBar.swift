@@ -33,9 +33,8 @@ private extension CustomTabBarController {
         
         switch name {
         case NSLocalizedString("TabBar_Browse", comment: ""):
-            controller.tabBarItem.image = UIImage(systemName: "house.circle")
-            controller.tabBarItem.selectedImage = UIImage(systemName: "house.circle.fill")
-            
+            controller.tabBarItem.image = UIImage(named: "VectorHome")
+
             controller.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemTeal]
             controller.navigationBar.prefersLargeTitles = true
             controller.navigationItem.largeTitleDisplayMode = .automatic
@@ -52,10 +51,12 @@ private extension CustomTabBarController {
                 return
             }
             
-            tabBar.tintColor = .systemBlue
+            tabBar.tintColor = UIColor(named: Colors.purplePrimary)
+            tabBar.unselectedItemTintColor = UIColor(named: Colors.greyLight)
             tabBar.layer.cornerRadius = 25
             tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             tabBar.layer.masksToBounds = true
+            
             
             if #available(iOS 13.0, *) {
                 let tabBarAppearance: UITabBarAppearance = UITabBarAppearance()
@@ -70,13 +71,11 @@ private extension CustomTabBarController {
             controller.tabBarItem.selectedImage = UIImage(systemName: "square.grid.2x2.fill")
             
         case NSLocalizedString("TabBar_Bookmarks", comment: ""):
-            controller.tabBarItem.image = UIImage(systemName: "bookmark")
-            controller.tabBarItem.selectedImage = UIImage(systemName: "bookmark.fill")
+            controller.tabBarItem.image = UIImage(named: "VectorBookmarks")
             controller.navigationBar.prefersLargeTitles = true
             controller.navigationItem.largeTitleDisplayMode = .automatic
         case NSLocalizedString("TabBar_Profile", comment: ""):
-            controller.tabBarItem.image = UIImage(systemName: "person")
-            controller.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
+            controller.tabBarItem.image = UIImage(named: "VectorProfile")
         default:
             print("Undefined case")
             break
