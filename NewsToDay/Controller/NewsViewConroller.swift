@@ -23,6 +23,7 @@ class NewsViewConroller: UIViewController {
         image.backgroundColor = .blue
         image.image = UIImage(named: "default")
         image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         return image
     }()
     
@@ -131,6 +132,7 @@ extension NewsViewConroller {
             pictureNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pictureNews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             pictureNews.heightAnchor.constraint(equalToConstant: 384),
+//            pictureNews.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             
             category.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
             category.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
@@ -144,16 +146,16 @@ extension NewsViewConroller {
             
             autorName.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24),
             autorName.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 26),
-//            autorName.bottomAnchor.constraint(equalTo: pictureNews.bottomAnchor, constant: -48),
+            autorName.bottomAnchor.constraint(equalTo: pictureNews.bottomAnchor, constant: -48),
             
             autor.topAnchor.constraint(equalTo: autorName.bottomAnchor),
             autor.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 26),
             autor.bottomAnchor.constraint(equalTo: pictureNews.bottomAnchor, constant: -24),
             
-            textDiscription.topAnchor.constraint(equalTo: pictureNews.bottomAnchor, constant: 44),
+            textDiscription.topAnchor.constraint(equalTo: pictureNews.bottomAnchor, constant: 20),
             textDiscription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             textDiscription.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            textDiscription.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -15)
+            textDiscription.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15)
         ])
 
     }

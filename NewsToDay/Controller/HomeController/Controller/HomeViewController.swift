@@ -225,6 +225,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 }
             }
             navigationController?.pushViewController(newsVC, animated: true)
+            navigationItem.largeTitleDisplayMode = .never
         case .recommended(_):
             print("3")
         }
