@@ -24,7 +24,7 @@ class CategoryCell: UICollectionViewCell {
         button.backgroundColor = .systemBackground
         button.setTitleColor(.black, for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 16)
-        button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             button.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -32,10 +32,6 @@ class CategoryCell: UICollectionViewCell {
             button.topAnchor.constraint(equalTo: contentView.topAnchor),
             button.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
-    }
-    @objc func didTapButton() {
-        checkSelection.toggle()
-        button.backgroundColor = checkSelection ? UIColor(named: "Purple Primary") : UIColor.systemBackground
     }
 }
 
