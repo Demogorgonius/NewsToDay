@@ -17,7 +17,7 @@ class NewsViewConroller: UIViewController {
         layout()
     }
     
-    private let pictureNews: UIImageView = {
+    lazy var pictureNews: UIImageView = {
        let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .blue
@@ -26,7 +26,7 @@ class NewsViewConroller: UIViewController {
         return image
     }()
     
-    private let scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scroolView = UIScrollView()
         scroolView.showsVerticalScrollIndicator = true
         scroolView.alwaysBounceVertical = true
@@ -34,13 +34,13 @@ class NewsViewConroller: UIViewController {
         return scroolView
     }()
     
-    private let contentView: UIView = {
+    private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
         return contentView
     }()
     
-    private let titleLabel: UILabel = {
+    lazy var titleLabel: UILabel = {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
@@ -52,7 +52,7 @@ class NewsViewConroller: UIViewController {
         return text
     }()
     
-    private let autorName: UILabel = {
+    lazy var autorName: UILabel = {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
@@ -63,7 +63,7 @@ class NewsViewConroller: UIViewController {
         return text
     }()
     
-    private let autor: UILabel = {
+    private lazy var autor: UILabel = {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
@@ -74,7 +74,7 @@ class NewsViewConroller: UIViewController {
         return text
     }()
     
-    private let category: UILabel = {
+    lazy var category: UILabel = {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
@@ -90,7 +90,7 @@ class NewsViewConroller: UIViewController {
         return text
     }()
     
-    private let textDiscription: UILabel = {
+    lazy var textDiscription: UILabel = {
         let text = UILabel()
         text.translatesAutoresizingMaskIntoConstraints = false
         text.numberOfLines = 0
@@ -130,7 +130,7 @@ extension NewsViewConroller {
             pictureNews.topAnchor.constraint(equalTo: contentView.topAnchor),
             pictureNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             pictureNews.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            pictureNews.heightAnchor.constraint(equalToConstant: 380),
+            pictureNews.heightAnchor.constraint(equalToConstant: 384),
             
             category.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
             category.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),

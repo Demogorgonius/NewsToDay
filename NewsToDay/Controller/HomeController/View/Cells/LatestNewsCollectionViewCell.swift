@@ -11,11 +11,9 @@ import Kingfisher
 
 final class LatestNewsCollectionViewCell: UICollectionViewCell {
  
-    
     var bookMarkChangeColor: Bool = false
-    var newsManager = NewsManager()
     
-     var latestNewsImage: UIImageView = {
+     lazy var latestNewsImage: UIImageView = {
         let element = UIImageView()
         element.layer.cornerRadius = 12
         element.layer.masksToBounds = true
@@ -23,7 +21,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-     var topicNewsLabel: UILabel = {
+     lazy var topicNewsLabel: UILabel = {
         let element = UILabel()
         element.textColor = .greyLighter
         element.font = .systemFont(ofSize: 12)
@@ -32,7 +30,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-    var newsLabel: UILabel = {
+    lazy var newsLabel: UILabel = {
         let element = UILabel()
         element.textColor = .white
         element.font = .boldSystemFont(ofSize: 16)
@@ -46,11 +44,11 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         let element = UIButton()
         element.tintColor = .white
         element.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
-        element.addTarget(self, action: #selector(yellow), for: .touchUpInside)
+        element.addTarget(self, action: #selector(addToBookmarks), for: .touchUpInside)
         return element
     }()
     
-    @objc private func yellow() {
+    @objc private func addToBookmarks() {
         if bookMarkChangeColor == false {
             bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
             bookMarkButton.tintColor = .systemYellow

@@ -29,10 +29,10 @@ struct MockData {
     }()
     
     private let news: ListSection = {
-        .news([.init(image: "0", categories: "", newsTopic: NSLocalizedString("UI/UX DESIGN", comment: ""), news: "A Simple Trick For Creating Color Palettes Quickly"),
-               .init(image: "1", categories: "", newsTopic: NSLocalizedString("ART", comment: ""), news: "Six steps to creating a color palette"),
-               .init(image: "2", categories: "", newsTopic: NSLocalizedString("COLORS", comment: ""), news: "Creating Color Palette from world around you"),
-               .init(image: "3", categories: "", newsTopic: NSLocalizedString("POLITICS", comment: ""), news: "The latest situation in the presidential election")])
+        .news([.init(image: "", categories: "", newsTopic: "", news: ""),
+               .init(image: "", categories: "", newsTopic: "", news: ""),
+               .init(image: "", categories: "", newsTopic: "", news: ""),
+               .init(image: "", categories: "", newsTopic: "", news: "")])
     }()
     
     private let recommended: ListSection = {

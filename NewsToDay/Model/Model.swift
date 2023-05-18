@@ -19,4 +19,5 @@ struct Results: Decodable {
     var description: String?
     var content: String?
     var image_url: String?
+    var category: [String]?
 }
