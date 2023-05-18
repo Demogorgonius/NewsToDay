@@ -35,7 +35,7 @@ private extension CustomTabBarController {
         case NSLocalizedString("TabBar_Browse", comment: ""):
             controller.tabBarItem.image = UIImage(systemName: "house.circle")
             controller.tabBarItem.selectedImage = UIImage(systemName: "house.circle.fill")
-            
+
             controller.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemTeal]
             controller.navigationBar.prefersLargeTitles = true
             controller.navigationItem.largeTitleDisplayMode = .automatic
@@ -52,7 +52,8 @@ private extension CustomTabBarController {
                 return
             }
             
-            tabBar.tintColor = .systemBlue
+            tabBar.tintColor = UIColor(named: Colors.purplePrimary)
+            tabBar.unselectedItemTintColor = UIColor(named: Colors.greyLight)
             tabBar.layer.cornerRadius = 25
             tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
             tabBar.layer.masksToBounds = true
