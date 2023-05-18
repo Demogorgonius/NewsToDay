@@ -13,7 +13,7 @@
 "TabBar_Profile" = "Profile";
 "textFieldPlaceholder" = "Search";
 "headerRecommendedNews" = "Recommended for you";
-"randomTopic" = "Random";
+"randomTopic" = "World";
 "sportTopic" = "Sport";
 "healthTopic" = "Health";
 "businessTopic" = "Business";
@@ -25,7 +25,7 @@
 "tourismTopic" = "Tourism";
 "descriptionHomeVC" = "Discover things of this world";
 "UI/UX DESIGN" = "UI/UX DESIGN";
-"ui/ux design" = "ui/ux design";
+"ui/ux design" = "UI/UX Design";
 "ART" = "ART";
 "art" = "Art";
 "POLITICS" = "POLITICS";
