@@ -13,10 +13,11 @@
 "TabBar_Profile" = "Профиль";
 "textFieldPlaceholder" = "Поиск";
 "headerRecommendedNews" = "Рекомендованные для вас";
-"randomTopic" = "Мир";
+"worldTopic" = "Мир";
 "sportTopic" = "Спорт";
 "healthTopic" = "Здоровье";
 "businessTopic" = "Бизнес";
+"politicsTopic" = "Политика";
 "foodTopic" = "Еда";
 "scienceTopic" = "Наука";
 "technologyTopic" = "Технологии";
