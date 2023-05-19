@@ -15,6 +15,7 @@ struct NewsData: Decodable {
 
 struct Results: Decodable {
     var title: String?
+    var link: String?
     var creator: [String]?
     var description: String?
     var content: String?
