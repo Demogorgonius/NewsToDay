@@ -13,10 +13,11 @@
 "TabBar_Profile" = "Profile";
 "textFieldPlaceholder" = "Search";
 "headerRecommendedNews" = "Recommended for you";
-"randomTopic" = "World";
+"worldTopic" = "World";
 "sportTopic" = "Sport";
 "healthTopic" = "Health";
 "businessTopic" = "Business";
+"politicsTopic" = "Politics";
 "foodTopic" = "Food";
 "scienceTopic" = "Science";
 "technologyTopic" = "Technology";
