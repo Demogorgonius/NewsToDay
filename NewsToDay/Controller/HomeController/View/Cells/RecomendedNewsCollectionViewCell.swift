@@ -10,7 +10,7 @@ import SnapKit
 
 final class RecomendedNewsCollectionViewCell: UICollectionViewCell {
     
-    private lazy var cellImage: UIImageView = {
+    lazy var cellImage: UIImageView = {
         let element = UIImageView()
         element.layer.cornerRadius = 12
         element.layer.masksToBounds = true
@@ -18,7 +18,7 @@ final class RecomendedNewsCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-    private lazy var newsTopicLabel: UILabel = {
+    lazy var newsTopicLabel: UILabel = {
         let element = UILabel()
         element.font = .systemFont(ofSize: 14, weight: .light)
         element.textColor = .greyPrimary
@@ -26,11 +26,11 @@ final class RecomendedNewsCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-    private lazy var newsLabel: UILabel = {
+    lazy var newsLabel: UILabel = {
         let element = UILabel()
         element.font = .boldSystemFont(ofSize: 16)
         element.textColor = .blackPrimary
-        element.numberOfLines = 0
+        element.numberOfLines = 2
         return element
     }()
     
@@ -45,8 +45,8 @@ final class RecomendedNewsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(image: String, newTopic: String, news: String) {
-        cellImage.image = UIImage(named: image)
+    func configureCell(image: URL?, newTopic: String, news: String) {
+        cellImage.kf.setImage(with: image)
         newsTopicLabel.text = newTopic
         newsLabel.text = news
     }

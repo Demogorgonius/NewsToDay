@@ -9,6 +9,7 @@ class CategoriesManager {
     @objc public func setUserDefaults(){
         UserDefaults.resetStandardUserDefaults()
         defaults.set(setOfCategories, forKey: "categories")
+        
     }
     
     func getCategories() -> [Any] {
@@ -33,7 +34,7 @@ class CategoriesManager {
         case "📚  \(NSLocalizedString("Categories_cell4", comment: ""))":
             return "science"
         case "🎭  \(NSLocalizedString("Categories_cell2", comment: ""))":
-            return "entertaiment"
+            return "entertainment"
         case "🎰  \(NSLocalizedString("Categories_cell1", comment: ""))":
             return "business"
         case "🏥  \(NSLocalizedString("Categories_cell3", comment: ""))":
@@ -59,7 +60,7 @@ class CategoriesManager {
             return "🖥️  \(NSLocalizedString("Categories_cell6", comment: ""))"
         case "science":
             return "📚  \(NSLocalizedString("Categories_cell4", comment: ""))"
-        case "entertaiment":
+        case "entertainment":
             return "🎭  \(NSLocalizedString("Categories_cell2", comment: ""))"
         case "business":
             return "🎰  \(NSLocalizedString("Categories_cell1", comment: ""))"
