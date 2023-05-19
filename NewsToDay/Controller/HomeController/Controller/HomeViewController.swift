@@ -24,6 +24,8 @@ class HomeViewController: UIViewController {
                                     "Environment" : "environment",
                                     "Бизнес" : "business",
                                     "Business" : "business",
+                                    "Политика" : "politics",
+                                    "Politics" : "politics",
                                     "Еда" : "food",
                                     "Food" : "food",
                                     "Здоровье" : "health",
@@ -53,6 +55,7 @@ class HomeViewController: UIViewController {
                 case .success(let data):
                     self.newsData = data
                     self.homeView.collectionView.reloadData()
+                    print(self.newsData)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -63,7 +66,7 @@ class HomeViewController: UIViewController {
     private func getNewsFromTopic(category: String) {
         if let index = MockData.shared.topics.items.firstIndex(where: { $0.categories == category }) {
             let selected = MockData.shared.topics.items[index].categories
-            newsManager.performRequest(category: selectedCategory[selected] ?? "top") { result in
+            newsManager.performRequest(category: selectedCategory[selected] ?? "world") { result in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let news):
@@ -191,9 +194,17 @@ extension HomeViewController: UICollectionViewDelegate {
                        newDone[indexPath.row].category != nil,
                        newDone[indexPath.row].description != nil {
                         cell.configureCell(image: URL(string: newDone[indexPath.row].image_url!), topic: newDone[indexPath.row].category?[0].uppercased() ?? "", news: newDone[indexPath.row].description ?? "")
-                    } else {
+                    } else if newDone[indexPath.row].image_url == nil {
                         cell.latestNewsImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
+                        cell.topicNewsLabel.text = newDone[indexPath.row].category?[0].uppercased()
+                        cell.newsLabel.text = newDone[indexPath.row].title
+                    } else if newDone[indexPath.row].category == nil {
+                        cell.latestNewsImage.kf.setImage(with: URL(string: newDone[indexPath.row].image_url ?? ""))
                         cell.topicNewsLabel.text = "UI/UX DESIGN"
+                        cell.newsLabel.text = newDone[indexPath.row].title
+                    } else if newDone[indexPath.row].description == nil {
+                        cell.latestNewsImage.kf.setImage(with: URL(string: newDone[indexPath.row].image_url ?? ""))
+                        cell.topicNewsLabel.text = newDone[indexPath.row].category?[0]
                         cell.newsLabel.text = "A Simple Trick For Creating Color Palettes Quickly"
                     }
                 } else {
@@ -206,22 +217,30 @@ extension HomeViewController: UICollectionViewDelegate {
             let newsVC = NewsViewConroller()
             let cell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell
             if let new = newsData {
-                if new[indexPath.row].image_url != nil,
-                   new[indexPath.row].category != nil,
-                   new[indexPath.row].creator != nil,
-                   new[indexPath.row].title != nil,
-                   new[indexPath.row].content != nil {
-                    newsVC.textDiscription.text = new[indexPath.row].content
-                    newsVC.titleLabel.text = new[indexPath.row].title
-                    newsVC.autorName.text = new[indexPath.row].creator?[0]
-                    newsVC.category.text = new[indexPath.row].category?[0]
+                if new[indexPath.row].image_url != nil {
                     newsVC.pictureNews.kf.setImage(with: URL(string: new[indexPath.row].image_url ?? ""))
                 } else {
-                    newsVC.textDiscription.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
-                    newsVC.titleLabel.text = cell?.newsLabel.text
-                    newsVC.autorName.text = "John Doe"
-                    newsVC.category.text = cell?.topicNewsLabel.text
                     newsVC.pictureNews.image = cell?.latestNewsImage.image
+                }
+                if new[indexPath.row].category != nil {
+                    newsVC.category.text = new[indexPath.row].category?[0].uppercased()
+                } else {
+                    newsVC.category.text = cell?.topicNewsLabel.text
+                }
+                if new[indexPath.row].creator != nil {
+                    newsVC.autorName.text = new[indexPath.row].creator?[0]
+                } else {
+                    newsVC.autorName.text = "John Doe"
+                }
+                if new[indexPath.row].title != nil {
+                    newsVC.titleLabel.text = new[indexPath.row].title
+                } else {
+                    newsVC.titleLabel.text = cell?.newsLabel.text
+                }
+                if new[indexPath.row].content != nil {
+                    newsVC.textDiscription.text = new[indexPath.row].content
+                } else {
+                    newsVC.textDiscription.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
                 }
             }
             navigationController?.pushViewController(newsVC, animated: true)
@@ -263,15 +282,23 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         case .news(_):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "LatestNewsCollectionViewCell", for: indexPath) as? LatestNewsCollectionViewCell else { return UICollectionViewCell() }
-            if let newsDataNew = newsData {
-                if newsDataNew[indexPath.row].image_url != nil,
-                   newsDataNew[indexPath.row].category != nil,
-                   newsDataNew[indexPath.row].description != nil {
-                    cell.configureCell(image: URL(string: newsDataNew[indexPath.row].image_url!), topic: newsDataNew[indexPath.row].category?[0].uppercased() ?? "", news: newsDataNew[indexPath.row].description ?? "")
-                } else {
+            if let newDone = newsData {
+                if newDone[indexPath.row].image_url != nil,
+                   newDone[indexPath.row].category != nil,
+                   newDone[indexPath.row].description != nil {
+                    cell.configureCell(image: URL(string: newDone[indexPath.row].image_url!), topic: newDone[indexPath.row].category?[0].uppercased() ?? "", news: newDone[indexPath.row].description ?? "")
+                } else if newDone[indexPath.row].image_url == nil {
                     cell.latestNewsImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
-                    cell.topicNewsLabel.text = "COLORS"
-                    cell.newsLabel.text = "Creating Color Palette from world around you"
+                    cell.topicNewsLabel.text = newDone[indexPath.row].category?[0].uppercased()
+                    cell.newsLabel.text = newDone[indexPath.row].title
+                } else if newDone[indexPath.row].category == nil {
+                    cell.latestNewsImage.kf.setImage(with: URL(string: newDone[indexPath.row].image_url ?? ""))
+                    cell.topicNewsLabel.text = "UI/UX DESIGN"
+                    cell.newsLabel.text = newDone[indexPath.row].title
+                } else if newDone[indexPath.row].description == nil {
+                    cell.latestNewsImage.kf.setImage(with: URL(string: newDone[indexPath.row].image_url ?? ""))
+                    cell.topicNewsLabel.text = newDone[indexPath.row].category?[0]
+                    cell.newsLabel.text = "A Simple Trick For Creating Color Palettes Quickly"
                 }
             } else {
                 cell.latestNewsImage.image = UIImage(named: "city_1")

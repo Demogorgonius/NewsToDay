@@ -16,10 +16,11 @@ struct MockData {
     }()
     
     let topics: ListSection = {
-        .topics([.init(image: "", categories: NSLocalizedString("randomTopic", comment: ""), newsTopic: "", news: ""),
+        .topics([.init(image: "", categories: NSLocalizedString("worldTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("sportTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("healthTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("businessTopic", comment: ""), newsTopic: "", news: ""),
+                 .init(image: "", categories: NSLocalizedString("politicsTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("foodTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("scienceTopic", comment: ""), newsTopic: "", news: ""),
                  .init(image: "", categories: NSLocalizedString("technologyTopic", comment: ""), newsTopic: "", news: ""),
@@ -36,10 +37,10 @@ struct MockData {
     }()
     
     private let recommended: ListSection = {
-        .recommended([.init(image: "0", categories: "", newsTopic: NSLocalizedString("ui/ux design", comment: ""), news: "A Simple Trick For Creating Color Palettes Quickly"),
-                      .init(image: "1", categories: "", newsTopic: NSLocalizedString("art", comment: ""), news: "Six steps to creating a color palette"),
-                      .init(image: "2", categories: "", newsTopic: NSLocalizedString("colors", comment: ""), news: "Creating Color Palette from world around you"),
-                      .init(image: "3", categories: "", newsTopic: NSLocalizedString("politics", comment: ""), news: "The latest situation in the presidential election")])
+        .recommended([.init(image: "", categories: "", newsTopic: "", news: ""),
+                      .init(image: "", categories: "", newsTopic: "", news: ""),
+                      .init(image: "", categories: "", newsTopic: "", news: ""),
+                      .init(image: "", categories: "", newsTopic: "", news: "")])
     }()
     
     var pageData: [ListSection] {
