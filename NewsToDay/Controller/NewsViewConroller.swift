@@ -10,6 +10,7 @@ import UIKit
 class NewsViewConroller: UIViewController {
     
     var bookMarkChangeColor: Bool = false
+    var linkNews: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +98,7 @@ class NewsViewConroller: UIViewController {
     }
     
     private lazy var shareButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setBackgroundImage(UIImage(systemName: "arrowshape.turn.up.right"), for: .normal)
@@ -106,7 +107,9 @@ class NewsViewConroller: UIViewController {
     }()
     
     @objc func sharedAction() {
-        print("Shared")
+        guard let link = linkNews else { return }
+        let shareController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
+        present(shareController, animated: true)
     }
     
     private lazy var backButton: UIButton = {
@@ -121,7 +124,6 @@ class NewsViewConroller: UIViewController {
     @objc func goBackAction() {
         navigationController?.popViewController(animated: true)
     }
-    
     
     lazy var category: UILabel = {
         let text = UILabel()

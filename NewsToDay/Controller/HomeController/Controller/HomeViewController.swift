@@ -263,6 +263,11 @@ extension HomeViewController: UICollectionViewDelegate {
                 } else {
                     newsVC.titleLabel.text = cell?.newsLabel.text
                 }
+                if new[indexPath.row].link != nil {
+                    newsVC.linkNews = new[indexPath.row].link
+                } else {
+                    newsVC.linkNews = ""
+                }
                 if new[indexPath.row].content != nil {
                     newsVC.textDiscription.text = new[indexPath.row].content
                 } else {
