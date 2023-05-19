@@ -11,6 +11,7 @@ import UIKit
 class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     private var viewModels = [TestForBookmarks]()
+    var bookmarksData: [Results]?
     private var testPosts = testPost
     
     private lazy var tableView: UITableView = {
@@ -18,7 +19,7 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
         table.delegate = self
         table.dataSource = self
         table.translatesAutoresizingMaskIntoConstraints = false
-        table.separatorStyle = .singleLine
+        table.separatorStyle = .none
         table.register(BookmarksTableViewCell.self,
                        forCellReuseIdentifier: BookmarksTableViewCell.identifier)
        return table
@@ -78,10 +79,12 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
                 as? BookmarksTableViewCell else {
             fatalError()
         }
-    
-        cell.updateNewsBookmarks(image: testPosts[indexPath.row].image, title: testPosts[indexPath.row].title, description: testPosts[indexPath.row].description)
+        
+//        cell.updateNewsBookmarks(image: testPosts[indexPath.row].image, title: testPosts[indexPath.row].title, description: testPosts[indexPath.row].description)
+        cell.configureCell(image: URL(string: bookmarksData?[indexPath.row].image_url! ?? ""), topic: bookmarksData?[indexPath.row].category?[0].uppercased() ?? "", news: bookmarksData?[indexPath.row].description ?? "")
         return cell
     }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()

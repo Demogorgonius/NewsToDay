@@ -62,6 +62,12 @@ class BookmarksTableViewCell: UITableViewCell {
         
     }
     
+    func configureCell(image: URL?, topic: String, news: String) {
+        imageNews.kf.setImage(with: image)
+        newsTitleLabel.text = topic
+        descriptionLabel.text = news
+    }
+    
     
     
     func layout() {
@@ -73,7 +79,6 @@ class BookmarksTableViewCell: UITableViewCell {
             imageNews.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             imageNews.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
             imageNews.widthAnchor.constraint(equalToConstant: 96),
-            imageNews.heightAnchor.constraint(equalToConstant: 96),
 
             newsTitleLabel.leadingAnchor.constraint(equalTo: imageNews.trailingAnchor, constant: 16),
             newsTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),

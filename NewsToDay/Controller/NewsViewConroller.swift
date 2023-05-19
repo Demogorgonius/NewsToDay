@@ -10,6 +10,7 @@ import UIKit
 class NewsViewConroller: UIViewController {
     
     var bookMarkChangeColor: Bool = false
+    private let bookmarksVC = BookmarksViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,6 +95,14 @@ class NewsViewConroller: UIViewController {
             bookMarkButton.tintColor = .white
             bookMarkChangeColor = false
         }
+    }
+    
+    private func addNewsToBookmarks(indexPath: IndexPath) {
+        var bookmarks = bookmarksVC.bookmarksData
+        guard let news = bookmarks?[indexPath.row] else {
+            return
+        }
+        
     }
     
     private lazy var shareButton: UIButton = {
