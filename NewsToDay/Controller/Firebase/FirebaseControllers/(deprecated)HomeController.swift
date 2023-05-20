@@ -11,7 +11,7 @@ import FirebaseAuth
 class HomeController: UIViewController {
     //MARK: - UI Components
     /// label
-    private let homeLabel: UILabel = {
+    private let myLabel: UILabel = {
         let label = UILabel()
         label.text = "This is our HOME controller of NewsApp"
         label.textColor = #colorLiteral(red: 0.8446564078, green: 0.5145705342, blue: 1, alpha: 1)
@@ -42,7 +42,7 @@ class HomeController: UIViewController {
             }
             
             if let user = user {
-                self.homeLabel.text = "\(user.username)\n\(user.email)"
+                self.myLabel.text = "\(user.username)\n\(user.email)"
             }
         }
     }
@@ -61,22 +61,21 @@ class HomeController: UIViewController {
         }
     }
     
-    #warning("Поменять UI в своём контроллере")
     //MARK: - UI Setup
     func setupUI() {
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(didTapLogout))
         
         /// ADDING SUBVIEWS
-        view?.addSubview(homeLabel)
+        view?.addSubview(myLabel)
         
         /// TAMIC
-        homeLabel.translatesAutoresizingMaskIntoConstraints = false
+        myLabel.translatesAutoresizingMaskIntoConstraints = false
         
         /// SETUP CONSTRAINTS
         NSLayoutConstraint.activate([
-            homeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            homeLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            myLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            myLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         
     }
