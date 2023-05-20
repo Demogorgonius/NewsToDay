@@ -42,6 +42,7 @@ class CategoriesViewController : UIViewController {
         
         categoriesManager.setUserDefaults()
         let homeVC = HomeViewController()
+        homeVC.newsCatNew = categoriesManager.getCategories() as? [String]
         tabBarController?.selectedIndex = 0
     }
     
