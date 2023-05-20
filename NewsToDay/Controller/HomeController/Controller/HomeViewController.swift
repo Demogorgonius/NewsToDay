@@ -54,10 +54,6 @@ final class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchDataRecNews()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = false
     }
     
@@ -91,7 +87,6 @@ final class HomeViewController: UIViewController {
                 case .success(let data):
                     self.newsData = data
                     self.homeView.collectionView.reloadData()
-                    print(self.newsData)
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
