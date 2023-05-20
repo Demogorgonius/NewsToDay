@@ -20,7 +20,7 @@ class LanguageViewController: UIViewController {
         return label
     }()
     
-    let engButton: UIButton = {
+    private lazy var engButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -33,10 +33,11 @@ class LanguageViewController: UIViewController {
         button.configuration?.baseForegroundColor = .darkGray
         button.configuration?.baseBackgroundColor = .systemFill
         button.configuration?.cornerStyle = .small
+        button.addTarget(self, action: #selector(engButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    let rusButton: UIButton = {
+    private lazy var rusButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -49,6 +50,7 @@ class LanguageViewController: UIViewController {
         button.configuration?.baseBackgroundColor = .systemFill
         button.configuration?.baseForegroundColor = .darkGray
         button.configuration?.cornerStyle = .small
+        button.addTarget(self, action: #selector(rusButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -57,8 +59,7 @@ class LanguageViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         setupConstraints()
-        engButton.addTarget(self, action: #selector(engButtonPressed(_:)), for: .touchUpInside)
-        rusButton.addTarget(self, action: #selector(rusButtonPressed(_:)), for: .touchUpInside)
+
     }
     
     @objc private func engButtonPressed(_ sender: UIButton) {
@@ -66,12 +67,16 @@ class LanguageViewController: UIViewController {
         sender.configuration?.baseForegroundColor = .white
         rusButton.configuration?.baseBackgroundColor = .systemFill
         rusButton.configuration?.baseForegroundColor = .darkGray
+        changeLang(lang: "en-US")
     }
+    
     @objc private func rusButtonPressed(_ sender: UIButton) {
         sender.configuration?.baseBackgroundColor = .blue
         sender.configuration?.baseForegroundColor = .white
         engButton.configuration?.baseBackgroundColor = .systemFill
         engButton.configuration?.baseForegroundColor = .darkGray
+        changeLang(lang: "ru-RU")
+        
     }
 
     private func setupViews() {
@@ -100,3 +105,11 @@ class LanguageViewController: UIViewController {
 
 }
 
+extension LanguageViewController {
+    private func changeLang(lang: String) {
+        let defaults = UserDefaults.standard
+        defaults.set([lang], forKey: "AppleLanguages")
+        defaults.synchronize()
+        navigationController?.popToRootViewController(animated: true)
+    }
+}

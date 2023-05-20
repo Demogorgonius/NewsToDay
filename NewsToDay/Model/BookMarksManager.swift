@@ -13,6 +13,17 @@ class BookMarksManager {
         
     }
     
+    func saveNewsToDefaults(news: Results) {
+        
+        var newsArray = defaults.object(forKey: "bookmark") as! [Results]
+        newsArray.append(news)
+        defaults.set(newsArray, forKey: "bookmark")
+    }
+    
+    func deleteNewsFromDefaults(news: Results) {
+        
+    }
+    
     func getNewsFromUserDefaults() -> [Any] {
         if let result = defaults.array(forKey: "bookmark"){
             return result
