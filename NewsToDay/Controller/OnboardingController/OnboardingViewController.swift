@@ -52,7 +52,7 @@ class OnboardingViewController: UIViewController {
         updateUI()
         
         if nextButton.configuration?.title == "Get Started" {
-            let vc = NewsViewConroller()
+            let vc = CustomTabBarController()
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         } else if pageControl.currentPage == 5 {
