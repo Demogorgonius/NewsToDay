@@ -31,6 +31,7 @@
 		A282D0F92A19042E00DC354F /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F82A19042E00DC354F /* ValidationService.swift */; };
 		A282D0FB2A19054B00DC354F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FA2A19054B00DC354F /* HomeController.swift */; };
 		A282D0FD2A1905EE00DC354F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FC2A1905EE00DC354F /* LoginController.swift */; };
+		A282D0FF2A19067B00DC354F /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FE2A19067B00DC354F /* RegisterController.swift */; };
 		A2C47B782A11251900BFD2DA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C47B772A11251900BFD2DA /* Colors.swift */; };
 		A50E3CCD2A0CD10E001B19C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A50E3CCF2A0CD10E001B19C6 /* Localizable.strings */; };
 		A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44342A08193F00491528 /* AppDelegate.swift */; };
@@ -92,6 +93,7 @@
 		A282D0F82A19042E00DC354F /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
 		A282D0FA2A19054B00DC354F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		A282D0FC2A1905EE00DC354F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		A282D0FE2A19067B00DC354F /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		A2C47B772A11251900BFD2DA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A50E3CCE2A0CD10E001B19C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A50E3CD02A0CD155001B19C6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			children = (
 				A282D0FA2A19054B00DC354F /* HomeController.swift */,
 				A282D0FC2A1905EE00DC354F /* LoginController.swift */,
+				A282D0FE2A19067B00DC354F /* RegisterController.swift */,
 			);
 			path = FirebaseControllers;
 			sourceTree = "<group>";
@@ -530,6 +533,7 @@
 				A5FAAE2F2A0EBBB800499B78 /* MockData.swift in Sources */,
 				A282D0F52A1902B900DC354F /* AuthService.swift in Sources */,
 				A5FAAE272A0EBB1C00499B78 /* HeaderSupplemetaryView.swift in Sources */,
+				A282D0FF2A19067B00DC354F /* RegisterController.swift in Sources */,
 				A282D0EB2A18FF7F00DC354F /* AuthHeaderView.swift in Sources */,
 				A21DF6432A0D820B00FD1154 /* OnboardingViewController.swift in Sources */,
 				A282D0FB2A19054B00DC354F /* HomeController.swift in Sources */,
