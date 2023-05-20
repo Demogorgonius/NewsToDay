@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct NewsData: Decodable {
+struct NewsData: Codable {
     var status: String
     var totalResults: Int
     var results: [Results]
 }
 
-struct Results: Decodable {
+struct Results: Codable {
     var title: String?
     var link: String?
     var creator: [String]?

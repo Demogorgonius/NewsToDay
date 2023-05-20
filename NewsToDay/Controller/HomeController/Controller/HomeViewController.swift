@@ -20,6 +20,8 @@ final class HomeViewController: UIViewController {
     private var previousSelectedIndex: IndexPath?
     var recNewsData: [Results]?
     var newsData: [Results]?
+    var newsCatOld: [String]?
+    var newsCatNew: [String]?
     private var selectedCategory = ["Мир" : "world",
                                     "World" : "world",
                                     "Развлечения" : "entertainment",
@@ -50,10 +52,18 @@ final class HomeViewController: UIViewController {
         setupViews()
         setDelegates()
         fetchDataNews()
+        fetchDataRecNews()
+        newsCatOld = catManager.getCategories() as? [String]
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        fetchDataRecNews()
+        if let cat = newsCatNew {
+            if let catOld = newsCatOld {
+                if cat != catOld {
+                    fetchDataRecNews()
+                }
+            }
+        }
         navigationController?.isNavigationBarHidden = false
     }
     
@@ -313,7 +323,15 @@ extension HomeViewController: UICollectionViewDataSource {
         case .news(_):
             return 10
         case .recommended(_):
-            return 5
+            if let recNews = recNewsData {
+                if recNews.count > 5 {
+                    return 5
+                }
+                if recNews.count < 5 {
+                    return recNews.count
+                }
+            }
+            return 0
         }
     }
     

@@ -7,28 +7,41 @@ class BookMarksManager {
     var newsArray = [Results]()
     
     
-    @objc public func setUserDefaults(){
-        UserDefaults.resetStandardUserDefaults()
-        defaults.set(newsArray, forKey: "bookmark")
-        
-    }
+//    @objc public func setUserDefaults(){
+//        UserDefaults.resetStandardUserDefaults()
+//        defaults.set(newsArray, forKey: "bookmark")
+//
+//    }
     
     func saveNewsToDefaults(news: Results) {
-        
-        var newsArray = defaults.object(forKey: "bookmark") as! [Results]
-        newsArray.append(news)
-        defaults.set(newsArray, forKey: "bookmark")
+        var newsArrayNew = defaults.array(forKey: "bookmark") as? [Results] ?? []
+        newsArrayNew.append(news)
+        do {
+            let result = newsArrayNew
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(result)
+            UserDefaults.standard.set(data, forKey: "bookmark")
+        } catch {
+            print(error)
+        }
+//        defaults.set(newsArrayNew, forKey: "bookmark")
+        print(UserDefaults.standard.dictionaryRepresentation())
     }
     
     func deleteNewsFromDefaults(news: Results) {
         
     }
     
-    func getNewsFromUserDefaults() -> [Any] {
-        if let result = defaults.array(forKey: "bookmark"){
-            return result
+    func getNewsFromUserDefaults() -> [Results]? {
+        var bookmarkArray: [Results]?
+        guard let bookmarks = defaults.data(forKey: "bookmark") else { return nil }
+        do {
+            let decoder = JSONDecoder()
+            bookmarkArray = try decoder.decode([Results].self, from: bookmarks)
+        } catch {
+            print(error)
         }
-        return []
+        return bookmarkArray
     }
     
     func bookMarkCheck(for text: String) -> Bool {
