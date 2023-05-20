@@ -145,6 +145,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func signOutButtonPressed(_ sender: UIButton) {
+        #warning("Здесь добавить Sign Out")
 
     }
     
