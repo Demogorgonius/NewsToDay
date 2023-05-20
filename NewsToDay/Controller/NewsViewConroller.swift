@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NewsViewConroller: UIViewController {
+final class NewsViewConroller: UIViewController {
     
     var bookMarkChangeColor: Bool = false
     var linkNews: String?
@@ -16,6 +16,7 @@ class NewsViewConroller: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         layout()
+        navigationController?.isNavigationBarHidden = true
     }
     
     lazy var pictureNews: UIImageView = {

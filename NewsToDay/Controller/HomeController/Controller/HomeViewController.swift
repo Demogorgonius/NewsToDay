@@ -10,12 +10,13 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class HomeViewController: UIViewController {
+final class HomeViewController: UIViewController {
 
     private let catManager = CategoriesManager()
     private let homeView = HomeView()
     private let sections = MockData.shared.pageData
     private let newsManager = NewsManager()
+    private var previousSelectedIndex: IndexPath?
     var recNewsData: [Results]?
     var newsData: [Results]?
     private var selectedCategory = ["Мир" : "world",
@@ -53,6 +54,11 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchDataRecNews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
     
     private func fetchDataRecNews() {
@@ -216,6 +222,9 @@ extension HomeViewController: UICollectionViewDelegate {
         case .textField(_):
             print("0")
         case .topics(_):
+            let previousIndex = previousSelectedIndex
+            previousSelectedIndex = indexPath
+            homeView.collectionView.reloadItems(at: [previousIndex, indexPath].compactMap { $0 })
             let selectedCategory = MockData.shared.topics.items[indexPath.item].categories
             getNewsFromTopic(category: selectedCategory)
             if let cell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell {
@@ -279,8 +288,6 @@ extension HomeViewController: UICollectionViewDelegate {
                 }
             }
             navigationController?.pushViewController(newsVC, animated: true)
-            navigationItem.largeTitleDisplayMode = .never
-            navigationController?.isNavigationBarHidden = true
         case .recommended(_):
             let newsVC = NewsViewConroller()
             let cell = homeView.collectionView.cellForItem(at: indexPath) as? RecomendedNewsCollectionViewCell
@@ -305,6 +312,11 @@ extension HomeViewController: UICollectionViewDelegate {
                 } else {
                     newsVC.titleLabel.text = cell?.newsLabel.text
                 }
+                if news[indexPath.row].link != nil {
+                    newsVC.linkNews = news[indexPath.row].link
+                } else {
+                    newsVC.linkNews = ""
+                }
                 if news[indexPath.row].content != nil {
                     newsVC.textDiscription.text = news[indexPath.row].content
                 } else {
@@ -312,8 +324,6 @@ extension HomeViewController: UICollectionViewDelegate {
                 }
             } 
             navigationController?.pushViewController(newsVC, animated: true)
-            navigationItem.largeTitleDisplayMode = .never
-            navigationController?.isNavigationBarHidden = true
         }
     }
 }
@@ -344,6 +354,9 @@ extension HomeViewController: UICollectionViewDataSource {
             return cell
         case .topics(let topic):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
+            let isSelected = (indexPath == previousSelectedIndex)
+            cell.categoryLabel.backgroundColor = isSelected ? .purplePrimary : .greyLighter
+            cell.categoryLabel.textColor = isSelected ? .white : .greyPrimary
             cell.configureCell(topicName: topic[indexPath.row].categories)
             return cell
         case .news(_):
@@ -391,15 +404,6 @@ extension HomeViewController: UICollectionViewDataSource {
                 } else {
                     cell.newsLabel.text = "Creating Color Palette from world around you"
                 }
-//                if newsDataNew[indexPath.row].image_url != nil,
-//                   newsDataNew[indexPath.row].category != nil,
-//                   newsDataNew[indexPath.row].description != nil {
-//                    cell.configureCell(image: URL(string: newsDataNew[indexPath.row].image_url!), newTopic: newsDataNew[indexPath.row].category?[0].uppercased() ?? "", news: newsDataNew[indexPath.row].title ?? "")
-//                } else {
-//                    cell.cellImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
-//                    cell.newsTopicLabel.text = "COLORS"
-//                    cell.newsLabel.text = "Creating Color Palette from world around you"
-//                }
             } else {
                 cell.cellImage.image = UIImage(named: "city_1")
                 cell.newsTopicLabel.text = "ТЕМА"
