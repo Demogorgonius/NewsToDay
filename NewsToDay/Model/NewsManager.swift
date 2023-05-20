@@ -15,7 +15,7 @@ class NewsManager {
     
     func performRequest(category: String, completion: @escaping (Result <[Results], Error> ) -> ()) {
         
-        let urlString = baseURLWithCategory + "apikey=\(apiKey)" + "&category=\(category)" + "&language=ru,en"
+        let urlString = baseURLWithCategory + "apikey=\(apiKey)" + "&category=\(category)" + "\(setLang())"
         
         if let url = URL(string: urlString) {
             let task = session.dataTask(with: url, completionHandler: { data, response, error in
@@ -31,5 +31,19 @@ class NewsManager {
             })
             task.resume()
         }
+    }
+    
+    private func setLang() -> String {
+        var lang = ""
+
+        let appLang = UserDefaults.standard.value(forKey: "AppleLanguages") as! [String]
+        
+        if appLang[0] == "ru-RU" {
+            lang = "&language=ru"
+        } else {
+            lang = "&language=en"
+        }
+        
+        return lang
     }
 }

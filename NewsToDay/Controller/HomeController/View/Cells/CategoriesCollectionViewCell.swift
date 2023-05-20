@@ -29,19 +29,6 @@ final class CategoriesCollectionViewCell: UICollectionViewCell {
         setConstraints()
     }
     
-    override var isSelected: Bool {
-        didSet {
-            if isSelected {
-                categoryLabel.backgroundColor = .purplePrimary
-                categoryLabel.textColor = .white
-            }
-            else {
-                categoryLabel.backgroundColor = .greyLighter
-                categoryLabel.textColor = .greyPrimary
-            }
-        }
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
