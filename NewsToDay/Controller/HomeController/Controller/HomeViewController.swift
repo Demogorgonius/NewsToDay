@@ -321,6 +321,7 @@ extension HomeViewController: UICollectionViewDataSource {
         switch sections[indexPath.section] {
         case .textField(_):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "TextFieldCollectionViewCell", for: indexPath) as? TextFieldCollectionViewCell else { return UICollectionViewCell() }
+            cell.searchTextField.delegate = self
             return cell
         case .topics(let topic):
             guard let cell = homeView.collectionView.dequeueReusableCell(withReuseIdentifier: "CategoriesCollectionViewCell", for: indexPath) as? CategoriesCollectionViewCell else { return UICollectionViewCell() }
@@ -434,7 +435,7 @@ extension HomeViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        a.searchTextField.endEditing(true)
+        textField.endEditing(true)
         return true
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
@@ -446,7 +447,7 @@ extension HomeViewController: UITextFieldDelegate {
         }
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if let search = a.searchTextField.text {
+        if let search = textField.text {
             fetchSearchData(text: search)
         }
     }
