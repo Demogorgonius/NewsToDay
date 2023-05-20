@@ -27,6 +27,7 @@
 		A282D0ED2A19008500DC354F /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0EC2A19008500DC354F /* CustomTextField.swift */; };
 		A282D0EF2A19010F00DC354F /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0EE2A19010F00DC354F /* CustomButton.swift */; };
 		A282D0F32A1901D600DC354F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F22A1901D600DC354F /* AlertManager.swift */; };
+		A282D0F52A1902B900DC354F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F42A1902B900DC354F /* AuthService.swift */; };
 		A2C47B782A11251900BFD2DA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C47B772A11251900BFD2DA /* Colors.swift */; };
 		A50E3CCD2A0CD10E001B19C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A50E3CCF2A0CD10E001B19C6 /* Localizable.strings */; };
 		A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44342A08193F00491528 /* AppDelegate.swift */; };
@@ -84,6 +85,7 @@
 		A282D0EC2A19008500DC354F /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		A282D0EE2A19010F00DC354F /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		A282D0F22A1901D600DC354F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		A282D0F42A1902B900DC354F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A2C47B772A11251900BFD2DA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A50E3CCE2A0CD10E001B19C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A50E3CD02A0CD155001B19C6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				A282D0F22A1901D600DC354F /* AlertManager.swift */,
+				A282D0F42A1902B900DC354F /* AuthService.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -515,6 +518,7 @@
 				A5FAAE282A0EBB1C00499B78 /* RecomendedNewsCollectionViewCell.swift in Sources */,
 				A5FAAE032A0ADF4100499B78 /* BookmarksView.swift in Sources */,
 				A5FAAE2F2A0EBBB800499B78 /* MockData.swift in Sources */,
+				A282D0F52A1902B900DC354F /* AuthService.swift in Sources */,
 				A5FAAE272A0EBB1C00499B78 /* HeaderSupplemetaryView.swift in Sources */,
 				A282D0EB2A18FF7F00DC354F /* AuthHeaderView.swift in Sources */,
 				A21DF6432A0D820B00FD1154 /* OnboardingViewController.swift in Sources */,
