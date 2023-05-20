@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,16 +14,40 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        #warning("Раскомитить при завершении проекта")
+//        setupWindow(with: scene)
+//        checkAuthentication()
+        
         guard let scene = (scene as? UIWindowScene) else { return }
                window = UIWindow(windowScene: scene)
         
-        #warning("Поменять при завершении проекта")
 //            let vc = OnboardingViewController()
 //            let testVC = ViewController()
             let vc = CustomTabBarController()
         
             window!.rootViewController = vc
             window!.makeKeyAndVisible()
+    }
+    
+    private func setupWindow(with scene: UIScene) {
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        let window = UIWindow(windowScene: windowScene)
+        self.window = window
+        self.window?.makeKeyAndVisible()
+    }
+    
+    public func checkAuthentication() {
+        if Auth.auth().currentUser == nil {
+            let vc = LoginController()
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            self.window?.rootViewController = nav
+        } else {
+            let vc = HomeController()
+            let nav = UINavigationController(rootViewController: vc)
+            nav.modalPresentationStyle = .fullScreen
+            self.window?.rootViewController = nav
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
