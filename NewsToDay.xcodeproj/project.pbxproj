@@ -35,6 +35,7 @@
 		A282D1012A19071200DC354F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D1002A19071200DC354F /* WebViewController.swift */; };
 		A282D1032A19079400DC354F /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D1022A19079400DC354F /* ForgotPasswordController.swift */; };
 		A282D1062A19086700DC354F /* RegisterUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D1052A19086700DC354F /* RegisterUserRequest.swift */; };
+		A282D1082A19091600DC354F /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D1072A19091600DC354F /* LoginUserRequest.swift */; };
 		A2C47B782A11251900BFD2DA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C47B772A11251900BFD2DA /* Colors.swift */; };
 		A50E3CCD2A0CD10E001B19C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A50E3CCF2A0CD10E001B19C6 /* Localizable.strings */; };
 		A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44342A08193F00491528 /* AppDelegate.swift */; };
@@ -100,6 +101,7 @@
 		A282D1002A19071200DC354F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		A282D1022A19079400DC354F /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		A282D1052A19086700DC354F /* RegisterUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUserRequest.swift; sourceTree = "<group>"; };
+		A282D1072A19091600DC354F /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		A2C47B772A11251900BFD2DA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A50E3CCE2A0CD10E001B19C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A50E3CD02A0CD155001B19C6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -264,6 +266,7 @@
 		A282D1042A19082F00DC354F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A282D1072A19091600DC354F /* LoginUserRequest.swift */,
 				A282D1052A19086700DC354F /* RegisterUserRequest.swift */,
 			);
 			path = Models;
@@ -548,6 +551,7 @@
 				A5FAAE032A0ADF4100499B78 /* BookmarksView.swift in Sources */,
 				A282D0FD2A1905EE00DC354F /* LoginController.swift in Sources */,
 				A5FAAE2F2A0EBBB800499B78 /* MockData.swift in Sources */,
+				A282D1082A19091600DC354F /* LoginUserRequest.swift in Sources */,
 				A282D0F52A1902B900DC354F /* AuthService.swift in Sources */,
 				A5FAAE272A0EBB1C00499B78 /* HeaderSupplemetaryView.swift in Sources */,
 				A282D0FF2A19067B00DC354F /* RegisterController.swift in Sources */,
