@@ -13,6 +13,7 @@ import Kingfisher
 final class HomeViewController: UIViewController {
 
     private let catManager = CategoriesManager()
+    var a = TextFieldCollectionViewCell()
     private let homeView = HomeView()
     private let sections = MockData.shared.pageData
     private let newsManager = NewsManager()
@@ -49,7 +50,6 @@ final class HomeViewController: UIViewController {
         setupViews()
         setDelegates()
         fetchDataNews()
-        fetchDataRecNews()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -412,6 +412,42 @@ extension HomeViewController {
             make.leading.trailing.equalToSuperview()
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
+        }
+    }
+}
+
+//MARK: - UITextFieldDelegate
+extension HomeViewController: UITextFieldDelegate {
+    
+    private func fetchSearchData(text: String) {
+        newsManager.performRequest(textFieldText: text) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let data):
+                    self.newsData = data
+                    self.homeView.collectionView.reloadSections(IndexSet(integer: 2))
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        a.searchTextField.endEditing(true)
+        return true
+    }
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if textField.text != "" {
+            return true
+        } else {
+            a.searchTextField.placeholder = "YEAAAAAHHH"
+            return false
+        }
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let search = a.searchTextField.text {
+            fetchSearchData(text: search)
         }
     }
 }
