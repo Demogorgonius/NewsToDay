@@ -34,10 +34,17 @@ class CategoriesViewController : UIViewController {
         nextButton.setTitle(NSLocalizedString("Categories_NextButton", comment: ""), for: .normal)
         nextButton.setTitleColor(.black, for: .normal)
         nextButton.backgroundColor = UIColor(named: "Purple Primary")
-        nextButton.addTarget(categoriesManager, action: #selector(categoriesManager.setUserDefaults), for: .touchUpInside)
+        nextButton.addTarget(self, action: #selector(nextButtonTapped), for: .touchUpInside)
         nextButton.layer.cornerRadius = 20
     }
 
+    @objc func nextButtonTapped(_ sender: UIButton) {
+        
+        categoriesManager.setUserDefaults()
+        let homeVC = HomeViewController()
+        tabBarController?.selectedIndex = 0
+    }
+    
     func setup() {
         collectionView = UICollectionView(frame: .zero , collectionViewLayout: setupFlowLayout())
         view.addSubview(collectionView)
