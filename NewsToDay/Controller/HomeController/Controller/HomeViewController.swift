@@ -50,6 +50,10 @@ class HomeViewController: UIViewController {
         fetchDataNews()
         fetchDataRecNews()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        fetchDataRecNews()
+    }
     
     private func fetchDataRecNews() {
         let categories = catManager.getCategories() as! [String]
@@ -329,7 +333,7 @@ extension HomeViewController: UICollectionViewDataSource {
         case .news(_):
             return 10
         case .recommended(_):
-            return 10
+            return 5
         }
     }
     
