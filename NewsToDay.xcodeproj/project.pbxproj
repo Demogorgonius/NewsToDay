@@ -33,6 +33,7 @@
 		A282D0FD2A1905EE00DC354F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FC2A1905EE00DC354F /* LoginController.swift */; };
 		A282D0FF2A19067B00DC354F /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FE2A19067B00DC354F /* RegisterController.swift */; };
 		A282D1012A19071200DC354F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D1002A19071200DC354F /* WebViewController.swift */; };
+		A282D1032A19079400DC354F /* ForgotPasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D1022A19079400DC354F /* ForgotPasswordController.swift */; };
 		A2C47B782A11251900BFD2DA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C47B772A11251900BFD2DA /* Colors.swift */; };
 		A50E3CCD2A0CD10E001B19C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A50E3CCF2A0CD10E001B19C6 /* Localizable.strings */; };
 		A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44342A08193F00491528 /* AppDelegate.swift */; };
@@ -96,6 +97,7 @@
 		A282D0FC2A1905EE00DC354F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		A282D0FE2A19067B00DC354F /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		A282D1002A19071200DC354F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		A282D1022A19079400DC354F /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		A2C47B772A11251900BFD2DA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A50E3CCE2A0CD10E001B19C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A50E3CD02A0CD155001B19C6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 			children = (
 				A282D0FA2A19054B00DC354F /* HomeController.swift */,
 				A282D0FC2A1905EE00DC354F /* LoginController.swift */,
+				A282D1022A19079400DC354F /* ForgotPasswordController.swift */,
 				A282D1002A19071200DC354F /* WebViewController.swift */,
 				A282D0FE2A19067B00DC354F /* RegisterController.swift */,
 			);
@@ -554,6 +557,7 @@
 				A5FAAE2A2A0EBB1C00499B78 /* LatestNewsCollectionViewCell.swift in Sources */,
 				942EBCB42A12366800679CB9 /* Header.swift in Sources */,
 				CA4A50E82A19167B00D5B2F1 /* LanguageViewController.swift in Sources */,
+				A282D1032A19079400DC354F /* ForgotPasswordController.swift in Sources */,
 				A282D1012A19071200DC354F /* WebViewController.swift in Sources */,
 				A282D0F32A1901D600DC354F /* AlertManager.swift in Sources */,
 				A5FAAE292A0EBB1C00499B78 /* TextFieldCollectionViewCell.swift in Sources */,
