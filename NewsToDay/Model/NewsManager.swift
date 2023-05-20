@@ -9,7 +9,7 @@ class NewsManager {
     
     private let session = URLSession.shared
     private let baseURLWithCategory = "https://newsdata.io/api/1/news?"
-    private let apiKey = "pub_219409db3cd2bee89b8048c0a7b51c150a797"
+    private let apiKey = "pub_22320d2b4b9d57949506ae1823bcf4e0bf4c2"
     
     var delegate: NewsManagerDelegate?
     
