@@ -64,7 +64,7 @@ final class HomeViewController: UIViewController {
                 switch result {
                 case .success(let data):
                     self.recNewsData = data
-                    self.homeView.collectionView.reloadData()
+                    self.homeView.collectionView.reloadSections(IndexSet(integer: 3))
                 case .failure(let error):
                     print(error.localizedDescription)
                 }
@@ -222,31 +222,6 @@ extension HomeViewController: UICollectionViewDelegate {
             homeView.collectionView.reloadItems(at: [previousIndex, indexPath].compactMap { $0 })
             let selectedCategory = MockData.shared.topics.items[indexPath.item].categories
             getNewsFromTopic(category: selectedCategory)
-            if let cell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell {
-                if let newDone = newsData {
-                    if newDone[indexPath.row].image_url != nil,
-                       newDone[indexPath.row].category != nil,
-                       newDone[indexPath.row].description != nil {
-                        cell.configureCell(image: URL(string: newDone[indexPath.row].image_url!), topic: newDone[indexPath.row].category?[0].uppercased() ?? "", news: newDone[indexPath.row].description ?? "", newsData: newDone[indexPath.row])
-                    } else if newDone[indexPath.row].image_url == nil {
-                        cell.latestNewsImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
-                        cell.topicNewsLabel.text = newDone[indexPath.row].category?[0].uppercased()
-                        cell.newsLabel.text = newDone[indexPath.row].title
-                    } else if newDone[indexPath.row].category == nil {
-                        cell.latestNewsImage.kf.setImage(with: URL(string: newDone[indexPath.row].image_url ?? ""))
-                        cell.topicNewsLabel.text = "UI/UX DESIGN"
-                        cell.newsLabel.text = newDone[indexPath.row].title
-                    } else if newDone[indexPath.row].description == nil {
-                        cell.latestNewsImage.kf.setImage(with: URL(string: newDone[indexPath.row].image_url ?? ""))
-                        cell.topicNewsLabel.text = newDone[indexPath.row].category?[0]
-                        cell.newsLabel.text = "A Simple Trick For Creating Color Palettes Quickly"
-                    }
-                } else {
-                    cell.latestNewsImage.image = UIImage(named: "city_1")
-                    cell.topicNewsLabel.text = "ТЕМА"
-                    cell.newsLabel.text = "НОВОСТЬ"
-                }
-            }
         case .news(_):
             let newsVC = NewsViewConroller()
             let cell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell
@@ -257,7 +232,7 @@ extension HomeViewController: UICollectionViewDelegate {
                     newsVC.pictureNews.image = cell?.latestNewsImage.image
                 }
                 if new[indexPath.row].category != nil {
-                    newsVC.category.text = new[indexPath.row].category?[0].uppercased()
+                    newsVC.category.text = new[indexPath.row].category?[0].capitalized
                 } else {
                     newsVC.category.text = cell?.topicNewsLabel.text
                 }
@@ -293,7 +268,7 @@ extension HomeViewController: UICollectionViewDelegate {
                     newsVC.pictureNews.image = cell?.cellImage.image
                 }
                 if news[indexPath.row].category != nil {
-                    newsVC.category.text = news[indexPath.row].category?[0].uppercased()
+                    newsVC.category.text = news[indexPath.row].category?[0].capitalized
                 } else {
                     newsVC.category.text = cell?.newsTopicLabel.text
                 }
