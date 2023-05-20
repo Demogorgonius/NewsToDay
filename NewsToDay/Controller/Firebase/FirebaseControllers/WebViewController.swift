@@ -62,3 +62,4 @@ class WebViewController: UIViewController {
             webView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
+}

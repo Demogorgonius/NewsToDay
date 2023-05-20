@@ -43,6 +43,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             nav.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = nav
         } else {
+#warning("поменять HomeController на наш CustomTabBarVC при завершении проекта")
             let vc = HomeController()
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
