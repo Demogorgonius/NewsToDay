@@ -108,3 +108,11 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
     }
     
 }
+
+extension LatestNewsCollectionViewCell {
+    override func prepareForReuse() {
+        latestNewsImage.image = nil
+        topicNewsLabel.text = nil
+        newsLabel.text = nil
+    }
+}

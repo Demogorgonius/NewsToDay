@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BookmarksTableViewCell: UITableViewCell {
     static let identifier = "BookmarksTableViewCell"
