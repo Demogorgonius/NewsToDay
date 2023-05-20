@@ -56,7 +56,7 @@ class ProfileViewController: UIViewController {
     }()
     
     //MARK: - Language Button
-    let languageButton: UIButton = {
+    private lazy var languageButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -69,13 +69,13 @@ class ProfileViewController: UIViewController {
         button.configuration?.contentInsets.leading = 25
         button.configuration?.baseBackgroundColor = .systemFill
         button.configuration?.cornerStyle = .small
-        button.addTarget(self,action:#selector(languageButtonPressed(_:)),
-            forControlEvents:.TouchUpInside)
+        button.addTarget(self, action: #selector(languageButtonPressed(_:)),
+            for: .touchUpInside)
         return button
     }()
     
     //MARK: - Terms&Conditions Button
-    let termsButton: UIButton = {
+    private lazy var termsButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -88,13 +88,13 @@ class ProfileViewController: UIViewController {
         button.configuration?.contentInsets.leading = 25
         button.configuration?.baseBackgroundColor = .systemFill
         button.configuration?.cornerStyle = .small
-        button.addTarget(self,action:#selector(TermsButtonPressed(_:)),
-            forControlEvents:.TouchUpInside)
+        button.addTarget(self, action: #selector(termsButtonPressed(_:)),
+            for: .touchUpInside)
         return button
     }()
     
     //MARK: - SignOut Button
-    let signOutButton: UIButton = {
+    private lazy var signOutButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -108,8 +108,8 @@ class ProfileViewController: UIViewController {
         button.configuration?.baseForegroundColor = .darkGray
         button.configuration?.baseBackgroundColor = .systemFill
         button.configuration?.cornerStyle = .small
-        button.addTarget(self,action:#selector(signOutButtonPressed(_:)),
-            forControlEvents:.TouchUpInside)
+        button.addTarget(self,action: #selector(signOutButtonPressed(_:)),
+                         for: .touchUpInside)
         return button
     }()
     
@@ -121,6 +121,7 @@ class ProfileViewController: UIViewController {
 
     //MARK: - Methods
     private func setupViews() {
+        
         view.backgroundColor = .systemBackground
         view.addSubview(titleLabel)
         view.addSubview(userImage)
@@ -136,14 +137,16 @@ class ProfileViewController: UIViewController {
         let languageVC = LanguageViewController()
         self.navigationController?.pushViewController(languageVC, animated: true)
     }
+    
+    
     @objc func termsButtonPressed(_ sender: UIButton) {
         let termsVC = TermsConditionsViewController()
         self.navigationController?.pushViewController(termsVC, animated: true)
+    }
+    
+    @objc func signOutButtonPressed(_ sender: UIButton) {
 
     }
-//    @objc func signOutButtonPressed(_ sender: UIButton) {
-//
-//    }
     
    private func setupConstraints() {
         NSLayoutConstraint.activate([
