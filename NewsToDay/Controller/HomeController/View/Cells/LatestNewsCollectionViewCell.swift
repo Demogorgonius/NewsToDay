@@ -12,6 +12,8 @@ import Kingfisher
 final class LatestNewsCollectionViewCell: UICollectionViewCell {
  
     var bookMarkChangeColor: Bool = false
+    var newsData: Results?
+    var bookmarkManager = BookMarksManager()
     
      lazy var latestNewsImage: UIImageView = {
         let element = UIImageView()
@@ -53,6 +55,8 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
             bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
             bookMarkButton.tintColor = .systemYellow
             bookMarkChangeColor = true
+            guard let data = newsData else { return }
+            bookmarkManager.saveNewsToDefaults(news: data)
         } else {
             bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
             bookMarkButton.tintColor = .white
@@ -70,10 +74,11 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(image: URL?, topic: String, news: String) {
+    func configureCell(image: URL?, topic: String, news: String, newsData: Results) {
         latestNewsImage.kf.setImage(with: image)
         topicNewsLabel.text = topic
         newsLabel.text = news
+        self.newsData = newsData
     }
     
     private func setupView() {
