@@ -11,7 +11,7 @@ import UIKit
 class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     private var viewModels = [TestForBookmarks]()
-    var bookmarksData: [Results]?
+    var bookmarksData: Results?
     private var testPosts = testPost
     
     private lazy var tableView: UITableView = {
@@ -80,8 +80,8 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError()
         }
         
-//        cell.updateNewsBookmarks(image: testPosts[indexPath.row].image, title: testPosts[indexPath.row].title, description: testPosts[indexPath.row].description)
-        cell.configureCell(image: URL(string: bookmarksData?[indexPath.row].image_url! ?? ""), topic: bookmarksData?[indexPath.row].category?[0].uppercased() ?? "", news: bookmarksData?[indexPath.row].description ?? "")
+        cell.updateNewsBookmarks(image: testPosts[indexPath.row].image, title: testPosts[indexPath.row].title, description: testPosts[indexPath.row].description)
+//        cell.configureCell(image: URL(string: bookmarksData?[indexPath.row].image_url! ?? ""), topic: bookmarksData?[indexPath.row].category?[0].uppercased() ?? "", news: bookmarksData?[indexPath.row].description ?? "", data: bookmarksData[indexPath.row])
         return cell
     }
     

@@ -219,7 +219,10 @@ extension HomeViewController: UICollectionViewDelegate {
                     if newDone[indexPath.row].image_url != nil,
                        newDone[indexPath.row].category != nil,
                        newDone[indexPath.row].description != nil {
-                        cell.configureCell(image: URL(string: newDone[indexPath.row].image_url!), topic: newDone[indexPath.row].category?[0].uppercased() ?? "", news: newDone[indexPath.row].description ?? "")
+                        cell.configureCell(image: URL(string: newDone[indexPath.row].image_url!),
+                                           topic: newDone[indexPath.row].category?[0].uppercased() ?? "",
+                                           news: newDone[indexPath.row].description ?? "",
+                                           dataBookmarks: newDone[indexPath.row])
                     } else if newDone[indexPath.row].image_url == nil {
                         cell.latestNewsImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
                         cell.topicNewsLabel.text = newDone[indexPath.row].category?[0].uppercased()
@@ -348,7 +351,10 @@ extension HomeViewController: UICollectionViewDataSource {
                 if newDone[indexPath.row].image_url != nil,
                    newDone[indexPath.row].category != nil,
                    newDone[indexPath.row].description != nil {
-                    cell.configureCell(image: URL(string: newDone[indexPath.row].image_url!), topic: newDone[indexPath.row].category?[0].uppercased() ?? "", news: newDone[indexPath.row].description ?? "")
+                    cell.configureCell(image: URL(string: newDone[indexPath.row].image_url!),
+                                       topic: newDone[indexPath.row].category?[0].uppercased() ?? "",
+                                       news: newDone[indexPath.row].description ?? "",
+                                       dataBookmarks: newDone[indexPath.row])
                 } else if newDone[indexPath.row].image_url == nil {
                     cell.latestNewsImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
                     cell.topicNewsLabel.text = newDone[indexPath.row].category?[0].uppercased()
