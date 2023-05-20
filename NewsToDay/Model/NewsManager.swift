@@ -9,7 +9,7 @@ class NewsManager {
     
     private let session = URLSession.shared
     private let baseURLWithCategory = "https://newsdata.io/api/1/news?"
-    private let apiKey = "pub_22320d2b4b9d57949506ae1823bcf4e0bf4c2"
+    private let apiKey = "pub_22485dae15b45670dc08638a81e849c1c22e6"
 
     
     var delegate: NewsManagerDelegate?
@@ -17,6 +17,26 @@ class NewsManager {
     func performRequest(category: String, completion: @escaping (Result <[Results], Error> ) -> ()) {
         
         let urlString = baseURLWithCategory + "apikey=\(apiKey)" + "&category=\(category)" + "\(setLang())"
+        
+        if let url = URL(string: urlString) {
+            let task = session.dataTask(with: url, completionHandler: { data, response, error in
+                if let data = data {
+                    do {
+                        let decoder = JSONDecoder()
+                        let decodedData = try decoder.decode(NewsData.self, from: data)
+                        completion(.success(decodedData.results))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            })
+            task.resume()
+        }
+    }
+    
+    func performRequest(textFieldText: String, completion: @escaping (Result <[Results], Error> ) -> ()) {
+        
+        let urlString = baseURLWithCategory + "apikey=\(apiKey)" + "&q=\(textFieldText)"
         
         if let url = URL(string: urlString) {
             let task = session.dataTask(with: url, completionHandler: { data, response, error in

@@ -34,7 +34,7 @@ final class TextFieldCollectionViewCell: UICollectionViewCell {
         return element
     }()
     
-    private lazy var searchTextField: UITextField = {
+    lazy var searchTextField: UITextField = {
         let element = UITextField()
         element.placeholder = NSLocalizedString("textFieldPlaceholder", comment: "")
         element.backgroundColor = .clear
