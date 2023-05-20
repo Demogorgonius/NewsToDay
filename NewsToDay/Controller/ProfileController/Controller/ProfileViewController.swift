@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     
@@ -117,9 +118,24 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         setupViews()
         setupConstraints()
+        fetchingUser()
     }
-
+    
     //MARK: - Methods
+#warning("Здесь достаём данные из бд Firebase")
+    private func fetchingUser() {
+        AuthService.shared.fetchUser { [weak self] user, error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showFetchingUserError(on: self, with: error)
+                return
+            }
+            
+            if let user = user {
+                self.nameLabel.text = "\(user.username)\n\(user.email)"
+            }
+        }
+    }
     private func setupViews() {
         
         view.backgroundColor = .systemBackground
@@ -145,8 +161,17 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func signOutButtonPressed(_ sender: UIButton) {
-        #warning("Здесь добавить Sign Out")
-
+#warning("Здесь пользователь разлогинивается и выходит на Login VC")
+        AuthService.shared.signOut { [weak self] error in
+            guard let self = self else { return }
+            if let error = error {
+                AlertManager.showLogOutErrorAlert(on: self, with: error)
+                return
+            }
+            if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+                sceneDelegate.checkAuthentication()
+            }
+        }
     }
     
    private func setupConstraints() {

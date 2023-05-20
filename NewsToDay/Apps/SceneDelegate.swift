@@ -18,13 +18,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 //        setupWindow(with: scene)
 //        checkAuthentication()
         
+        #warning("Удалить при завершении проекта то что ниже")
         guard let scene = (scene as? UIWindowScene) else { return }
                window = UIWindow(windowScene: scene)
-        
+
 //            let vc = OnboardingViewController()
 //            let testVC = ViewController()
             let vc = CustomTabBarController()
-        
+
             window!.rootViewController = vc
             window!.makeKeyAndVisible()
     }
@@ -43,8 +44,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             nav.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = nav
         } else {
-#warning("поменять HomeController на наш CustomTabBarVC при завершении проекта")
-            let vc = HomeController()
+            let vc = CustomTabBarController()
             let nav = UINavigationController(rootViewController: vc)
             nav.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = nav

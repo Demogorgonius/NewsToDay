@@ -29,7 +29,7 @@
 		A282D0F32A1901D600DC354F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F22A1901D600DC354F /* AlertManager.swift */; };
 		A282D0F52A1902B900DC354F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F42A1902B900DC354F /* AuthService.swift */; };
 		A282D0F92A19042E00DC354F /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F82A19042E00DC354F /* ValidationService.swift */; };
-		A282D0FB2A19054B00DC354F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FA2A19054B00DC354F /* HomeController.swift */; };
+		A282D0FB2A19054B00DC354F /* (deprecated)HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FA2A19054B00DC354F /* (deprecated)HomeController.swift */; };
 		A282D0FD2A1905EE00DC354F /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FC2A1905EE00DC354F /* LoginController.swift */; };
 		A282D0FF2A19067B00DC354F /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FE2A19067B00DC354F /* RegisterController.swift */; };
 		A282D1012A19071200DC354F /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D1002A19071200DC354F /* WebViewController.swift */; };
@@ -100,7 +100,7 @@
 		A282D0F22A1901D600DC354F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		A282D0F42A1902B900DC354F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A282D0F82A19042E00DC354F /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
-		A282D0FA2A19054B00DC354F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		A282D0FA2A19054B00DC354F /* (deprecated)HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "(deprecated)HomeController.swift"; sourceTree = "<group>"; };
 		A282D0FC2A1905EE00DC354F /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		A282D0FE2A19067B00DC354F /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		A282D1002A19071200DC354F /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
@@ -254,7 +254,7 @@
 		A282D0F02A19018300DC354F /* FirebaseControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A282D0FA2A19054B00DC354F /* HomeController.swift */,
+				A282D0FA2A19054B00DC354F /* (deprecated)HomeController.swift */,
 				A282D0FC2A1905EE00DC354F /* LoginController.swift */,
 				A282D1022A19079400DC354F /* ForgotPasswordController.swift */,
 				A282D1002A19071200DC354F /* WebViewController.swift */,
@@ -575,7 +575,7 @@
 				A282D0FF2A19067B00DC354F /* RegisterController.swift in Sources */,
 				A282D0EB2A18FF7F00DC354F /* AuthHeaderView.swift in Sources */,
 				A21DF6432A0D820B00FD1154 /* OnboardingViewController.swift in Sources */,
-				A282D0FB2A19054B00DC354F /* HomeController.swift in Sources */,
+				A282D0FB2A19054B00DC354F /* (deprecated)HomeController.swift in Sources */,
 				94A2A1962A0A8A67001DCEC0 /* NewsManager.swift in Sources */,
 				943593F32A1500D0002CD2EF /* CategoriesManager.swift in Sources */,
 				0D037C842A0ED75D002F7EE3 /* TestForBookmarks.swift in Sources */,
