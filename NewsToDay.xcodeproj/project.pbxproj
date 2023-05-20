@@ -29,6 +29,7 @@
 		A282D0F32A1901D600DC354F /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F22A1901D600DC354F /* AlertManager.swift */; };
 		A282D0F52A1902B900DC354F /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F42A1902B900DC354F /* AuthService.swift */; };
 		A282D0F92A19042E00DC354F /* ValidationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0F82A19042E00DC354F /* ValidationService.swift */; };
+		A282D0FB2A19054B00DC354F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A282D0FA2A19054B00DC354F /* HomeController.swift */; };
 		A2C47B782A11251900BFD2DA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2C47B772A11251900BFD2DA /* Colors.swift */; };
 		A50E3CCD2A0CD10E001B19C6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A50E3CCF2A0CD10E001B19C6 /* Localizable.strings */; };
 		A5DF44352A08193F00491528 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF44342A08193F00491528 /* AppDelegate.swift */; };
@@ -88,6 +89,7 @@
 		A282D0F22A1901D600DC354F /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		A282D0F42A1902B900DC354F /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		A282D0F82A19042E00DC354F /* ValidationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationService.swift; sourceTree = "<group>"; };
+		A282D0FA2A19054B00DC354F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		A2C47B772A11251900BFD2DA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A50E3CCE2A0CD10E001B19C6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A50E3CD02A0CD155001B19C6 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 		A282D0F02A19018300DC354F /* FirebaseControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A282D0FA2A19054B00DC354F /* HomeController.swift */,
 			);
 			path = FirebaseControllers;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				A5FAAE272A0EBB1C00499B78 /* HeaderSupplemetaryView.swift in Sources */,
 				A282D0EB2A18FF7F00DC354F /* AuthHeaderView.swift in Sources */,
 				A21DF6432A0D820B00FD1154 /* OnboardingViewController.swift in Sources */,
+				A282D0FB2A19054B00DC354F /* HomeController.swift in Sources */,
 				94A2A1962A0A8A67001DCEC0 /* NewsManager.swift in Sources */,
 				943593F32A1500D0002CD2EF /* CategoriesManager.swift in Sources */,
 				0D037C842A0ED75D002F7EE3 /* TestForBookmarks.swift in Sources */,
