@@ -189,7 +189,7 @@ extension NewsViewConroller {
             
             category.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
             category.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            category.widthAnchor.constraint(equalToConstant: 120),
+            category.widthAnchor.constraint(greaterThanOrEqualToConstant: 90),
             category.heightAnchor.constraint(equalToConstant: 35),
             
             backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
