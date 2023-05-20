@@ -10,13 +10,13 @@ import UIKit
 class LoginController: UIViewController {
     
     //MARK: - UI Components
-    private let headerView = AuthHeaderView(title: "Sign In", subtitle: "Sign in to your account")
+    private let headerView = AuthHeaderView(title: "Welcome Back 👋", subtitle: "I am happy to see you again. You can continue where you left off by logging in")
     
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
     private let signInButton = CustomButton(title: "Sign In", hasBackground: true, fontSize: .big)
-    private let newUserButton = CustomButton(title: "New user? Create account", hasBackground: false, fontSize: .med)
+    private let newUserButton = CustomButton(title: "Don't have an account? Sign Up", hasBackground: false, fontSize: .med)
     private let forgotPasswordButton = CustomButton(title: "Forgot password?", hasBackground: false, fontSize: .small)
     
     //MARK: - Lifecycle
@@ -105,7 +105,7 @@ class LoginController: UIViewController {
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 220),
             
-            emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
+            emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 45),
             emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             emailField.heightAnchor.constraint(equalToConstant: 55),
             emailField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
@@ -115,19 +115,19 @@ class LoginController: UIViewController {
             passwordField.heightAnchor.constraint(equalToConstant: 55),
             passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            signInButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 15),
+            signInButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 45),
             signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             signInButton.heightAnchor.constraint(equalToConstant: 55),
             signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            newUserButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 15),
+            newUserButton.bottomAnchor.constraint(equalTo: forgotPasswordButton.topAnchor, constant: -5),
             newUserButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            newUserButton.heightAnchor.constraint(equalToConstant: 44),
+            newUserButton.heightAnchor.constraint(equalToConstant: 22),
             newUserButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            forgotPasswordButton.topAnchor.constraint(equalTo: newUserButton.bottomAnchor, constant: 15),
+            forgotPasswordButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             forgotPasswordButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 44),
+            forgotPasswordButton.heightAnchor.constraint(equalToConstant: 22),
             forgotPasswordButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
         ])
         

@@ -14,7 +14,7 @@ class AuthHeaderView: UIView {
     private let logoImageView: UIImageView = {
         let image = UIImageView()
         image.contentMode = .scaleAspectFill
-        image.image = UIImage(named: "city_1")
+        image.image = UIImage(named: "AppIcon")
         image.layer.cornerRadius = 25
         image.layer.masksToBounds = true
         return image
@@ -34,6 +34,7 @@ class AuthHeaderView: UIView {
     private let subTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Error"
+        label.numberOfLines = 0
         label.textColor = .secondaryLabel
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.textAlignment = .center
