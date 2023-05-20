@@ -63,6 +63,12 @@ class BookmarksTableViewCell: UITableViewCell {
         
     }
     
+    func configureCell(image: String, topic: String, news: String) {
+            imageNews.kf.setImage(with: URL(string: image))
+            newsTitleLabel.text = topic
+            descriptionLabel.text = news
+        }
+    
 //    func configureCell(image: URL?, topic: String, news: String, data: Results?) {
 //        imageNews.kf.setImage(with: image)
 //        newsTitleLabel.text = topic

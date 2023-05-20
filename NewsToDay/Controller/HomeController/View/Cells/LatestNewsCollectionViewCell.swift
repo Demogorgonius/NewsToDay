@@ -56,6 +56,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
             bookMarkButton.tintColor = .systemYellow
             bookMarkChangeColor = true
             guard let data = newsData else { return }
+            print(data)
             bookmarkManager.saveNewsToDefaults(news: data)
         } else {
             bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
@@ -79,6 +80,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         topicNewsLabel.text = topic
         newsLabel.text = news
         self.newsData = newsData
+        print(newsData)
     }
     
     private func setupView() {

@@ -7,17 +7,18 @@ class BookMarksManager {
     var newsArray = [Results]()
     
     
-    @objc public func setUserDefaults(){
-        UserDefaults.resetStandardUserDefaults()
-        defaults.set(newsArray, forKey: "bookmark")
-        
-    }
+//    @objc public func setUserDefaults(){
+//        UserDefaults.resetStandardUserDefaults()
+//        defaults.set(newsArray, forKey: "bookmark")
+//
+//    }
     
     func saveNewsToDefaults(news: Results) {
         
-        var newsArray = defaults.object(forKey: "bookmark") as! [Results]
+//        var newsArray = defaults.object(forKey: "bookmark") as? [Results]
         newsArray.append(news)
         defaults.set(newsArray, forKey: "bookmark")
+       
     }
     
     func deleteNewsFromDefaults(news: Results) {
@@ -25,7 +26,7 @@ class BookMarksManager {
     }
     
     func getNewsFromUserDefaults() -> [Any] {
-        if let result = defaults.array(forKey: "bookmark"){
+        if let result = defaults.array(forKey: "bookmark") {
             return result
         }
         return []

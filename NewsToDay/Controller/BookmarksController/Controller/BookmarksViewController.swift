@@ -12,7 +12,7 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     private var viewModels = [TestForBookmarks]()
     var bookmarksData: Results?
-    private var testPosts = testPost
+    private var testPosts = BookMarksManager().getNewsFromUserDefaults() as! [Results]
     
     private lazy var tableView: UITableView = {
        let table = UITableView(frame: .zero, style: .grouped)
@@ -27,6 +27,7 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     override func loadView() {
         view = BookmarksView()
+        print(testPosts)
     }
     
     override func viewDidLoad() {
@@ -75,15 +76,20 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksTableViewCell.identifier, for: indexPath)
-                as? BookmarksTableViewCell else {
-            fatalError()
-        }
+         guard let cell = tableView.dequeueReusableCell(withIdentifier: BookmarksTableViewCell.identifier, for: indexPath)
+                 as? BookmarksTableViewCell else {
+             fatalError()
+         }
+         
+         let post = testPosts[indexPath.row]
+         let topic = post.category?.first ?? ""
+         cell.configureCell(image: post.image_url ?? "", topic: topic, news: post.description ?? "")
+         print(cell)
+         
         
-        cell.updateNewsBookmarks(image: testPosts[indexPath.row].image, title: testPosts[indexPath.row].title, description: testPosts[indexPath.row].description)
-//        cell.configureCell(image: URL(string: bookmarksData?[indexPath.row].image_url! ?? ""), topic: bookmarksData?[indexPath.row].category?[0].uppercased() ?? "", news: bookmarksData?[indexPath.row].description ?? "", data: bookmarksData[indexPath.row])
-        return cell
-    }
+ //        cell.configureCell(image: URL(string: bookmarksData?[indexPath.row].image_url! ?? ""), topic: bookmarksData?[indexPath.row].category?[0].uppercased() ?? "", news: bookmarksData?[indexPath.row].description ?? "", data: bookmarksData[indexPath.row])
+         return cell
+     }
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
