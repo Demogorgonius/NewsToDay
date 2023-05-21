@@ -14,10 +14,18 @@ class BookMarksManager {
 //    }
     
     func saveNewsToDefaults(news: Results) {
-        var newsArrayNew = defaults.array(forKey: "bookmark") as? [Results] ?? []
-        newsArrayNew.append(news)
+        var bookmarkArray: [Results] = []
+        guard let bookmarks = defaults.data(forKey: "bookmark") else { return }
         do {
-            let result = newsArrayNew
+            let decoder = JSONDecoder()
+            bookmarkArray = try decoder.decode([Results].self, from: bookmarks)
+        } catch {
+            print("ERROR!!!!!!!DECODE\(error)")
+        }
+
+        bookmarkArray.append(news)
+        do {
+            let result = bookmarkArray
             let encoder = JSONEncoder()
             let data = try encoder.encode(result)
             UserDefaults.standard.set(data, forKey: "bookmark")
@@ -40,7 +48,7 @@ class BookMarksManager {
             let decoder = JSONDecoder()
             bookmarkArray = try decoder.decode([Results].self, from: bookmarks)
         } catch {
-            print(error)
+            print("ERROR!!!!!!!DECODE\(error)")
         }
         
         return bookmarkArray

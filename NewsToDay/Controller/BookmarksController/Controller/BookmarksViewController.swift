@@ -12,7 +12,8 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     private var viewModels = [TestForBookmarks]()
     var bookmarksData: Results?
-    private var testPosts = BookMarksManager().getNewsFromUserDefaults() as! [Results]
+    var bookmarksManager = BookMarksManager()
+    private var testPosts: [Results]?
     
     private lazy var tableView: UITableView = {
        let table = UITableView(frame: .zero, style: .grouped)
@@ -27,12 +28,14 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     override func loadView() {
         view = BookmarksView()
+        testPosts = bookmarksManager.getNewsFromUserDefaults()
         print(testPosts)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        customView.delegate = self
+        testPosts = bookmarksManager.getNewsFromUserDefaults()
         view.backgroundColor = .red
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.title = NSLocalizedString("TabBar_Bookmarks", comment: "")
@@ -41,6 +44,8 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        testPosts = bookmarksManager.getNewsFromUserDefaults()
+        tableView.reloadData()
         tabBarController?.tabBar.isHidden = false
     }
     
@@ -61,7 +66,7 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
 
 extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return testPosts.count
+        return testPosts?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -84,11 +89,11 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
                  as? BookmarksTableViewCell else {
              fatalError()
          }
-         
+        guard let testPosts = testPosts else { return UITableViewCell() }
          let post = testPosts[indexPath.row]
          let topic = post.category?.first ?? ""
          cell.configureCell(image: post.image_url ?? "", topic: topic, news: post.description ?? "")
-         print(cell)
+//         print(cell)
          
         
  //        cell.configureCell(image: URL(string: bookmarksData?[indexPath.row].image_url! ?? ""), topic: bookmarksData?[indexPath.row].category?[0].uppercased() ?? "", news: bookmarksData?[indexPath.row].description ?? "", data: bookmarksData[indexPath.row])
@@ -115,6 +120,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        guard let testPosts = testPosts else { return }
         navigationController?.pushViewController(NewsViewConroller(with: testPosts[indexPath.row]), animated: true)
     }
     
@@ -125,6 +131,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Удаляем содержимое ячейки
+            guard var testPosts = testPosts else { return }
             testPosts.remove(at: indexPath.row)
             // Удаляем ячейку из таблицы
             tableView.deleteRows(at: [indexPath], with: .automatic)
