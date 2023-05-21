@@ -74,19 +74,29 @@ final class NewsViewConroller: UIViewController {
     
     private lazy var bookMarkButton: UIButton = {
         let button = UIButton()
+        let iconConfiguration = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "bookmark", withConfiguration: iconConfiguration)
+        button.setImage(image, for: .normal)
         button.tintColor = .white
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+        button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(addToBookmarks), for: .touchUpInside)
+        button.layer.cornerRadius = 16
         return button
     }()
     
     private lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
+        let iconConfiguration = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "arrowshape.turn.up.right", withConfiguration: iconConfiguration)
+        button.setImage(image, for: .normal)
         button.tintColor = .white
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(systemName: "arrowshape.turn.up.right"), for: .normal)
+        button.layer.masksToBounds = true
         button.addTarget(self, action: #selector(sharedAction), for: .touchUpInside)
+        button.layer.cornerRadius = 16
         return button
     }()
     
@@ -105,9 +115,10 @@ final class NewsViewConroller: UIViewController {
         let image = UIImage(systemName: "arrow.left", withConfiguration: iconConfiguration)
         button.setImage(image, for: .normal)
         button.backgroundColor = UIColor.black.withAlphaComponent(0.3)
-        button.layer.cornerRadius = button.bounds.height/2
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.masksToBounds = true
+        button.layer.cornerRadius = 16
         return button
     }()
     
@@ -210,14 +221,14 @@ final class NewsViewConroller: UIViewController {
     
     @objc private func addToBookmarks() {
         if bookMarkChangeColor == false {
-            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+//            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
             bookMarkButton.tintColor = .systemYellow
             bookMarkChangeColor = true
             guard let data = news else { return }
             //print(data)
             bookmarksManager.saveNewsToDefaults(news: data)
         } else {
-            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
             bookMarkButton.tintColor = .white
             bookMarkChangeColor = false
             guard let data = news else { return }
@@ -289,19 +300,19 @@ extension NewsViewConroller {
 //            backButton.widthAnchor.constraint(equalToConstant: 24),
 //            backButton.heightAnchor.constraint(equalToConstant: 24),
             backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60),
             backButton.heightAnchor.constraint(equalToConstant: 50),
             backButton.widthAnchor.constraint(equalTo: backButton.heightAnchor),
             
-            bookMarkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            bookMarkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 60),
             bookMarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            bookMarkButton.widthAnchor.constraint(equalToConstant: 24),
-            bookMarkButton.heightAnchor.constraint(equalToConstant: 24),
+            bookMarkButton.widthAnchor.constraint(equalToConstant: 50),
+            bookMarkButton.heightAnchor.constraint(equalToConstant: 50),
             
             shareButton.topAnchor.constraint(equalTo: bookMarkButton.bottomAnchor, constant: 29),
             shareButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            shareButton.widthAnchor.constraint(equalToConstant: 24),
-            shareButton.heightAnchor.constraint(equalToConstant: 24),
+            shareButton.widthAnchor.constraint(equalToConstant: 50),
+            shareButton.heightAnchor.constraint(equalToConstant: 50),
             
             titleLabel.bottomAnchor.constraint(equalTo: autorName.topAnchor, constant: -24),
             titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
