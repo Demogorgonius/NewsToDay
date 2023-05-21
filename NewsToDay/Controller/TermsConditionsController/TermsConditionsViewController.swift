@@ -39,6 +39,12 @@ class TermsConditionsViewController: UIViewController {
         setupConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.tintColor = UIColor(named: Colors.purplePrimary)
+    }
+    
     private func setupViews() {
         view.addSubview(titleLabel)
         view.addSubview(termsText)
