@@ -15,19 +15,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         #warning("Раскомитить при завершении проекта")
-//        setupWindow(with: scene)
-//        checkAuthentication()
+        setupWindow(with: scene)
+        checkAuthentication()
         
         #warning("Удалить при завершении проекта то что ниже")
-        guard let scene = (scene as? UIWindowScene) else { return }
-               window = UIWindow(windowScene: scene)
-
-//            let vc = OnboardingViewController()
-//            let testVC = ViewController()
-            let vc = CustomTabBarController()
-
-            window!.rootViewController = vc
-            window!.makeKeyAndVisible()
+//        guard let scene = (scene as? UIWindowScene) else { return }
+//               window = UIWindow(windowScene: scene)
+//
+////            let vc = OnboardingViewController()
+////            let testVC = ViewController()
+//            let vc = CustomTabBarController()
+//
+//            window!.rootViewController = vc
+//            window!.makeKeyAndVisible()
     }
     
     private func setupWindow(with scene: UIScene) {

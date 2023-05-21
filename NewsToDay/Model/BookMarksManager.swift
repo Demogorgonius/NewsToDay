@@ -14,18 +14,19 @@ class BookMarksManager {
 //    }
     
     func saveNewsToDefaults(news: Results) {
-        var bookmarkArray: [Results] = []
-        guard let bookmarks = defaults.data(forKey: "bookmark") else { return }
-        do {
-            let decoder = JSONDecoder()
-            bookmarkArray = try decoder.decode([Results].self, from: bookmarks)
-        } catch {
-            print("ERROR!!!!!!!DECODE\(error)")
+        var bookmarksArray: [Results] = []
+        if let bookmarks = defaults.data(forKey: "bookmark") {
+            do {
+                let decoder = JSONDecoder()
+                bookmarksArray = try decoder.decode([Results].self, from: bookmarks)
+            } catch {
+                print("ERROR!!!!!!!DECODE\(error)")
+            }
         }
 
-        bookmarkArray.append(news)
+        bookmarksArray.append(news)
         do {
-            let result = bookmarkArray
+            let result = bookmarksArray
             let encoder = JSONEncoder()
             let data = try encoder.encode(result)
             UserDefaults.standard.set(data, forKey: "bookmark")
@@ -38,6 +39,27 @@ class BookMarksManager {
     }
     
     func deleteNewsFromDefaults(news: Results) {
+        var bookmarksArray: [Results] = []
+        guard let bookmarks = defaults.data(forKey: "bookmark") else { return }
+        do {
+            let decoder = JSONDecoder()
+            bookmarksArray = try decoder.decode([Results].self, from: bookmarks)
+        } catch {
+            print("ERROR!!!!!!!DECODE\(error)")
+        }
+        
+        if let index = bookmarksArray.firstIndex(of: news) {
+            bookmarksArray.remove(at: index)
+        }
+        
+        do {
+            let result = bookmarksArray
+            let encoder = JSONEncoder()
+            let data = try encoder.encode(result)
+            UserDefaults.standard.set(data, forKey: "bookmark")
+        } catch {
+            print(error)
+        }
         
     }
     
@@ -54,16 +76,26 @@ class BookMarksManager {
         return bookmarkArray
     }
     
-    func bookMarkCheck(for text: String) -> Bool {
+    func bookMarkCheck(for news: Results) -> Bool {
         var isSaved = false
-        if let data = defaults.array(forKey: "bookmark") {
-            let array = data as! [Results]
-            for element in array {
-                if element.content == text {
+        var bookmarkArray: [Results]?
+        guard let bookmarks = defaults.data(forKey: "bookmark") else { return false }
+        do {
+            let decoder = JSONDecoder()
+            bookmarkArray = try decoder.decode([Results].self, from: bookmarks)
+            
+        } catch {
+            print("ERROR!!!!!!!DECODE\(error)")
+        }
+        
+        if let bookmarkArray = bookmarkArray {
+            for new in bookmarkArray {
+                if new == news {
                     isSaved = true
                 }
             }
         }
+        
         return isSaved
     }
 }

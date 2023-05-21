@@ -12,6 +12,7 @@ final class NewsViewConroller: UIViewController {
     var bookMarkChangeColor: Bool = false
     var linkNews: String?
     var news: Results?
+    let bookmarksManager = BookMarksManager()
     
     lazy var pictureNews: UIImageView = {
         let image = UIImageView()
@@ -177,6 +178,11 @@ final class NewsViewConroller: UIViewController {
     private func configureView() {
         guard let news = news else { return }
         
+        if bookmarksManager.bookMarkCheck(for: news) {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            bookMarkButton.tintColor = .systemYellow
+            bookMarkChangeColor = true
+        }
         
         if news.image_url != nil {
             pictureNews.kf.setImage(with: URL(string: news.image_url ?? ""))
@@ -219,9 +225,15 @@ final class NewsViewConroller: UIViewController {
             bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .highlighted)
             bookMarkButton.tintColor = .systemYellow
             bookMarkChangeColor = true
+            guard let data = news else { return }
+            //print(data)
+            bookmarksManager.saveNewsToDefaults(news: data)
         } else {
             bookMarkButton.tintColor = .white
             bookMarkChangeColor = false
+            guard let data = news else { return }
+            //print(data)
+            bookmarksManager.deleteNewsFromDefaults(news: data)
         }
     }
     
