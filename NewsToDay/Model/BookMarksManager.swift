@@ -15,12 +15,13 @@ class BookMarksManager {
     
     func saveNewsToDefaults(news: Results) {
         var bookmarksArray: [Results] = []
-        guard let bookmarks = defaults.data(forKey: "bookmark") else { return }
-        do {
-            let decoder = JSONDecoder()
-            bookmarksArray = try decoder.decode([Results].self, from: bookmarks)
-        } catch {
-            print("ERROR!!!!!!!DECODE\(error)")
+        if let bookmarks = defaults.data(forKey: "bookmark") {
+            do {
+                let decoder = JSONDecoder()
+                bookmarksArray = try decoder.decode([Results].self, from: bookmarks)
+            } catch {
+                print("ERROR!!!!!!!DECODE\(error)")
+            }
         }
 
         bookmarksArray.append(news)
