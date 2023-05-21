@@ -79,6 +79,12 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(image: URL?, topic: String, news: String, newsData: Results) {
+        
+        if bookmarkManager.bookMarkCheck(for: newsData) {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            bookMarkButton.tintColor = .systemYellow
+            bookMarkChangeColor = true
+        }
        
         if let image = image {
             latestNewsImage.kf.setImage(with: image)
