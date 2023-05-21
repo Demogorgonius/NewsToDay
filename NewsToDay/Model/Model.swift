@@ -13,7 +13,7 @@ struct NewsData: Codable {
     var results: [Results]
 }
 
-struct Results: Codable {
+struct Results: Codable, Equatable {
     var title: String?
     var link: String?
     var creator: [String]?
