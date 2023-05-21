@@ -62,6 +62,9 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
             bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
             bookMarkButton.tintColor = .white
             bookMarkChangeColor = false
+            guard let data = newsData else { return }
+            //print(data)
+            bookmarkManager.deleteNewsFromDefaults(news: data)
         }
     }
     
@@ -76,7 +79,12 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(image: URL?, topic: String, news: String, newsData: Results) {
-        latestNewsImage.kf.setImage(with: image)
+       
+        if let image = image {
+            latestNewsImage.kf.setImage(with: image)
+        } else {
+            latestNewsImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
+        }
         topicNewsLabel.text = topic
         newsLabel.text = news
         self.newsData = newsData

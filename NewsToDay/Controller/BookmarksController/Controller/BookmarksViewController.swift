@@ -132,9 +132,19 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
         if editingStyle == .delete {
             // Удаляем содержимое ячейки
             guard var testPosts = testPosts else { return }
+            
+            bookmarksManager.deleteNewsFromDefaults(news: testPosts[indexPath.row])
+            
             testPosts.remove(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
             // Удаляем ячейку из таблицы
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            
+           print(testPosts)
+            let testPostsNew = bookmarksManager.getNewsFromUserDefaults()
+            self.testPosts = testPostsNew
+            self.tableView.reloadData()
+            
         }
     }
 }
