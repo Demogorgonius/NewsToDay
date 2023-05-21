@@ -39,7 +39,11 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
         layoutTableView()
     }
     
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = false
+    }
+    
     private func layoutTableView() {
         view.addSubview(tableView)
         
@@ -111,6 +115,7 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        navigationController?.pushViewController(NewsViewConroller(with: testPosts[indexPath.row]), animated: true)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
