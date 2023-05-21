@@ -26,16 +26,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
     
     public func checkAuthentication() {
+        
+//        do {
+//            try Auth.auth().signOut()
+//        } catch let error {
+//            print(error)
+//        }
+//
+        
         if Auth.auth().currentUser == nil {
             let vc = LoginController()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            self.window?.rootViewController = nav
+            vc.modalPresentationStyle = .fullScreen
+            self.window?.rootViewController = vc
         } else {
-            let vc = CustomTabBarController()
-            let nav = UINavigationController(rootViewController: vc)
-            nav.modalPresentationStyle = .fullScreen
-            self.window?.rootViewController = nav
+            if UserDefaults.standard.value(forKey: "onboarding") as! String == "ok" {
+                let vc = CustomTabBarController()
+                vc.modalPresentationStyle = .fullScreen
+                self.window?.rootViewController = vc
+            } else {
+                let vc = OnboardingViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self.window?.rootViewController = vc
+            }
+            
         }
     }
 

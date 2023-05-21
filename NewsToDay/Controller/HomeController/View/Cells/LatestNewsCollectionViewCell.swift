@@ -129,3 +129,11 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
     }
     
 }
+extension LatestNewsCollectionViewCell {
+    override func prepareForReuse() {
+        bookMarkChangeColor = false
+        bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+        topicNewsLabel.text = ""
+        newsLabel.text = ""
+    }
+}
