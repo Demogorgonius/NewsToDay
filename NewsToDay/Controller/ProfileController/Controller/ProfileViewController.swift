@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
     private let userImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "test")
+        image.image = UIImage(named: "Ellipse 5")
         image.contentMode = .scaleAspectFill
         image.layer.borderWidth = 1
         image.layer.borderColor = UIColor.lightGray.cgColor
@@ -50,7 +50,7 @@ class ProfileViewController: UIViewController {
         let label = UILabel()
         label.text = "steve@mail.com"
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .lightGray
+        label.textColor = UIColor(named: Colors.greyDarker)
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textAlignment = .center
         return label
@@ -61,7 +61,7 @@ class ProfileViewController: UIViewController {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration?.title = NSLocalizedString("LanguageButton", comment: "")
+        button.configuration?.title = NSLocalizedString("Language", comment: "")
         button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
         button.contentHorizontalAlignment = .fill
         button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
@@ -69,8 +69,8 @@ class ProfileViewController: UIViewController {
         button.configuration?.imagePlacement = .trailing
         button.configuration?.contentInsets.trailing = 25
         button.configuration?.contentInsets.leading = 25
-        button.configuration?.baseBackgroundColor = .systemFill
-        button.configuration?.cornerStyle = .small
+        button.configuration?.baseBackgroundColor = UIColor(named: Colors.greyLighter)
+        button.configuration?.cornerStyle = .medium
         button.addTarget(self, action: #selector(languageButtonPressed(_:)),
             for: .touchUpInside)
         return button
@@ -88,9 +88,9 @@ class ProfileViewController: UIViewController {
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 11), forImageIn: .normal)
         button.configuration?.contentInsets.trailing = 25
         button.configuration?.contentInsets.leading = 25
-        button.configuration?.baseBackgroundColor = .systemFill
+        button.configuration?.baseBackgroundColor = UIColor(named: Colors.greyLighter)
         button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
-        button.configuration?.cornerStyle = .small
+        button.configuration?.cornerStyle = .medium
         button.addTarget(self, action: #selector(termsButtonPressed(_:)),
             for: .touchUpInside)
         return button
@@ -109,8 +109,8 @@ class ProfileViewController: UIViewController {
         button.configuration?.contentInsets.trailing = 15
         button.configuration?.contentInsets.leading = 25
         button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
-        button.configuration?.baseBackgroundColor = .systemFill
-        button.configuration?.cornerStyle = .small
+        button.configuration?.baseBackgroundColor = UIColor(named: Colors.greyLighter)
+        button.configuration?.cornerStyle = .medium
         button.addTarget(self,action: #selector(signOutButtonPressed(_:)),
                          for: .touchUpInside)
         return button
