@@ -91,14 +91,17 @@ class RegisterController: UIViewController {
             
             if wasRegistered {
                 let vc = OnboardingViewController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                vc.modalPresentationStyle = .fullScreen
+                present(vc, animated: true)
             } else {
                 AlertManager.showRegistrationErrorAlert(on: self)
             }
         }
     }
     @objc private func didTapSignIn() {
-        navigationController?.popToRootViewController(animated: true)
+        let logVC = LoginController()
+        logVC.modalPresentationStyle = .fullScreen
+        present(logVC, animated: true)
         print(#function)
     }
     

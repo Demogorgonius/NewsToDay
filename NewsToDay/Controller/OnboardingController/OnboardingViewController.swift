@@ -34,7 +34,7 @@ class OnboardingViewController: UIViewController {
     }()
     
     /// button
-    private let nextButton: UIButton = {
+    private lazy var nextButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.configuration?.title = "Next"
@@ -52,7 +52,8 @@ class OnboardingViewController: UIViewController {
         updateUI()
         
         if nextButton.configuration?.title == "Get Started" {
-            let vc = CustomTabBarController()
+            UserDefaults.standard.set("ok", forKey: "onboarding")
+            let vc = CategoriesVCOnboarding()
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: true)
         } else if pageControl.currentPage == 5 {

@@ -71,11 +71,12 @@ class LoginController: UIViewController {
     }
     @objc private func didTapNewUser() {
         let vc = RegisterController()
-        navigationController?.pushViewController(vc, animated: true)
+    
+        present(vc, animated: true)
     }
     @objc private func didTapForgotPassword() {
         let vc = ForgotPasswordController()
-        navigationController?.pushViewController(vc, animated: true)
+        present(vc, animated: true)
     }
     
     //MARK: - UI Setup
