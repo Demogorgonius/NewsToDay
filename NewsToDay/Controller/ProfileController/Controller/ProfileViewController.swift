@@ -61,7 +61,7 @@ class ProfileViewController: UIViewController {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.configuration?.title = NSLocalizedString("Language", comment: "")
+        button.configuration?.title = NSLocalizedString("LanguageButton", comment: "")
         button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
         button.contentHorizontalAlignment = .fill
         button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)

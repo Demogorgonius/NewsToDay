@@ -319,7 +319,7 @@ extension HomeViewController: UICollectionViewDataSource {
                                        newsData: newDone[indexPath.row])
                 }
             } else {
-                cell.latestNewsImage.image = UIImage(named: "city_1")
+                cell.latestNewsImage.image = UIImage(named: "city_6")
                 cell.newsLabel.text = "ТЕМА"
                 cell.topicNewsLabel.text = "НОВОСТЬ"
             }
@@ -331,7 +331,7 @@ extension HomeViewController: UICollectionViewDataSource {
                 if newsDataNew[indexPath.row].image_url != nil {
                     cell.cellImage.kf.setImage(with: URL(string: newsDataNew[indexPath.row].image_url!))
                 } else {
-                    cell.cellImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
+                    cell.cellImage.image = UIImage(named: "city_6")
                 }
                 if newsDataNew[indexPath.row].category != nil {
                     cell.newsTopicLabel.text = newsDataNew[indexPath.row].category?[0].uppercased() ?? ""
@@ -344,7 +344,7 @@ extension HomeViewController: UICollectionViewDataSource {
                     cell.newsLabel.text = "Creating Color Palette from world around you"
                 }
             } else {
-                cell.cellImage.image = UIImage(named: "city_1")
+                cell.cellImage.image = UIImage(named: "city_6")
                 cell.newsTopicLabel.text = "ТЕМА"
                 cell.newsLabel.text = "НОВОСТЬ"
             }

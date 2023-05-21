@@ -90,15 +90,11 @@ extension BookmarksViewController: UITableViewDelegate, UITableViewDataSource {
              fatalError()
          }
         guard let testPosts = testPosts else { return UITableViewCell() }
-         let post = testPosts[indexPath.row]
-         let topic = post.category?.first ?? ""
-         cell.configureCell(image: post.image_url ?? "", topic: topic, news: post.description ?? "")
-//         print(cell)
-         
-        
- //        cell.configureCell(image: URL(string: bookmarksData?[indexPath.row].image_url! ?? ""), topic: bookmarksData?[indexPath.row].category?[0].uppercased() ?? "", news: bookmarksData?[indexPath.row].description ?? "", data: bookmarksData[indexPath.row])
-         return cell
-     }
+        let post = testPosts[indexPath.row]
+        let topic = post.category?.first ?? ""
+        cell.configureCell(image: post.image_url ?? "", topic: topic, news: post.description ?? "")
+        return cell
+    }
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

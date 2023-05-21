@@ -89,7 +89,7 @@ final class LatestNewsCollectionViewCell: UICollectionViewCell {
         if let image = image {
             latestNewsImage.kf.setImage(with: image)
         } else {
-            latestNewsImage.image = UIImage(named: ["city_1", "city_2", "city_3", "city_4", "city_5", "city_6"].randomElement()!)
+            latestNewsImage.image = UIImage(named: "city_6")
         }
         topicNewsLabel.text = topic
         newsLabel.text = news
