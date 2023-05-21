@@ -10,23 +10,24 @@ import UIKit
 class RegisterController: UIViewController {
     
     //MARK: - UI Components
-    private let headerView = AuthHeaderView(title: "Sign Up", subtitle: "Create your account")
+    private let headerView = AuthHeaderView(title: "Welcome to NewsToDay", subtitle: "Hello, I guess you are new around here. You can start using the application after sign up.")
     
     private let usernameField = CustomTextField(fieldType: .username)
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
     private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
-    private let signInButton = CustomButton(title: "Already have an account? Sign in", hasBackground: false, fontSize: .med)
+    private let signInButton = CustomButton(title: "Already have an account? Sign In", hasBackground: false, fontSize: .med)
     
     /// textView
     private let termsTextView: UITextView = {
-        let attributedText = NSMutableAttributedString(string: "By creating account, you agree to our Terms & Conditions and you acknowledge that have read our Privacy Policy")
+        let attributedText = NSMutableAttributedString(string: "By creating account, you agree to our Terms & Conditions \n and you acknowledge that have read our Privacy Policy")
         attributedText.addAttribute(.link, value: "terms://termsAndConditions", range: (attributedText.string as NSString).range(of: "Terms & Conditions"))
         attributedText.addAttribute(.link, value: "privacy://privacyPolicy", range: (attributedText.string as NSString).range(of: "Privacy Policy"))
         let textView = UITextView()
         textView.linkTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemBlue]
         textView.attributedText = attributedText
+        textView.textAlignment = .center
         textView.backgroundColor = .clear
         textView.textColor = .label
         textView.delaysContentTouches = false
@@ -130,7 +131,7 @@ class RegisterController: UIViewController {
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             headerView.heightAnchor.constraint(equalToConstant: 220),
             
-            usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
+            usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 45),
             usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             usernameField.heightAnchor.constraint(equalToConstant: 55),
             usernameField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
@@ -155,9 +156,9 @@ class RegisterController: UIViewController {
             termsTextView.heightAnchor.constraint(equalToConstant: 55),
             termsTextView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            signInButton.topAnchor.constraint(equalTo: termsTextView.bottomAnchor, constant: 15),
+            signInButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
             signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            signInButton.heightAnchor.constraint(equalToConstant: 55),
+            signInButton.heightAnchor.constraint(equalToConstant: 22),
             signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
             

@@ -13,9 +13,9 @@ class ForgotPasswordController: UIViewController {
     
     
     //MARK: - UI Components
-    private let headerView = AuthHeaderView(title: "Forgot Password", subtitle: "Reset your password")
+    private let headerView = AuthHeaderView(title: "Forgot Password?", subtitle: "Reset your password here:")
     private let emailField = CustomTextField(fieldType: .email)
-    private let resetPasswordButton = CustomButton(title: "Reset password", hasBackground: true, fontSize: .big)
+    private let resetPasswordButton = CustomButton(title: "Reset", hasBackground: true, fontSize: .big)
     
     //MARK: - Lifecycle
     override func viewDidLoad() {
@@ -27,6 +27,7 @@ class ForgotPasswordController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.tintColor = UIColor(named: Colors.purplePrimary)
     }
     
     //MARK: - Methods
