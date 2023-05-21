@@ -1,7 +1,7 @@
 import Foundation
 import UIKit
 
-class CategoriesViewController : UIViewController {
+class CategoriesVCOnboarding : UIViewController {
     
     var categoriesManager = CategoriesManager()
     var nextButton = UIButton()
@@ -43,7 +43,10 @@ class CategoriesViewController : UIViewController {
         categoriesManager.setUserDefaults()
         let homeVC = HomeViewController()
         homeVC.newsCatNew = categoriesManager.getCategories() as? [String]
-        tabBarController?.selectedIndex = 0
+        let vc = CustomTabBarController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
+
     }
     
     func setup() {
@@ -93,9 +96,9 @@ class CategoriesViewController : UIViewController {
     }
 }
 
-extension CategoriesViewController: UICollectionViewDataSource {
+extension CategoriesVCOnboarding: UICollectionViewDataSource {
     // number of cells
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func  collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return source.count
     }
     //set up cell in collection
