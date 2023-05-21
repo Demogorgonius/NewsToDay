@@ -61,6 +61,11 @@ class LanguageViewController: UIViewController {
         setupConstraints()
 
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.navigationBar.tintColor = UIColor(named: Colors.purplePrimary)
+    }
     
     @objc private func engButtonPressed(_ sender: UIButton) {
         sender.configuration?.baseBackgroundColor = .blue

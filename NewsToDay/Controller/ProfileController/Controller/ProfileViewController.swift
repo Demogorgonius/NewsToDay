@@ -62,6 +62,7 @@ class ProfileViewController: UIViewController {
         button.configuration = UIButton.Configuration.filled()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration?.title = NSLocalizedString("Language", comment: "")
+        button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
         button.contentHorizontalAlignment = .fill
         button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 11), forImageIn: .normal)
@@ -88,6 +89,7 @@ class ProfileViewController: UIViewController {
         button.configuration?.contentInsets.trailing = 25
         button.configuration?.contentInsets.leading = 25
         button.configuration?.baseBackgroundColor = .systemFill
+        button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
         button.configuration?.cornerStyle = .small
         button.addTarget(self, action: #selector(termsButtonPressed(_:)),
             for: .touchUpInside)
@@ -106,7 +108,7 @@ class ProfileViewController: UIViewController {
         button.configuration?.imagePlacement = .trailing
         button.configuration?.contentInsets.trailing = 15
         button.configuration?.contentInsets.leading = 25
-        button.configuration?.baseForegroundColor = .darkGray
+        button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
         button.configuration?.baseBackgroundColor = .systemFill
         button.configuration?.cornerStyle = .small
         button.addTarget(self,action: #selector(signOutButtonPressed(_:)),
@@ -121,6 +123,12 @@ class ProfileViewController: UIViewController {
         fetchingUser()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        
+    }
+    
     //MARK: - Methods
 #warning("Здесь достаём данные из бд Firebase")
     private func fetchingUser() {
@@ -132,7 +140,8 @@ class ProfileViewController: UIViewController {
             }
             
             if let user = user {
-                self.nameLabel.text = "\(user.username)\n\(user.email)"
+                self.nameLabel.text = "\(user.username)"
+                self.emailLabel.text = "\(user.email)"
             }
         }
     }
