@@ -65,6 +65,7 @@ final class HomeViewController: UIViewController {
             }
         }
         navigationController?.isNavigationBarHidden = false
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func fetchDataRecNews() {
@@ -233,77 +234,85 @@ extension HomeViewController: UICollectionViewDelegate {
             let selectedCategory = MockData.shared.topics.items[indexPath.item].categories
             getNewsFromTopic(category: selectedCategory)
         case .news(_):
-            let newsVC = NewsViewConroller()
-            let cell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell
             if let new = newsData {
-                if new[indexPath.row].image_url != nil {
-                    newsVC.pictureNews.kf.setImage(with: URL(string: new[indexPath.row].image_url ?? ""))
-                } else {
-                    newsVC.pictureNews.image = cell?.latestNewsImage.image
-                }
-                if new[indexPath.row].category != nil {
-                    newsVC.category.text = new[indexPath.row].category?[0].capitalized
-                } else {
-                    newsVC.category.text = cell?.topicNewsLabel.text
-                }
-                if new[indexPath.row].creator != nil {
-                    newsVC.autorName.text = new[indexPath.row].creator?[0]
-                } else {
-                    newsVC.autorName.text = "John Doe"
-                }
-                if new[indexPath.row].title != nil {
-                    newsVC.titleLabel.text = new[indexPath.row].title
-                } else {
-                    newsVC.titleLabel.text = cell?.newsLabel.text
-                }
-                if new[indexPath.row].link != nil {
-                    newsVC.linkNews = new[indexPath.row].link
-                } else {
-                    newsVC.linkNews = ""
-                }
-                if new[indexPath.row].content != nil {
-                    newsVC.textDiscription.text = new[indexPath.row].content
-                } else {
-                    newsVC.textDiscription.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
-                }
+                let newsVC = NewsViewConroller(with: new[indexPath.row])
+                navigationController?.pushViewController(newsVC, animated: true)
             }
-            navigationController?.pushViewController(newsVC, animated: true)
+//            let cell = homeView.collectionView.cellForItem(at: indexPath) as? LatestNewsCollectionViewCell
+//            if let new = newsData {
+//                if new[indexPath.row].image_url != nil {
+//                    newsVC.pictureNews.kf.setImage(with: URL(string: new[indexPath.row].image_url ?? ""))
+//                } else {
+//                    newsVC.pictureNews.image = cell?.latestNewsImage.image
+//                }
+//                if new[indexPath.row].category != nil {
+//                    newsVC.category.text = new[indexPath.row].category?[0].capitalized
+//                } else {
+//                    newsVC.category.text = cell?.topicNewsLabel.text
+//                }
+//                if new[indexPath.row].creator != nil {
+//                    newsVC.autorName.text = new[indexPath.row].creator?[0]
+//                } else {
+//                    newsVC.autorName.text = "John Doe"
+//                }
+//                if new[indexPath.row].title != nil {
+//                    newsVC.titleLabel.text = new[indexPath.row].title
+//                } else {
+//                    newsVC.titleLabel.text = cell?.newsLabel.text
+//                }
+//                if new[indexPath.row].link != nil {
+//                    newsVC.linkNews = new[indexPath.row].link
+//                } else {
+//                    newsVC.linkNews = ""
+//                }
+//                if new[indexPath.row].content != nil {
+//                    newsVC.textDiscription.text = new[indexPath.row].content
+//                } else {
+//                    newsVC.textDiscription.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
+//                }
+//            }
+            
         case .recommended(_):
-            let newsVC = NewsViewConroller()
-            let cell = homeView.collectionView.cellForItem(at: indexPath) as? RecomendedNewsCollectionViewCell
+            
             if let news = recNewsData {
-                if news[indexPath.row].image_url != nil {
-                    newsVC.pictureNews.kf.setImage(with: URL(string: news[indexPath.row].image_url ?? ""))
-                } else {
-                    newsVC.pictureNews.image = cell?.cellImage.image
-                }
-                if news[indexPath.row].category != nil {
-                    newsVC.category.text = news[indexPath.row].category?[0].capitalized
-                } else {
-                    newsVC.category.text = cell?.newsTopicLabel.text
-                }
-                if news[indexPath.row].creator != nil {
-                    newsVC.autorName.text = news[indexPath.row].creator?[0]
-                } else {
-                    newsVC.autorName.text = "John Doe"
-                }
-                if news[indexPath.row].title != nil {
-                    newsVC.titleLabel.text = news[indexPath.row].title
-                } else {
-                    newsVC.titleLabel.text = cell?.newsLabel.text
-                }
-                if news[indexPath.row].link != nil {
-                    newsVC.linkNews = news[indexPath.row].link
-                } else {
-                    newsVC.linkNews = ""
-                }
-                if news[indexPath.row].content != nil {
-                    newsVC.textDiscription.text = news[indexPath.row].content
-                } else {
-                    newsVC.textDiscription.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
-                }
-            } 
-            navigationController?.pushViewController(newsVC, animated: true)
+                let newsVC = NewsViewConroller(with: news[indexPath.row])
+                navigationController?.pushViewController(newsVC, animated: true)
+            }
+            
+//            let cell = homeView.collectionView.cellForItem(at: indexPath) as? RecomendedNewsCollectionViewCell
+//            if let news = recNewsData {
+//                if news[indexPath.row].image_url != nil {
+//                    newsVC.pictureNews.kf.setImage(with: URL(string: news[indexPath.row].image_url ?? ""))
+//                } else {
+//                    newsVC.pictureNews.image = cell?.cellImage.image
+//                }
+//                if news[indexPath.row].category != nil {
+//                    newsVC.category.text = news[indexPath.row].category?[0].capitalized
+//                } else {
+//                    newsVC.category.text = cell?.newsTopicLabel.text
+//                }
+//                if news[indexPath.row].creator != nil {
+//                    newsVC.autorName.text = news[indexPath.row].creator?[0]
+//                } else {
+//                    newsVC.autorName.text = "John Doe"
+//                }
+//                if news[indexPath.row].title != nil {
+//                    newsVC.titleLabel.text = news[indexPath.row].title
+//                } else {
+//                    newsVC.titleLabel.text = cell?.newsLabel.text
+//                }
+//                if news[indexPath.row].link != nil {
+//                    newsVC.linkNews = news[indexPath.row].link
+//                } else {
+//                    newsVC.linkNews = ""
+//                }
+//                if news[indexPath.row].content != nil {
+//                    newsVC.textDiscription.text = news[indexPath.row].content
+//                } else {
+//                    newsVC.textDiscription.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
+//                }
+//            }
+            
         }
     }
 }

@@ -11,13 +11,7 @@ final class NewsViewConroller: UIViewController {
     
     var bookMarkChangeColor: Bool = false
     var linkNews: String?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        layout()
-        navigationController?.isNavigationBarHidden = true
-    }
+    var news: Results?
     
     lazy var pictureNews: UIImageView = {
         let image = UIImageView()
@@ -86,18 +80,6 @@ final class NewsViewConroller: UIViewController {
         return button
     }()
     
-    @objc private func addToBookmarks() {
-        if bookMarkChangeColor == false {
-            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            bookMarkButton.tintColor = .systemYellow
-            bookMarkChangeColor = true
-        } else {
-            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
-            bookMarkButton.tintColor = .white
-            bookMarkChangeColor = false
-        }
-    }
-    
     private lazy var shareButton: UIButton = {
         let button = UIButton(type: .system)
         button.tintColor = .white
@@ -107,24 +89,27 @@ final class NewsViewConroller: UIViewController {
         return button
     }()
     
-    @objc func sharedAction() {
-        guard let link = linkNews else { return }
-        let shareController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
-        present(shareController, animated: true)
-    }
+//    private lazy var backButton: UIButton = {
+//        let button = UIButton()
+//        button.tintColor = .white
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setBackgroundImage(UIImage(systemName: "arrow.backward"), for: .normal)
+//        button.addTarget(self, action: #selector(goBackAction), for: .touchUpInside)
+//        return button
+//    }()
     
     private lazy var backButton: UIButton = {
         let button = UIButton()
+        let iconConfiguration = UIImage.SymbolConfiguration(pointSize: 25, weight: .medium, scale: .medium)
+        let image = UIImage(systemName: "arrow.left", withConfiguration: iconConfiguration)
+        button.setImage(image, for: .normal)
+        button.backgroundColor = UIColor.black.withAlphaComponent(0.3)
+        button.layer.cornerRadius = button.bounds.height/2
         button.tintColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setBackgroundImage(UIImage(systemName: "arrow.backward"), for: .normal)
-        button.addTarget(self, action: #selector(goBackAction), for: .touchUpInside)
         return button
     }()
     
-    @objc func goBackAction() {
-        navigationController?.popViewController(animated: true)
-    }
     
     lazy var category: UILabel = {
         let text = UILabel()
@@ -152,6 +137,98 @@ final class NewsViewConroller: UIViewController {
         text.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
         return text
     }()
+    
+    init(with news: Results) {
+        
+        self.news = news
+        
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        configureView()
+        layout()
+        navigationController?.isNavigationBarHidden = true
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func configureView() {
+        guard let news = news else { return }
+        
+        
+        if news.image_url != nil {
+            pictureNews.kf.setImage(with: URL(string: news.image_url ?? ""))
+        } else {
+            pictureNews.image = UIImage(named: "default")
+        }
+        if news.category != nil {
+            category.text = news.category?[0].capitalized
+        } else {
+            category.text = NSLocalizedString("worldTopic", comment: "")
+        }
+        if news.creator != nil {
+            autorName.text = news.creator?[0]
+        } else {
+            autorName.text = NSLocalizedString("Jhon Doe", comment: "")
+        }
+        if news.title != nil {
+            titleLabel.text = news.title
+        } else {
+            titleLabel.text = NSLocalizedString("Categories_Title2", comment: "")
+        }
+        if news.link != nil {
+            linkNews = news.link
+        } else {
+            linkNews = ""
+        }
+        if news.content != nil {
+            textDiscription.text = news.content
+        } else {
+            textDiscription.text = "Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters. Leads in individual states may change from one party to another as all the votes are counted. Select a state for detailed results, and select the Senate, House or Governor tabs to view those races. For more detailed state results click on the States A-Z links at the bottom of this page. Results source: NEP/Edison via Reuters."
+        }
+        
+    }
+    
+    
+    
+    @objc private func addToBookmarks() {
+        if bookMarkChangeColor == false {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            bookMarkButton.tintColor = .systemYellow
+            bookMarkChangeColor = true
+        } else {
+            bookMarkButton.setBackgroundImage(UIImage(systemName: "bookmark"), for: .normal)
+            bookMarkButton.tintColor = .white
+            bookMarkChangeColor = false
+        }
+    }
+    
+    
+    
+    @objc func sharedAction() {
+        guard let link = linkNews else { return }
+        let shareController = UIActivityViewController(activityItems: [link], applicationActivities: nil)
+        present(shareController, animated: true)
+    }
+    
+    
+    
+    @objc func goBackAction() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
 }
 
 extension NewsViewConroller {
@@ -167,10 +244,13 @@ extension NewsViewConroller {
         contentView.addSubview(autorName)
         contentView.addSubview(autor)
         contentView.addSubview(textDiscription)
+        backButton.addTarget(self, action: #selector(goBackAction), for: .touchUpInside)
         
         NSLayoutConstraint.activate([
             
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+            
+            
+            scrollView.topAnchor.constraint(equalTo: view.topAnchor, constant: -60),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
@@ -192,10 +272,14 @@ extension NewsViewConroller {
             category.widthAnchor.constraint(greaterThanOrEqualToConstant: 90),
             category.heightAnchor.constraint(equalToConstant: 35),
             
-            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+//            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+//            backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+//            backButton.widthAnchor.constraint(equalToConstant: 24),
+//            backButton.heightAnchor.constraint(equalToConstant: 24),
             backButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            backButton.widthAnchor.constraint(equalToConstant: 24),
-            backButton.heightAnchor.constraint(equalToConstant: 24),
+            backButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            backButton.heightAnchor.constraint(equalToConstant: 50),
+            backButton.widthAnchor.constraint(equalTo: backButton.heightAnchor),
             
             bookMarkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
             bookMarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
