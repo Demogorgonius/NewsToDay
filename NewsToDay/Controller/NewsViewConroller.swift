@@ -176,7 +176,7 @@ final class NewsViewConroller: UIViewController {
         if news.image_url != nil {
             pictureNews.kf.setImage(with: URL(string: news.image_url ?? ""))
         } else {
-            pictureNews.image = UIImage(named: "default")
+            pictureNews.image = UIImage(named: "city_6")
         }
         if news.category != nil {
             category.text = news.category?[0].capitalized
