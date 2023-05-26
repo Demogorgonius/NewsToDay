@@ -26,7 +26,7 @@ class TermsConditionsViewController: UIViewController {
         textView.isScrollEnabled = true
         textView.isUserInteractionEnabled = true
         textView.frame = CGRect(x: 0, y: 0, width: 400, height: 100)
-        textView.textColor = .lightGray
+        textView.textColor = UIColor(named: Colors.greyPrimary)
         textView.font = .systemFont(ofSize: 17, weight: .regular)
         textView.text = NSLocalizedString("Terms", comment: "")
         return textView

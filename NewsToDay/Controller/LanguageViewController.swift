@@ -30,8 +30,8 @@ class LanguageViewController: UIViewController {
         button.configuration?.imagePlacement = .trailing
         button.configuration?.contentInsets.trailing = 25
         button.configuration?.contentInsets.leading = 25
-        button.configuration?.baseForegroundColor = .darkGray
-        button.configuration?.baseBackgroundColor = .systemFill
+        button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
+        button.configuration?.baseBackgroundColor = UIColor(named: Colors.greyLighter)
         button.configuration?.cornerStyle = .small
         button.addTarget(self, action: #selector(engButtonPressed), for: .touchUpInside)
         return button
@@ -47,8 +47,8 @@ class LanguageViewController: UIViewController {
         button.configuration?.imagePlacement = .trailing
         button.configuration?.contentInsets.trailing = 25
         button.configuration?.contentInsets.leading = 25
-        button.configuration?.baseBackgroundColor = .systemFill
-        button.configuration?.baseForegroundColor = .darkGray
+        button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
+        button.configuration?.baseBackgroundColor = UIColor(named: Colors.greyLighter)
         button.configuration?.cornerStyle = .small
         button.addTarget(self, action: #selector(rusButtonPressed), for: .touchUpInside)
         return button
