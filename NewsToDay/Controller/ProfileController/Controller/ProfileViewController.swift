@@ -49,7 +49,7 @@ class ProfileViewController: UIViewController {
     /// name Label
     let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Steve J"
+        label.text = " "
         label.textColor = .black
         label.font = .systemFont(ofSize: 18, weight: .medium)
         label.textAlignment = .center
@@ -59,7 +59,7 @@ class ProfileViewController: UIViewController {
     /// e-mail label
     let emailLabel: UILabel = {
         let label = UILabel()
-        label.text = "steve@mail.com"
+        label.text = " "
         label.textColor = UIColor(named: Colors.greyDarker)
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textAlignment = .center
@@ -154,7 +154,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func profileImageButtonTapped() {
-        showImagePickerController()
+        showImagePickerControllerActionSheets()
     }
     
     @objc private func languageButtonPressed(_ sender: UIButton) {
@@ -250,7 +250,15 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func showImagePickerControllerActionSheets() {
+        let photoLibraryAction = UIAlertAction(title: "Choose from Library", style: .default) { (action) in
+            self.showImagePickerController(sourceType: .photoLibrary)
+        }
+        let cameraAction = UIAlertAction(title: "Take a Photo", style: .default) { (action) in
+            self.showImagePickerController(sourceType: .camera)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
+        AlertService.showAlert(style: .actionSheet, title: "Choose your image", message: nil, actions: [photoLibraryAction, cameraAction, cancelAction], completion: nil)
     }
     
     func showImagePickerController(sourceType: UIImagePickerController.SourceType) {
