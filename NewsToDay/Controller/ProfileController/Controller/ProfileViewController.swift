@@ -10,57 +10,66 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     
-    //MARK: - Title Label
+    //MARK: - UI Components
+    /// title Label
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Profile"
         label.font = .boldSystemFont(ofSize: 25)
         label.textColor = .black
         label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    //MARK: - User Image
-    private let userImage: UIImageView = {
+    /// user image
+    let profileImageViewWidth: CGFloat = 100
+    
+    private lazy var userImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "Ellipse 5")
+//        image.image = UIImage(systemName: "photo.circle")
+        image.image = #imageLiteral(resourceName: "photo").withRenderingMode(.alwaysOriginal)
         image.contentMode = .scaleAspectFill
         image.layer.borderWidth = 1
         image.layer.borderColor = UIColor.lightGray.cgColor
-        image.layer.cornerRadius = image.frame.size.width/2
+        image.layer.cornerRadius = image.frame.size.width / 2
+//        image.layer.cornerRadius = profileImageViewWidth / 2
         image.clipsToBounds = true
         return image
     }()
     
-    //MARK: - Name Label
+    /// user image button
+    private lazy var profileImageViewButton: UIButton = {
+        var button = UIButton(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
+        button.configuration = .plain()
+        button.layer.cornerRadius = button.frame.size.width / 2
+        button.addTarget(self, action: #selector(profileImageButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    /// name Label
     let nameLabel: UILabel = {
         let label = UILabel()
         label.text = "Steve J"
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.font = .systemFont(ofSize: 18, weight: .medium)
         label.textAlignment = .center
         return label
     }()
     
-    //MARK: - E-mail Label
+    /// e-mail label
     let emailLabel: UILabel = {
         let label = UILabel()
         label.text = "steve@mail.com"
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = UIColor(named: Colors.greyDarker)
         label.font = .systemFont(ofSize: 15, weight: .regular)
         label.textAlignment = .center
         return label
     }()
     
-    //MARK: - Language Button
+    /// language button
     private lazy var languageButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration?.title = NSLocalizedString("LanguageButton", comment: "")
         button.configuration?.baseForegroundColor = UIColor(named: Colors.blackLighter)
         button.contentHorizontalAlignment = .fill
@@ -76,11 +85,10 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    //MARK: - Terms&Conditions Button
+    /// terms&Conditions button
     private lazy var termsButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration?.title = NSLocalizedString("TermsButton", comment: "")
         button.contentHorizontalAlignment = .fill
         button.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
@@ -96,11 +104,10 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
-    //MARK: - SignOut Button
+    /// sign out button
     private lazy var signOutButton: UIButton = {
         let button = UIButton()
         button.configuration = UIButton.Configuration.filled()
-        button.translatesAutoresizingMaskIntoConstraints = false
         button.configuration?.title = NSLocalizedString("SignOutButton", comment: "")
         button.contentHorizontalAlignment = .fill
         button.setImage(UIImage(systemName: "rectangle.portrait.and.arrow.right"), for: .normal)
@@ -116,11 +123,12 @@ class ProfileViewController: UIViewController {
         return button
     }()
     
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupViews()
-        setupConstraints()
+        setupUI()
         fetchingUser()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -144,31 +152,22 @@ class ProfileViewController: UIViewController {
             }
         }
     }
-    private func setupViews() {
-        
-        view.backgroundColor = .systemBackground
-        view.addSubview(titleLabel)
-        view.addSubview(userImage)
-        view.addSubview(nameLabel)
-        view.addSubview(emailLabel)
-        view.addSubview(languageButton)
-        view.addSubview(termsButton)
-        view.addSubview(signOutButton)
-
+    
+    @objc private func profileImageButtonTapped() {
+        showImagePickerController()
     }
     
-    @objc func languageButtonPressed(_ sender: UIButton) {
+    @objc private func languageButtonPressed(_ sender: UIButton) {
         let languageVC = LanguageViewController()
         self.navigationController?.pushViewController(languageVC, animated: true)
     }
     
-    
-    @objc func termsButtonPressed(_ sender: UIButton) {
+    @objc private func termsButtonPressed(_ sender: UIButton) {
         let termsVC = TermsConditionsViewController()
         self.navigationController?.pushViewController(termsVC, animated: true)
     }
     
-    @objc func signOutButtonPressed(_ sender: UIButton) {
+    @objc private func signOutButtonPressed(_ sender: UIButton) {
         AuthService.shared.signOut { [weak self] error in
             guard let self = self else { return }
             if let error = error {
@@ -181,18 +180,47 @@ class ProfileViewController: UIViewController {
         }
     }
     
-   private func setupConstraints() {
+    //MARK: - UI Setup
+    private func setupUI() {
+        view.backgroundColor = .systemBackground
+        
+        /// ADDING SUBVIEWS
+        view.addSubview(titleLabel)
+        view.addSubview(profileImageViewButton)
+        profileImageViewButton.addSubview(userImage)
+        view.addSubview(nameLabel)
+        view.addSubview(emailLabel)
+        view.addSubview(languageButton)
+        view.addSubview(termsButton)
+        view.addSubview(signOutButton)
+        
+        /// TAMIC
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        userImage.translatesAutoresizingMaskIntoConstraints = false
+        profileImageViewButton.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        languageButton.translatesAutoresizingMaskIntoConstraints = false
+        termsButton.translatesAutoresizingMaskIntoConstraints = false
+        signOutButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        /// SETUP CONSTRAINTS
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             titleLabel.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-
-            userImage.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
-            userImage.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            
+            profileImageViewButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20),
+            profileImageViewButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
+            profileImageViewButton.widthAnchor.constraint(equalToConstant: 80),
+            profileImageViewButton.heightAnchor.constraint(equalToConstant: 80),
+            
+            userImage.centerXAnchor.constraint(equalTo: profileImageViewButton.centerXAnchor),
+            userImage.centerYAnchor.constraint(equalTo: profileImageViewButton.centerYAnchor),
             userImage.widthAnchor.constraint(equalToConstant: 80),
             userImage.heightAnchor.constraint(equalToConstant: 80),
             
             nameLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 115),
-            nameLabel.leftAnchor.constraint(equalTo: userImage.rightAnchor, constant: 25),
+            nameLabel.leftAnchor.constraint(equalTo: profileImageViewButton.rightAnchor, constant: 25),
             
             emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
             emailLabel.leftAnchor.constraint(equalTo: userImage.rightAnchor, constant: 25),
@@ -205,7 +233,7 @@ class ProfileViewController: UIViewController {
             
             termsButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             termsButton.bottomAnchor.constraint(equalTo: signOutButton.topAnchor, constant: -30),
-
+            
             termsButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             termsButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             termsButton.heightAnchor.constraint(equalToConstant: 55),
@@ -216,6 +244,14 @@ class ProfileViewController: UIViewController {
             signOutButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             signOutButton.heightAnchor.constraint(equalToConstant: 55)
         ])
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func showImagePickerController() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
 }
 
