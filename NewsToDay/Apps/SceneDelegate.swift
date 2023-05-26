@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         setupWindow(with: scene)
         checkAuthentication()
     }
-    
+     
     private func setupWindow(with scene: UIScene) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
@@ -39,7 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             vc.modalPresentationStyle = .fullScreen
             self.window?.rootViewController = vc
         } else {
-            if UserDefaults.standard.value(forKey: "onboarding") as! String == "ok" {
+            if UserDefaults.standard.value(forKey: "onboarding") as? String == "ok" {
                 let vc = CustomTabBarController()
                 vc.modalPresentationStyle = .fullScreen
                 self.window?.rootViewController = vc

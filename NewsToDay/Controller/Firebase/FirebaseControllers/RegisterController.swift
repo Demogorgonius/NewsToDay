@@ -92,7 +92,7 @@ class RegisterController: UIViewController {
             if wasRegistered {
                 let vc = OnboardingViewController()
                 vc.modalPresentationStyle = .fullScreen
-                present(vc, animated: true)
+                self.present(vc, animated: true)
             } else {
                 AlertManager.showRegistrationErrorAlert(on: self)
             }

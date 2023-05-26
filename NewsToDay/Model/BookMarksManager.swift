@@ -35,7 +35,7 @@ class BookMarksManager {
         }
 //        defaults.set(newsArrayNew, forKey: "bookmark")
         print(UserDefaults.standard.dictionaryRepresentation())
-        print(getNewsFromUserDefaults())
+        print(getNewsFromUserDefaults() as Any)
     }
     
     func deleteNewsFromDefaults(news: Results) {

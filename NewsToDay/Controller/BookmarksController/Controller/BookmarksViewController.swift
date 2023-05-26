@@ -28,8 +28,9 @@ class BookmarksViewController : CustomViewController<BookmarksView>  {
     
     override func loadView() {
         view = BookmarksView()
-        testPosts = bookmarksManager.getNewsFromUserDefaults()
-        print(testPosts)
+        if testPosts == bookmarksManager.getNewsFromUserDefaults() {
+            print(testPosts!)
+        }
     }
     
     override func viewDidLoad() {

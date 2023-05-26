@@ -130,7 +130,6 @@ class ProfileViewController: UIViewController {
     }
     
     //MARK: - Methods
-#warning("Здесь достаём данные из бд Firebase")
     private func fetchingUser() {
         AuthService.shared.fetchUser { [weak self] user, error in
             guard let self = self else { return }
@@ -170,7 +169,6 @@ class ProfileViewController: UIViewController {
     }
     
     @objc func signOutButtonPressed(_ sender: UIButton) {
-#warning("Здесь пользователь разлогинивается и выходит на Login VC")
         AuthService.shared.signOut { [weak self] error in
             guard let self = self else { return }
             if let error = error {
