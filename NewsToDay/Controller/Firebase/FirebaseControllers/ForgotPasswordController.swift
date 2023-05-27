@@ -72,7 +72,7 @@ class ForgotPasswordController: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 220),
+            headerView.heightAnchor.constraint(equalToConstant: 280),
             
             emailField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 15),
             emailField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),

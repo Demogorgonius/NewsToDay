@@ -11,7 +11,7 @@ class RegisterController: UIViewController {
     
     // MARK: - UI Components
     // header icon + text
-    private let headerView = AuthHeaderView(title: "Welcome to NewsToDay", subtitle: "Hello, I guess you are new around here. You can start using the application after sign up.")
+    private let headerView = AuthHeaderView(title: "Welcome to NewsToDay", subtitle: "Hello, I guess you are new around here. You can start using the application after sign up")
     
     // text fields
     private let usernameField = CustomTextField(fieldType: .username)
@@ -144,7 +144,7 @@ class RegisterController: UIViewController {
             headerView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             headerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headerView.heightAnchor.constraint(equalToConstant: 220),
+            headerView.heightAnchor.constraint(equalToConstant: 280),
             
             usernameField.topAnchor.constraint(equalTo: headerView.bottomAnchor, constant: 45),
             usernameField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),

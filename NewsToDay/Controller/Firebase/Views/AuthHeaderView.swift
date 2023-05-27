@@ -71,7 +71,7 @@ class AuthHeaderView: UIView {
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: topAnchor, constant: 30),
             logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            logoImageView.widthAnchor.constraint(equalToConstant: 90),
+            logoImageView.widthAnchor.constraint(equalToConstant: 150),
             logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor),
             
             titleLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
