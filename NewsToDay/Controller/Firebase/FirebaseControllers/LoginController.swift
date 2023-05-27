@@ -15,7 +15,7 @@ class LoginController: UIViewController {
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
     
-    private let signInButton = CustomButton(title: "Sign In", hasBackground: true, fontSize: .big)
+    private let signInButton = CustomButton(title: "Sign In", hasBackground: true, fontSize: .med)
     private let newUserButton = CustomButton(title: "Don't have an account? Sign Up", hasBackground: false, fontSize: .med)
     private let forgotPasswordButton = CustomButton(title: "Forgot password?", hasBackground: false, fontSize: .small)
     

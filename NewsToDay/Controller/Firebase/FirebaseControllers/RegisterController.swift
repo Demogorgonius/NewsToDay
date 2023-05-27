@@ -9,17 +9,21 @@ import UIKit
 
 class RegisterController: UIViewController {
     
-    //MARK: - UI Components
+    // MARK: - UI Components
+    // header icon + text
     private let headerView = AuthHeaderView(title: "Welcome to NewsToDay", subtitle: "Hello, I guess you are new around here. You can start using the application after sign up.")
     
+    // text fields
     private let usernameField = CustomTextField(fieldType: .username)
     private let emailField = CustomTextField(fieldType: .email)
     private let passwordField = CustomTextField(fieldType: .password)
+    private let passwordCheckField = CustomTextField(fieldType: .passwordCheck)
     
-    private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .big)
+    // buttons
+    private let signUpButton = CustomButton(title: "Sign Up", hasBackground: true, fontSize: .med)
     private let signInButton = CustomButton(title: "Already have an account? Sign In", hasBackground: false, fontSize: .med)
     
-    /// textView
+    // textView
     private let termsTextView: UITextView = {
         let attributedText = NSMutableAttributedString(string: "By creating account, you agree to our Terms & Conditions \n and you acknowledge that have read our Privacy Policy")
         attributedText.addAttribute(.link, value: "terms://termsAndConditions", range: (attributedText.string as NSString).range(of: "Terms & Conditions"))
@@ -76,8 +80,14 @@ class RegisterController: UIViewController {
         }
         
         // Password check
-        if !Validator.isPasswordValid(for: registerUserRequest.password) {
+        if !Validator.isPasswordValid(for: registerUserRequest.password) && passwordCheckField.text != passwordField.text {
             AlertManager.showInvalidPasswordAlert(on: self)
+            return
+        }
+        
+        // Repeated Password check
+        if passwordCheckField.text != passwordField.text {
+            AlertManager.showInvalidRepeatedPasswordAlert(on: self)
             return
         }
         
@@ -114,6 +124,7 @@ class RegisterController: UIViewController {
         view?.addSubview(usernameField)
         view?.addSubview(emailField)
         view?.addSubview(passwordField)
+        view?.addSubview(passwordCheckField)
         view?.addSubview(signUpButton)
         view?.addSubview(termsTextView)
         view?.addSubview(signInButton)
@@ -123,6 +134,7 @@ class RegisterController: UIViewController {
         usernameField.translatesAutoresizingMaskIntoConstraints = false
         emailField.translatesAutoresizingMaskIntoConstraints = false
         passwordField.translatesAutoresizingMaskIntoConstraints = false
+        passwordCheckField.translatesAutoresizingMaskIntoConstraints = false
         signUpButton.translatesAutoresizingMaskIntoConstraints = false
         termsTextView.translatesAutoresizingMaskIntoConstraints = false
         signInButton.translatesAutoresizingMaskIntoConstraints = false
@@ -149,9 +161,14 @@ class RegisterController: UIViewController {
             passwordField.heightAnchor.constraint(equalToConstant: 55),
             passwordField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
-            signUpButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 15),
+            passwordCheckField.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant: 15),
+            passwordCheckField.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
+            passwordCheckField.heightAnchor.constraint(equalToConstant: 55),
+            passwordCheckField.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
+            
+            signUpButton.topAnchor.constraint(equalTo: passwordCheckField.bottomAnchor, constant: 15),
             signUpButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
-            signUpButton.heightAnchor.constraint(equalToConstant: 44),
+            signUpButton.heightAnchor.constraint(equalToConstant: 55),
             signUpButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
             
             termsTextView.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 15),
@@ -163,13 +180,11 @@ class RegisterController: UIViewController {
             signInButton.centerXAnchor.constraint(equalTo: headerView.centerXAnchor),
             signInButton.heightAnchor.constraint(equalToConstant: 22),
             signInButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.85),
-            
-            
         ])
-        
     }
 }
 
+// MARK: - Extensions
 extension RegisterController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
         if URL.scheme == "terms" {

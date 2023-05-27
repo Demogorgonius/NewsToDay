@@ -14,6 +14,7 @@ class CustomTextField: UITextField {
         case username
         case email
         case password
+        case passwordCheck
     }
     
     //MARK: - Properties
@@ -86,7 +87,12 @@ class CustomTextField: UITextField {
         
         switch fieldType {
         case .username:
-            placeholder = "Username"
+            
+            //text
+            attributedPlaceholder = NSAttributedString(string: "Username",
+                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.greyPrimary])
+            
+            //left icon
             let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             leftPaddingView.addSubview(usernameImageView)
             leftView = leftPaddingView
@@ -95,10 +101,16 @@ class CustomTextField: UITextField {
             //Action
             self.addTarget(self, action: #selector(textFieldEditingBegin), for: UIControl.Event.editingDidBegin)
             self.addTarget(self, action: #selector(textFieldEditingEnd), for: UIControl.Event.editingDidEnd)
+            
         case .email:
-            placeholder = "Email address"
+            
+            //text
             keyboardType = .emailAddress
             textContentType = .emailAddress
+            attributedPlaceholder = NSAttributedString(string: "Email Address",
+                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.greyPrimary])
+            
+            //left icon
             let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             leftPaddingView.addSubview(emailImageView)
             leftView = leftPaddingView
@@ -107,13 +119,21 @@ class CustomTextField: UITextField {
             //Action
             self.addTarget(self, action: #selector(textFieldEditingBegin), for: UIControl.Event.editingDidBegin)
             self.addTarget(self, action: #selector(textFieldEditingEnd), for: UIControl.Event.editingDidEnd)
+            
         case .password:
-            placeholder = "Password"
+            
+            //text
             isSecureTextEntry = true
+            attributedPlaceholder = NSAttributedString(string: "Password",
+                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.greyPrimary])
+            
+            //right icon
             let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             rightPaddingView.addSubview(secureTextEntryButton)
             rightView = rightPaddingView
             rightViewMode = .whileEditing
+            
+            //left icon
             let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
             leftPaddingView.addSubview(passwordImageView)
             leftView = leftPaddingView
@@ -122,6 +142,29 @@ class CustomTextField: UITextField {
             //Action
             self.addTarget(self, action: #selector(passwordTextFieldEditingBegin), for: UIControl.Event.editingDidBegin)
             self.addTarget(self, action: #selector(passwordTextFieldEditingEnd), for: UIControl.Event.editingDidEnd)
+            
+        case .passwordCheck:
+            
+            //text
+            isSecureTextEntry = true
+            attributedPlaceholder = NSAttributedString(string: "Repeat Password",
+                                                       attributes: [NSAttributedString.Key.foregroundColor: UIColor.greyPrimary])
+            
+            //right icon
+            let rightPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+            rightPaddingView.addSubview(secureTextEntryButton)
+            rightView = rightPaddingView
+            rightViewMode = .whileEditing
+            
+            //left icon
+            let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+            leftPaddingView.addSubview(passwordImageView)
+            leftView = leftPaddingView
+            leftViewMode = .always
+            
+            //Action
+            self.addTarget(self, action: #selector(passwordCheckTextFieldEditingBegin), for: UIControl.Event.editingDidBegin)
+            self.addTarget(self, action: #selector(passwordCheckTextFieldEditingEnd), for: UIControl.Event.editingDidEnd)
         }
     }
     
@@ -135,7 +178,7 @@ class CustomTextField: UITextField {
         layer.borderWidth = 1
         layer.borderColor = UIColor.purplePrimary.cgColor
         
-        //Text + icon
+        //Text + icons
         textColor = .blackDarker
         usernameImageView.tintColor = .purplePrimary
         emailImageView.tintColor = .purplePrimary
@@ -150,7 +193,7 @@ class CustomTextField: UITextField {
         //Border
         layer.borderWidth = 0
         
-        //Text + icon
+        //Text + icons
         textColor = .greyPrimary
         usernameImageView.tintColor = .greyPrimary
         emailImageView.tintColor = .greyPrimary
@@ -166,7 +209,7 @@ class CustomTextField: UITextField {
         layer.borderWidth = 1
         layer.borderColor = UIColor.purplePrimary.cgColor
         
-        //Text + icon
+        //Text + icons
         textColor = .blackDarker
         usernameImageView.tintColor = .purplePrimary
         emailImageView.tintColor = .purplePrimary
@@ -182,7 +225,39 @@ class CustomTextField: UITextField {
         //Border
         layer.borderWidth = 0
         
-        //Text + icon
+        //Text + icons
+        textColor = .greyPrimary
+        usernameImageView.tintColor = .greyPrimary
+        emailImageView.tintColor = .greyPrimary
+        passwordImageView.tintColor = .greyPrimary
+        isSecureTextEntry = true
+    }
+    
+    @objc func passwordCheckTextFieldEditingBegin() {
+        //Background
+        backgroundColor = .systemBackground
+        
+        //Border
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.purplePrimary.cgColor
+        
+        //Text + icons
+        textColor = .blackDarker
+        usernameImageView.tintColor = .purplePrimary
+        emailImageView.tintColor = .purplePrimary
+        passwordImageView.tintColor = .purplePrimary
+        secureTextEntryButton.tintColor = .purplePrimary
+        secureTextEntryButton.setImage(UIImage(systemName: "eye"), for: .normal)
+    }
+    
+    @objc func passwordCheckTextFieldEditingEnd() {
+        //Background
+        backgroundColor = .secondarySystemBackground
+        
+        //Border
+        layer.borderWidth = 0
+        
+        //Text + icons
         textColor = .greyPrimary
         usernameImageView.tintColor = .greyPrimary
         emailImageView.tintColor = .greyPrimary
