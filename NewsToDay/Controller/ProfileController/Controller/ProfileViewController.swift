@@ -26,10 +26,11 @@ class ProfileViewController: UIViewController {
     
     private lazy var userImage: UIImageView = {
         let image = UIImageView(frame: CGRect(x: 0, y: 0, width: 80, height: 80))
-        image.image = #imageLiteral(resourceName: "photo").withRenderingMode(.alwaysOriginal)
+        image.image = UIImage(systemName: "person.crop.circle.badge.plus")
+        image.tintColor = .greyLight
         image.contentMode = .scaleAspectFill
-        image.layer.borderWidth = 1
-        image.layer.borderColor = UIColor.lightGray.cgColor
+//        image.layer.borderWidth = 1
+//        image.layer.borderColor = UIColor.lightGray.cgColor
         image.layer.cornerRadius = image.frame.size.width / 2
         image.clipsToBounds = true
         return image
