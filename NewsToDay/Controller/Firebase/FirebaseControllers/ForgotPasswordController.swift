@@ -15,7 +15,7 @@ class ForgotPasswordController: UIViewController {
     //MARK: - UI Components
     private let headerView = AuthHeaderView(title: "Forgot Password?", subtitle: "Reset your password here:")
     private let emailField = CustomTextField(fieldType: .email)
-    private let resetPasswordButton = CustomButton(title: "Reset", hasBackground: true, fontSize: .big)
+    private let resetPasswordButton = CustomButton(title: "Reset", hasBackground: true, fontSize: .med)
     
     //MARK: - Lifecycle
     override func viewDidLoad() {

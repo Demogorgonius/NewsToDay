@@ -46,7 +46,6 @@ class AuthService {
                         completion(false, error)
                         return
                     }
-                    
                     completion(true, nil)
                 }
         }
