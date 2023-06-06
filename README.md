@@ -1,5 +1,5 @@
 # NewsToDay
-NewsToDay это iOS-приложение, которое поможет вам узнать последние новости разных тем и со всего мира
+NewsToDay - это iOS-приложение, которое поможет вам узнать последние новости разных тем и со всего мира
 
 ![Пример работы NewsToDay](https://github.com/Demogorgonius/NewsToDay/blob/Develop/Simulator%20Screen%20Recording%20-%20iPhone%2011%20-%202023-06-06%20at%2022.21.26.gif)
 
